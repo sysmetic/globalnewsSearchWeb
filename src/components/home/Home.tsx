@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
 
-export default function Home() {
+const Home = () => {
   return (
     <HomeWrap>
       <InnerWrap>
@@ -9,7 +8,8 @@ export default function Home() {
       </InnerWrap>
     </HomeWrap>
   );
-}
+};
+export default Home;
 
 const HomeWrap = styled.div`
   height: 1279px;

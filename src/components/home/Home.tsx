@@ -12,7 +12,7 @@ const Home = () => {
 export default Home;
 
 const HomeWrap = styled.div`
-  height: calc(100vhssssssssssssssssssssssssssssssssssss - 266px);
+  height: 1279px;
   background: linear-gradient(
     211.86deg,
     #ffffff -2.13%,

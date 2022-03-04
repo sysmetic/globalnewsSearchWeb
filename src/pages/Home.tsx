@@ -21,7 +21,6 @@ const HomeWrap = styled.div`
     rgba(253, 221, 210, 0.7) 94.11%
   );
   padding-bottom: 267px;
-  height: 100vh;
 `;
 
 const InnerWrap = styled.div`

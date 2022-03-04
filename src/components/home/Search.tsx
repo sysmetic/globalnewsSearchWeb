@@ -35,13 +35,16 @@ const SearchBox = styled.div`
   margin-left: 28px;
   display: flex;
   align-items: center;
+  background: url("search.svg") no-repeat 4.5%;
   input {
-    color: #e1e1e1;
+    height: 50px;
+    font-size: 18px;
+    margin-left: 50px;
     width: 383.62px;
     border: none;
+    outline: none;
   }
 `;
-/* background: url(${({}) => props.icon}) no-repeat; */
 
 const SearchArea = styled.div`
   & > div:nth-of-type(1) {

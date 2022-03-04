@@ -12,7 +12,6 @@ const Home = () => {
 export default Home;
 
 const HomeWrap = styled.div`
-  height: 1279px;
   background: linear-gradient(
     211.86deg,
     #ffffff -2.13%,
@@ -33,5 +32,5 @@ const Introduction = styled.div`
   font-weight: bold;
   font-size: 40px;
   line-height: 64px;
-  color: ${(props) => props.theme.primaryColor};
+  color: ${props => props.theme.primaryColor};
 `;

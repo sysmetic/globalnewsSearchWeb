@@ -3,9 +3,12 @@ import styled from "@emotion/styled";
 
 const CardWrap = styled.div`
   display: block;
+  color: #414141;
   margin-right: 37px;
   h5 {
-    font-size: 20px;
+    font-size: 20px; 
+    font-weight: 600;
+    margin-bottom: 20px;
   }
 `
 
@@ -19,15 +22,14 @@ const Card = styled.div`
 
 `
 const CardCont = styled.div`
-  margin: 31px 0 0 34px;
+  margin: 31px 0 24px 34px;
   h5 {
     color: #48c0b7;
     margin-bottom: 12px;
-    margin-top: 0;
+    line-height: 30px;
   }
   p {
     font-size: 16px;
-    margin-top: 0;
   }
 `
 

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import News from "./pages/News";
 import "./index.css";
-import Bookmark from "./components/Mypage/Bookmark";
+import Bookmark from "./components/myPage/Bookmark";
 import Mypage from "./pages/Mypage";
 import { Layout } from "./components/layout/Layout";
 

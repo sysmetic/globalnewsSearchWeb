@@ -10,3 +10,8 @@ declare module "@emotion/react" {
     BlueGreenColor: string;
   }
 }
+
+declare module '*.svg' {
+  const content: any;
+  export default content;
+}

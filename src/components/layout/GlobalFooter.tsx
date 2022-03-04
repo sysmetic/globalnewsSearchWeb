@@ -40,20 +40,18 @@ const GlobalFooter = () => {
 
 export default GlobalFooter;
 
-const Wrap = styled.footer`
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
+const Wrap = styled.div`
   height: 198px;
   background-color: #405261;
 `;
+
 const FooterInner = styled.div`
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
   padding-top: 46px;
 `;
+
 const Logo = styled.div`
   width: 62.6px;
   height: 24px;

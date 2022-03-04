@@ -109,7 +109,8 @@ const style = css`
   }
   body {
     line-height: 1;
-    height: 100%;
+    height: 100vh;
+    position: relative;
   }
   ol,
   ul {

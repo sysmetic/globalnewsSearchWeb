@@ -20,7 +20,6 @@ const GlobalHeader = () => {
               </div>
             </UserInfo>
           </GlobalHeaderInner>
-          s
         </CommonContainer>
       </Wrap>
     </section>

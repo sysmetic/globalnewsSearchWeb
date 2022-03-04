@@ -4,39 +4,37 @@ import CommonContainer from "./CommonContainer";
 
 const GlobalFooter = () => {
   return (
-    <section className="GlobalFooter">
-      <Wrap>
-        <CommonContainer>
-          <FooterInner>
-            <Logo />
-            <MoyaCompanyInfo>
-              <p>
-                주식회사 시스메틱 <br />
-                사업자 등록번호 : 711-86-00050 <br />
-                통신판매업신고 : 제2020-서울영등포-2864호 서울시 영등포구
-                당산로41길 11, E동 1202호(당산동 4가, 당산 SK V1 center) <br />
-                +82-2-6338-1880 ㅣ E-mail : help@moya.ai
-              </p>
-            </MoyaCompanyInfo>
-            <Service>
-              <Link to="/">공지사항</Link>
-              <Link to="/">교육안내</Link>
-              <Link to="/">자주 묻는 질문</Link>
-            </Service>
-            <Service>
-              <Link to="/">개인정보 취급 방침</Link>
-              <Link to="/">서비스 이용약관</Link>
-              <Link to="/">Partners</Link>
-            </Service>
-            <Sns>
-              <Link to="/">FaceBook</Link>
-              <Link to="/">Instagram </Link>
-              <Link to="/">KakaoTalk</Link>
-            </Sns>
-          </FooterInner>
-        </CommonContainer>
-      </Wrap>
-    </section>
+    <Wrap>
+      <CommonContainer>
+        <FooterInner>
+          <Logo />
+          <MoyaCompanyInfo>
+            <p>
+              주식회사 시스메틱 <br />
+              사업자 등록번호 : 711-86-00050 <br />
+              통신판매업신고 : 제2020-서울영등포-2864호 서울시 영등포구
+              당산로41길 11, E동 1202호(당산동 4가, 당산 SK V1 center) <br />
+              +82-2-6338-1880 ㅣ E-mail : help@moya.ai
+            </p>
+          </MoyaCompanyInfo>
+          <Service>
+            <Link to="/">공지사항</Link>
+            <Link to="/">교육안내</Link>
+            <Link to="/">자주 묻는 질문</Link>
+          </Service>
+          <Service>
+            <Link to="/">개인정보 취급 방침</Link>
+            <Link to="/">서비스 이용약관</Link>
+            <Link to="/">Partners</Link>
+          </Service>
+          <Sns>
+            <Link to="/">FaceBook</Link>
+            <Link to="/">Instagram </Link>
+            <Link to="/">KakaoTalk</Link>
+          </Sns>
+        </FooterInner>
+      </CommonContainer>
+    </Wrap>
   );
 };
 
@@ -57,7 +55,7 @@ const FooterInner = styled.div`
 const Logo = styled.div`
   width: 62.6px;
   height: 24px;
-  background-image: url("/images/icon-Moya-logo.svg");
+  background-image: url("/assets/images/icon-Moya-logo.svg");
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -102,13 +100,13 @@ const Sns = styled.div`
     font-size: 0;
     background-size: cover;
   }
-  a:nth-of-type() {
-    background-image: url("images/icon-sns-facebook.svg");
+  a:nth-child(1) {
+    background-image: url("/assets/images/icon-sns-facebook.svg");
   }
-  a:nth-of-type(2) {
-    background-image: url("images/icon-sns-instagram.svg");
+  a:nth-child(2) {
+    background-image: url("/assets/images/icon-sns-instagram.svg");
   }
-  a:nth-of-type(3) {
-    background-image: url("images/icon-sns-kakaotalk.svg");
+  a:nth-child(3) {
+    background-image: url("/assets/images/icon-sns-kakaotalk.svg");
   }
 `;

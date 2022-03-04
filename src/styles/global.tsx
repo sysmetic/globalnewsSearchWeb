@@ -104,6 +104,9 @@ const style = css`
   section {
     display: block;
   }
+  html {
+    position: relative;
+  }
   body {
     line-height: 1;
     height: 100vh;

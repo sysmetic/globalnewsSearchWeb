@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import KeywordTab from "./keywordTab";
 
-const TabAddButtonKeyword = () => {
+const TabAddBtnKeyword = () => {
   return (
-    <AddButton>
+    <AddBtn>
       <i></i>키워드 추가
-    </AddButton>
+    </AddBtn>
   );
 };
 
@@ -14,7 +14,7 @@ const KeywordTabList = () => {
     <div className="keywordTabs">
       <Wrap>
         <KeywordTab />
-        <TabAddButtonKeyword></TabAddButtonKeyword>
+        <TabAddBtnKeyword />
       </Wrap>
     </div>
   );
@@ -26,7 +26,7 @@ const Wrap = styled.div`
   display: flex;
 `;
 
-const AddButton = styled.button`
+const AddBtn = styled.button`
   display: flex;
   align-items: center;
   height: 100%;

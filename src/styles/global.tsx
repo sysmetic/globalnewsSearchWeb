@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+import React from "react";
 import { Global, css } from "@emotion/react";
-=======
-import { Global, css } from '@emotion/react';
->>>>>>> c3e3cc6a60a14ffaf9412c335f79384a6e1f335e
 
 const style = css`
   html,
@@ -107,12 +104,8 @@ const style = css`
   section {
     display: block;
   }
-  * {
-    box-sizing: border-box;
-  }
   body {
     line-height: 1;
-    font-family: Noto Sans;
   }
   ol,
   ul {

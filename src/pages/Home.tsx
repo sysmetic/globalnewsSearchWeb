@@ -1,5 +1,6 @@
+import HomeContainer from "../containers/HomeContainer";
+
 import styled from "@emotion/styled";
-import HomeContainer from "../containers/home/HomeContainer";
 
 const Home = () => {
   return (
@@ -12,7 +13,6 @@ const Home = () => {
 };
 
 export default Home;
-
 const HomeWrap = styled.div`
   background: linear-gradient(
     211.86deg,

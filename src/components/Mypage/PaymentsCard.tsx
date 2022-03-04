@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import CreditCard from "../../assets/CreditCard.svg"
-import Calendar from "../../assets/Calendar.svg"
+import CreditCard from "../../../public/CreditCard.svg"
+import Calendar from "../../../public/Calendar.svg"
 
 const CardWrap = styled.div`
   display: block;
@@ -29,17 +29,30 @@ const CardCont = styled.div`
   letter-spacing: -0.01em;
 `
 const Credit = styled.div`
+  div {
+    display: inline-block;
+  }
   margin-bottom: 18px;
+
 `
 const CreditInfo = styled.div`
-  display: inline-block;
   margin-left: 11px;
+`
+const CreditCardIcon = styled.div`
+  width: 18px;
+  height: 18px;
+  background: url("CreditCard.svg") no-repeat;
 `
 
 const Payments = styled.div`
+  display: inline-flex;
+`
+const PaymentsIcon = styled.div`
+  width: 18px;
+  height: 18px;
+  background: url("Calendar.svg") no-repeat;
 `
 const PaymentInfo = styled.div`
-  display: inline-flex;
   margin-left: 11px;
   line-height: 1.5;
   font-size: 16px;
@@ -64,11 +77,11 @@ export const PaymentsCard = () => {
       <Card>
         <CardCont>    
           <Credit>
-            <img src={CreditCard} alt="Credit Card Icon"/>
+            <CreditCardIcon/>
             <CreditInfo>MarsterCard (끝자리: ****1234)</CreditInfo>
           </Credit>
           <Payments>
-            <img src={Calendar} alt="Calendar Icon"/>
+            <PaymentsIcon/>
             <PaymentInfo>₩ 18,000/월<br/>
             다음 결제일 : 2022년 3월 13일<br/>
             연간플랜, 월별 결제</PaymentInfo>

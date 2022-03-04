@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
 import {BookmarkNav} from "./BookmarkNav" 
-import More from "../../assets/More.svg" 
-import Left from "../../assets/Left.svg" 
-import Right from "../../assets/Right.svg" 
-import DoubleRight from "../../assets/DoubleRight.svg" 
-import DoubleLeft from "../../assets/DoubleLeft.svg" 
 
 const Wrap = styled.div`
   background-color: #f9faff;
@@ -125,6 +120,33 @@ const Pages = styled.li`
   }
 `
 
+const MoreIcon = styled.div`
+  width: 16px;
+  height: 4px;
+  background: url("More.svg") no-repeat;
+`
+
+const DoubleLeftIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background: url("DoubleLeft.svg") no-repeat;
+`
+const DoubleRightIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background: url("DoubleRight.svg") no-repeat;
+`
+const LeftIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background: url("Left.svg") no-repeat;
+`
+const RightIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background: url("Right.svg") no-repeat;
+`
+
 const PageArrow = styled.li`
   width: 40px;
   height: 40px;
@@ -152,56 +174,64 @@ const Bookmark = () => {
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a><img src={More} alt="More"/></a>
+            <a>
+              <MoreIcon/>
+              </a>
           </li>
           <li>
             <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a><img src={More} alt="More"/></a>
+            <a>
+              <MoreIcon/>
+            </a>
           </li>
           <li>
             <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a><img src={More} alt="More"/></a>
+            <a>
+              <MoreIcon/>
+            </a>
           </li>
           <li>
             <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a><img src={More} alt="More"/></a>
+            <a>
+              <MoreIcon/>
+            </a>
           </li>
           <li>
             <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a><img src={More} alt="More"/></a>
+            <a><MoreIcon/></a>
           </li>
           <li>
             <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a><img src={More} alt="More"/></a>
+            <a><MoreIcon/></a>
           </li>
         </BookmarkList>
 
         <PageNationItems>
           <span>pages 2 of 10</span>
           <PageNation>
-            <PageArrow><a><img src={DoubleLeft} alt="DoubleLeft"/></a></PageArrow>
-            <PageArrow><a><img src={Left} alt="Left"/></a></PageArrow>
+            <PageArrow><a><DoubleLeftIcon/></a></PageArrow>
+            <PageArrow><a><LeftIcon/></a></PageArrow>
             <Pages><a>1</a></Pages>
             <Pages><a className="on">2</a></Pages>
-            <Pages><img src={More} alt="more"/></Pages>
+            <Pages>...</Pages>
             <Pages><a>10</a></Pages>
-            <PageArrow><a><img src={Right} alt="Right"/></a></PageArrow>
-            <PageArrow><a><img src={DoubleRight} alt="DoubleRight"/></a></PageArrow>
+            <PageArrow><a><RightIcon/></a></PageArrow>
+            <PageArrow><a><DoubleRightIcon/></a></PageArrow>
           </PageNation>
         </PageNationItems>
       </ContContainer>

@@ -68,6 +68,16 @@ const NewFolderBtn = styled.div`
     margin-right: 8px;
   }
 `
+const PlusIcon = styled.span`
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url("Plus.svg") no-repeat;
+`
+
+const MoreIcon = styled.div`
+  background: url("More.svg") no-repeat;
+`
 export const BookmarkNav = () => {
   return (
     <Wrap>
@@ -76,7 +86,7 @@ export const BookmarkNav = () => {
       <li><a href="">폴더이름</a><Counts>192개</Counts></li>
       <li><a href="">폴더이름</a><Counts>192개</Counts></li>
       <li><a href="">폴더이름</a><Counts>192개</Counts></li>
-      <NewFolderBtn><img src={Plus} alt="Plus Icon" />New folder</NewFolderBtn>
+      <NewFolderBtn><PlusIcon/>New folder</NewFolderBtn>
     </Wrap>
   )
 }

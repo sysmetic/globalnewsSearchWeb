@@ -39,5 +39,3 @@
 ├── types.ts
 ├── App.js
 └── index.js
-
-```

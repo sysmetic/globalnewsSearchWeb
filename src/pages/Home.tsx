@@ -12,7 +12,6 @@ const Home = () => {
 };
 
 export default Home;
-
 const HomeWrap = styled.div`
   background: linear-gradient(
     211.86deg,

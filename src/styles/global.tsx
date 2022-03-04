@@ -1,4 +1,6 @@
-import { Global, css } from '@emotion/react';
+import React from "react";
+import { Global, css } from "@emotion/react";
+
 
 const style = css`
   html,
@@ -103,12 +105,13 @@ const style = css`
   section {
     display: block;
   }
-  * {
-    box-sizing: border-box;
+  html {
+    position: relative;
   }
   body {
     line-height: 1;
-    font-family: Noto Sans;
+    height: 100vh;
+    position: relative;
   }
   ol,
   ul {

@@ -18,7 +18,6 @@ const CardWrap = styled.div`
 const Card = styled.div`
   width: 488px;
   height: 247px;
-  
   border: solid 1px #d9d9d9;
   background-color: #fff;
   display: inline-block;

@@ -10,7 +10,6 @@ h2 {
   font-size: 22px;
   font-weight: 600;
   color: #fff;
-  
   }
 h4 {
   margin-top: 0;

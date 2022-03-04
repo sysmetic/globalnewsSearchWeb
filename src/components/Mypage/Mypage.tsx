@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
-import reset from "../../styles/global"
 import {User} from "./User" 
 import {SideNav} from "./SideNav" 
 import {MembershipCard} from "./MembershipCard"  
+import {PaymentsCard} from "./PaymentsCard"  
 import {MyKeyword} from "./MyKeyword"  
 
 const Wrap = styled.div`
@@ -48,7 +48,7 @@ const MyPage = () => {
       <ContContainer>
         <ContTop>
           <MembershipCard/>
-          <MembershipCard/>
+          <PaymentsCard/>
         </ContTop>
         <MyKeyword/>
       </ContContainer>

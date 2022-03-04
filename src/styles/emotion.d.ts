@@ -5,3 +5,8 @@ declare module "@emotion/react" {
     primaryColor: string;
   }
 }
+
+declare module '*.svg' {
+  const content: any;
+  export default content;
+}

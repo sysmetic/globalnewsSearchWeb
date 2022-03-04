@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import logo from "./logo.svg";
 import Home from "./pages/Home";
 import Mypage from "./pages/Mypage";
-import Bookmark from "./components/Mypage/Bookmark";
+import Bookmark from "./components/myPage/Bookmark";
 
 const App = () => {
   return (

@@ -75,10 +75,8 @@ const PlusIcon = styled.span`
   background: url("Plus.svg") no-repeat;
 `
 
-const MoreIcon = styled.div`
-  background: url("More.svg") no-repeat;
-`
-export const BookmarkNav = () => {
+
+export const BookmarkNav = () => { 
   return (
     <Wrap>
       <h2>스크랩한 뉴스</h2>

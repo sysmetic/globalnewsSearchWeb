@@ -24,6 +24,7 @@ const ContTop = styled.div`
   display: flex;
 `
 const SideBar = styled.div`
+
   width: 605px;
   height: 1050px;
   background-color: #144056;

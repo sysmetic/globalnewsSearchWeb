@@ -6,7 +6,7 @@ const CardWrap = styled.div`
   color: #414141;
   margin-right: 37px;
   h5 {
-    font-size: 20px;
+    font-size: 20px; 
     font-weight: 600;
     margin-bottom: 20px;
   }

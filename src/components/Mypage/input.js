@@ -3,7 +3,7 @@ let input = require("fs")
   .toString()
   .split("\n");
 
-let secterKeyword = {};
+let secterKeyword = {}; 
 
 for (let i = 0; i < input.length; i++) {
   if (i === 0 || input[i][0] !== input[i - 1][0]) {

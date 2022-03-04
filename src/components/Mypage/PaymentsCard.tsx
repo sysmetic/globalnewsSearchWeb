@@ -11,12 +11,14 @@ const CardWrap = styled.div`
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 20px;
+  
   }
 `
 
 const Card = styled.div`
   width: 488px;
   height: 247px;
+  
   border: solid 1px #d9d9d9;
   background-color: #fff;
   display: inline-block;

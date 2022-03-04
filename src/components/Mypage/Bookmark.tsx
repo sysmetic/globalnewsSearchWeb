@@ -144,7 +144,7 @@ const LeftIcon = styled.div`
 const RightIcon = styled.div`
   width: 40px;
   height: 40px;
-  background: url("Right.svg") no-repeat;
+  background: url("Right.svg") no-repeat; 
 `
 
 const PageArrow = styled.li`

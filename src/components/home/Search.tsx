@@ -69,6 +69,7 @@ const SearchFilterSelectWrap = styled.fieldset`
 `;
 
 const SearchWarp = styled.div`
+  box-sizing: border-box;
   width: 1240px;
   height: 120px;
   margin: 20px 0 0;

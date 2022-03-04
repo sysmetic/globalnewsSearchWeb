@@ -1,3 +1,4 @@
+import React from "react";
 import { Global, css } from "@emotion/react";
 
 const style = css`
@@ -103,12 +104,8 @@ const style = css`
   section {
     display: block;
   }
-  * {
-    box-sizing: border-box;
-  }
   body {
     line-height: 1;
-    font-family: Noto Sans;
   }
   ol,
   ul {

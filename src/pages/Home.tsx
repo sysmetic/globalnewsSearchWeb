@@ -27,7 +27,7 @@ const HomeWrap = styled.div`
 `;
 
 const BackgroundImage = styled.div`
-  background-image: url("image_main.svg");
+  background-image: url("images/image_main.svg");
   background-position: 82% 285px;
   background-repeat: no-repeat;
 `;

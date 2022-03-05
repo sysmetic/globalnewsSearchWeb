@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import reset from "../../styles/global"
 import {User} from "./User" 
 import {SideNav} from "./SideNav" 
 import {MembershipCard} from "./MembershipCard"  

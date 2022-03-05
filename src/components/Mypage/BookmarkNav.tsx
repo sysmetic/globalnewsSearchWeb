@@ -1,9 +1,8 @@
-import React from "react";
 import styled from "@emotion/styled";
 
 const Wrap = styled.ul`
-color: rgba(255, 255, 255, 0.6);
-padding: 0;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0;
   h2 {
     font-size: 22px;
     margin-bottom: 67px;
@@ -29,12 +28,11 @@ padding: 0;
     background-color: rgba(255, 255, 255, 0.1);
   }
   .on::before {
-    content: '';
+    content: "";
     border-left: 3px solid #48c0b7;
     margin-left: -3px;
   }
-
-`
+`;
 const Counts = styled.div`
   width: 42px;
   height: 16px;
@@ -46,16 +44,24 @@ const Counts = styled.div`
   line-height: 1.6;
   margin-top: 20px;
   margin-left: 50px;
-
-`
+`;
 
 export const BookmarkNav = () => {
   return (
     <Wrap>
       <h2>스크랩한 뉴스</h2>
-      <li className="on"><a href="">폴더이름</a><Counts>192개</Counts></li>
-      <li><a href="">폴더이름</a><Counts>192개</Counts></li>
-      <li><a href="">폴더이름</a><Counts>192개</Counts></li>
+      <li className="on">
+        <a href="/">폴더이름</a>
+        <Counts>192개</Counts>
+      </li>
+      <li>
+        <a href="/">폴더이름</a>
+        <Counts>192개</Counts>
+      </li>
+      <li>
+        <a href="/">폴더이름</a>
+        <Counts>192개</Counts>
+      </li>
     </Wrap>
-  )
-}
+  );
+};

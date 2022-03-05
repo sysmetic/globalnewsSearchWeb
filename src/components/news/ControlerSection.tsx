@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import CommonContainer from "../layout/CommonContainer";
 
-const data = [
-  { value: "정렬순", state: true },
-  { value: "최신순", state: false },
-  { value: "인기 있는", state: false }
-];
+// const data = [
+//   { value: "정렬순", state: true },
+//   { value: "최신순", state: false },
+//   { value: "인기 있는", state: false }
+// ];
 
-const ControlerSelect = () => {
+const ArticleControl = () => {
   return (
     <SelectWrap>
       <SelectboxInner>
@@ -22,10 +22,10 @@ const ControlerSection = () => {
   return (
     <CommonContainer>
       <Features>
-        <ControlerSelect />
-        <TextSize />
-        <ImageViewButton />
-        <TextViewButton />
+        <ArticleControl />
+        <TextSizeControl />
+        <ImageViewBtn />
+        <TextViewBtn />
       </Features>
     </CommonContainer>
   );
@@ -64,7 +64,7 @@ const SelectboxInner = styled.div`
   }
 `;
 
-const TextSize = styled.div`
+const TextSizeControl = styled.div`
   width: 40px;
   height: 40px;
   background-image: url("/assets/images/icon-Text-Size.svg");
@@ -72,7 +72,7 @@ const TextSize = styled.div`
   background-repeat: no-repeat;
 `;
 
-const ImageViewButton = styled.div`
+const ImageViewBtn = styled.div`
   width: 40px;
   height: 40px;
   background-image: url("/assets/images/icon-Grid-filled.svg");
@@ -80,7 +80,7 @@ const ImageViewButton = styled.div`
   background-repeat: no-repeat;
 `;
 
-const TextViewButton = styled.div`
+const TextViewBtn = styled.div`
   width: 40px;
   height: 40px;
   background-image: url("/assets/images/icon-Grid-list.svg");

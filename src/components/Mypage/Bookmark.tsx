@@ -1,7 +1,5 @@
-import React from "react";
 import styled from "@emotion/styled";
-import reset from "../../styles/global"
-import {BookmarkNav} from "./BookmarkNav" 
+import {BookmarkNav} from "./BookmarkNav"
 import {MembershipCard} from "./MembershipCard"  
 import {MyKeyword} from "./MyKeyword"  
 

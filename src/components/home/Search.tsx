@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { SearchFilterItem } from "./SearchFilterItem";
-import searchIcon from "../../assets/seach.svg";
 
 const Search = () => {
   return (

@@ -1,8 +1,8 @@
-import React from "react";
 import styled from "@emotion/styled";
 import {User} from "./User" 
 import {SideNav} from "./SideNav" 
-import {MembershipCard} from "./MembershipCard"  
+import MembershipCard from "./MembershipCard"  
+import {PaymentsCard} from "./PaymentsCard"  
 import {MyKeyword} from "./MyKeyword"  
 
 const Wrap = styled.div`
@@ -23,6 +23,7 @@ const ContTop = styled.div`
   display: flex;
 `
 const SideBar = styled.div`
+
   width: 605px;
   height: 1050px;
   background-color: #144056;
@@ -47,7 +48,7 @@ const MyPage = () => {
       <ContContainer>
         <ContTop>
           <MembershipCard/>
-          <MembershipCard/>
+          <PaymentsCard/>
         </ContTop>
         <MyKeyword/>
       </ContContainer>

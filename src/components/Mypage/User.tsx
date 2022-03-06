@@ -6,7 +6,7 @@ const Usercard = styled.div`
   padding-bottom: 75px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
-h4 {
+h2 {
   font-size: 22px;
   font-weight: 600;
   color: #fff;

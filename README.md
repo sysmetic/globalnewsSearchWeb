@@ -10,7 +10,9 @@
 ## 프로젝트 폴더 구조
 
 ```
-├── assets
+├── public
+│   ├── assets
+│   └── images
 ├── components
 │   ├── home
 │   ├── newsList
@@ -28,8 +30,8 @@
 │   ├── modules
 │   │      ├── search.ts
 │   │      ├── newsList.ts
-│   │      ├── keyword.ts
-│   │      └── rootReducer.ts
+│   │      └── keyword.ts
+│   │
 │   ├── rootSaga.ts
 │   └── store.ts
 ├── api
@@ -39,3 +41,4 @@
 ├── types.ts
 ├── App.js
 └── index.js
+```

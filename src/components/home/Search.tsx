@@ -65,9 +65,6 @@ const Legend = styled.legend`
 
 const SearchFilterSelectWrap = styled.fieldset`
   display: flex;
-  div {
-    margin-left: 20px;
-  }
 `;
 
 const SearchWarp = styled.div`

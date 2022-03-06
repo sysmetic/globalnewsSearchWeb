@@ -4,14 +4,17 @@ import HomeContainer from "../containers/home/HomeContainer";
 const Home = () => {
   return (
     <HomeWrap>
-      <InnerWrap>
-        <HomeContainer />
-      </InnerWrap>
+      <BackgroundImage>
+        <InnerWrap>
+          <HomeContainer />
+        </InnerWrap>
+      </BackgroundImage>
     </HomeWrap>
   );
 };
 
 export default Home;
+
 const HomeWrap = styled.div`
   background: linear-gradient(
     211.86deg,
@@ -21,6 +24,12 @@ const HomeWrap = styled.div`
     rgba(253, 221, 210, 0.7) 94.11%
   );
   padding-bottom: 267px;
+`;
+
+const BackgroundImage = styled.div`
+  background-image: url("images/image_main.svg");
+  background-position: 82% 285px;
+  background-repeat: no-repeat;
 `;
 
 const InnerWrap = styled.div`

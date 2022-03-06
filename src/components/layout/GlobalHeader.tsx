@@ -47,7 +47,7 @@ const GlobalHeaderInner = styled.div`
 const Logo = styled.div`
   width: 62.6px;
   height: 24px;
-  background-image: url("/assets/images/icon-Moya-logo.svg");
+  background-image: url("/images/icon-Moya-logo.svg");
   background-size: cover;
   background-repeat: no-repeat;
 `;
@@ -83,7 +83,7 @@ const UserInfo = styled.div`
     .icon-arrow-bottom {
       width: 18px;
       height: 18px;
-      background-image: url("/assets/images/icon-arrow-one-right.svg");
+      background-image: url("/images/icon-arrow-one-right.svg");
       background-size: cover;
       cursor: pointer;
     }

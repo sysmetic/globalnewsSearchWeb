@@ -124,7 +124,7 @@ const SearchBox = styled.div`
   margin-left: 28px;
   display: flex;
   align-items: center;
-  background: url("search.svg") no-repeat 4.5%;
+  background: url("images/search.svg") no-repeat 4.5%;
   input {
     height: 50px;
     font-size: 18px;

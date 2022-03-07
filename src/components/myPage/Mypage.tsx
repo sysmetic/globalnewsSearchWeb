@@ -1,8 +1,7 @@
-import React from "react";
 import styled from "@emotion/styled";
 import {User} from "./User" 
 import {SideNav} from "./SideNav" 
-import {MembershipCard} from "./MembershipCard"  
+import MembershipCard from "./MembershipCard"  
 import {PaymentsCard} from "./PaymentsCard"  
 import {MyKeyword} from "./MyKeyword"  
 

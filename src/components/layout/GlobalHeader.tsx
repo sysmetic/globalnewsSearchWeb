@@ -2,24 +2,35 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import CommonContainer from "./CommonContainer";
 
+
 const GlobalHeader = () => {
   return (
     <section className="GlobalHeader">
       <Wrap>
         <CommonContainer>
-          <GlobalHeaderInner>
+          <Inner>
             <Link to="/">
               <Logo />
             </Link>
-            <UserInfo>
+            <Member>
               <span className="MemberShip-join">지금 멤버십 가입</span>
               <div>
                 <i className="profile-icon"></i>
-                <span>회원님</span>
+                <span className="user-name">회원님</span>
                 <i className="icon-arrow-bottom"></i>
               </div>
-            </UserInfo>
-          </GlobalHeaderInner>
+            </Member>
+            <NonMember>
+              <div className="login">
+                <i className="icon-login">로그인 아이콘</i>
+                <span>로그인</span>
+              </div>
+              <div className="join">
+                <i className="icon-join">회원가입 아이콘</i>
+                <span>회원가입</span>
+              </div>
+            </NonMember>
+          </Inner>
         </CommonContainer>
       </Wrap>
     </section>
@@ -37,7 +48,7 @@ const Wrap = styled.header`
   background-color: #fff;
 `;
 
-const GlobalHeaderInner = styled.div`
+const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,25 +58,33 @@ const GlobalHeaderInner = styled.div`
 const Logo = styled.div`
   width: 62.6px;
   height: 24px;
-  background-image: url("/assets/images/icon-Moya-logo.svg");
+  background-image: url("/images/icon-Moya-logo.svg");
   background-size: cover;
   background-repeat: no-repeat;
 `;
 
-const UserInfo = styled.div`
+const Member = styled.div`
   display: flex;
   align-items: center;
   color: #575757;
   .MemberShip-join {
+    font-size:14px;
     margin-right: 22px;
     cursor: pointer;
+    color: #575757;
   }
   & > span {
     flex-grow: 0;
+    font-size:12px;
     padding: 6px 8px 7px 7px;
     border-radius: 5px;
-    border: solid 1px #b5b5b5;
+    border: 1px solid #b5b5b5;
     background-color: #fff;
+    color: #575757;
+  }
+  .usename {
+    font-size:14px;
+    color: #575757;
   }
   div {
     display: flex;
@@ -81,11 +100,41 @@ const UserInfo = styled.div`
       cursor: pointer;
     }
     .icon-arrow-bottom {
-      width: 18px;
-      height: 18px;
-      background-image: url("/assets/images/icon-arrow-one-right.svg");
+      width: 40px;
+      height: 40px;
+      background-image: url("/images/icon-navi-bottom.svg");
       background-size: cover;
       cursor: pointer;
     }
   }
 `;
+
+// 비회원
+
+const NonMember = styled.div`
+  /* display:flex; */
+  display:none ;
+  align-items:center ;
+  height:100% ;
+  .login,.join {
+    display:flex ;
+    align-items:center ;
+    height:100% ;
+  }
+  .icon-login {
+    width: 40px;
+    height: 40px;
+    background-image:url('/images/icon-log-in.svg') ;
+    background-repeat:no-repeat ;
+    background-size:cover ;
+    font-size:0 ;
+  }
+  .icon-join {
+    width: 40px;
+    height: 40px;
+    background-image:url('/images/icon-join.svg') ;
+    background-repeat:no-repeat ;
+    background-size:cover ;
+    font-size:0 ;
+  }
+`

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import CreditCard from "../../../public/CreditCard.svg"
-import Calendar from "../../../public/Calendar.svg"
+
 
 const CardWrap = styled.div`
   display: block;

@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "@emotion/styled";
-import Plus from "../../assets/Plus.svg"
 
 const Wrap = styled.ul`
 color: rgba(255, 255, 255, 0.6);
@@ -76,15 +74,17 @@ const PlusIcon = styled.span`
 `
 
 
-export const BookmarkNav = () => { 
+const BookmarkNav = () => { 
   return (
     <Wrap>
       <h2>스크랩한 뉴스</h2>
-      <li className="on"><a href="">폴더이름</a><Counts>192개</Counts></li>
-      <li><a href="">폴더이름</a><Counts>192개</Counts></li>
-      <li><a href="">폴더이름</a><Counts>192개</Counts></li>
-      <li><a href="">폴더이름</a><Counts>192개</Counts></li>
+      <li className="on"><a href="/">폴더이름</a><Counts>192개</Counts></li>
+      <li><a href="/">폴더이름</a><Counts>192개</Counts></li>
+      <li><a href="/">폴더이름</a><Counts>192개</Counts></li>
+      <li><a href="/">폴더이름</a><Counts>192개</Counts></li>
       <NewFolderBtn><PlusIcon/>New folder</NewFolderBtn>
     </Wrap>
   )
 }
+
+export default BookmarkNav

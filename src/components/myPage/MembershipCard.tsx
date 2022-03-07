@@ -45,7 +45,7 @@ const CardBtn = styled.div`
   text-align: center;
 `
 
-export const MembershipCard = () => {
+const MembershipCard = () => {
   return (
     <CardWrap>
       <h5>내 구독 정보</h5>
@@ -59,3 +59,5 @@ export const MembershipCard = () => {
     </CardWrap>
   )
 }
+
+export default MembershipCard

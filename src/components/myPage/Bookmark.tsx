@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "@emotion/styled";
-import {BookmarkNav} from "./BookmarkNav" 
+import BookmarkNav from "./BookmarkNav"
 
 const Wrap = styled.div`
   background-color: #f9faff;
@@ -174,7 +173,7 @@ const Bookmark = () => {
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a>
+            <a href="/">
               <MoreIcon/>
               </a>
           </li>
@@ -183,7 +182,7 @@ const Bookmark = () => {
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a>
+            <a href="/">
               <MoreIcon/>
             </a>
           </li>
@@ -192,7 +191,7 @@ const Bookmark = () => {
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a>
+            <a href="/">
               <MoreIcon/>
             </a>
           </li>
@@ -201,7 +200,7 @@ const Bookmark = () => {
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a>
+            <a href="/">
               <MoreIcon/>
             </a>
           </li>
@@ -210,28 +209,28 @@ const Bookmark = () => {
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a><MoreIcon/></a>
+            <a href="/"><MoreIcon/></a>
           </li>
           <li>
             <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
             <LogoPress/>
             <PressName>NDTV</PressName>
             <Wtime>3 minutes ago</Wtime>
-            <a><MoreIcon/></a>
+            <a href="/"><MoreIcon/></a>
           </li>
         </BookmarkList>
 
         <PageNationItems>
           <span>pages 2 of 10</span>
           <PageNation>
-            <PageArrow><a><DoubleLeftIcon/></a></PageArrow>
-            <PageArrow><a><LeftIcon/></a></PageArrow>
-            <Pages><a>1</a></Pages>
-            <Pages><a className="on">2</a></Pages>
+            <PageArrow><a href="/"><DoubleLeftIcon/></a></PageArrow>
+            <PageArrow><a href="/"><LeftIcon/></a></PageArrow>
+            <Pages><a href="/">1</a></Pages>
+            <Pages><a className="on" href="/">2</a></Pages>                       
             <Pages>...</Pages>
-            <Pages><a>10</a></Pages>
-            <PageArrow><a><RightIcon/></a></PageArrow>
-            <PageArrow><a><DoubleRightIcon/></a></PageArrow>
+            <Pages><a href="/">10</a></Pages>
+            <PageArrow><a href="/"><RightIcon/></a></PageArrow>
+            <PageArrow><a href="/"><DoubleRightIcon/></a></PageArrow>
           </PageNation>
         </PageNationItems>
       </ContContainer>

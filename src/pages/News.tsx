@@ -1,5 +1,5 @@
 // Personlized News Page
-import NewsContainer from "../containers/NewsContainer";
+import NewsContainer from "../containers/News/NewsContainer";
 const News = () => {
   return <NewsContainer />;
 };

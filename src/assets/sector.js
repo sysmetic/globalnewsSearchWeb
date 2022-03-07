@@ -258,7 +258,6 @@ const sector = {
       'Corporate Training',
       'Corporate Wellness',
       'Cosmetic Industry',
-      ... 25 more items
     ],
     D: [
       'DEV',

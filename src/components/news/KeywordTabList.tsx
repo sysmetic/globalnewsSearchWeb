@@ -41,8 +41,7 @@ const AddBtn = styled.button`
   i {
     width: 40px;
     height: 40px;
-
-    background-image: url("images/icon-Add.svg");
+    background-image: url("/images/icon-Add.svg");
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 0 4px 0 0;

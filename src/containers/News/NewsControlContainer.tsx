@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
-import CommonContainer from "../layout/CommonContainer";
+import CommonContainer from "../../components/layout/CommonContainer";
+
+//뉴스 기능 컴포넌트: 최신,인기,가장 인기있는순, 텍스트 사이즈 조절등 
 
 // const data = [
 //   { value: "정렬순", state: true },
@@ -7,7 +9,7 @@ import CommonContainer from "../layout/CommonContainer";
 //   { value: "인기 있는", state: false }
 // ];
 
-const ArticleControl = () => {
+const NewsRankSort = () => {
   return (
     <SelectWrap>
       <SelectboxInner>
@@ -18,11 +20,11 @@ const ArticleControl = () => {
   );
 };
 
-const ControlerSection = () => {
+const NewsControlContainer = () => {
   return (
     <CommonContainer>
       <Features>
-        <ArticleControl />
+        <NewsRankSort />
         <TextSizeControl />
         <ImageViewBtn />
         <TextViewBtn />
@@ -31,15 +33,7 @@ const ControlerSection = () => {
   );
 };
 
-export default ControlerSection;
-
-const Features = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 99px;
-  border-bottom: 1px solid #d9d9d9;
-`;
+export default NewsControlContainer;
 
 const SelectWrap = styled.div`
   width: 160px;
@@ -58,16 +52,24 @@ const SelectboxInner = styled.div`
   i {
     width: 40px;
     height: 40px;
-    background-image: url("/assets/images/icon-navi-bottom.svg");
+    background-image: url("/images/icon-navi-bottom.svg");
     background-size: cover;
     cursor: pointer;
   }
 `;
 
+const Features = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 99px;
+  border-bottom: 1px solid #d9d9d9;
+`;
+
 const TextSizeControl = styled.div`
   width: 40px;
   height: 40px;
-  background-image: url("/assets/images/icon-Text-Size.svg");
+  background-image: url("/images/icon-Text-Size.svg");
   background-size: cover;
   background-repeat: no-repeat;
 `;
@@ -75,7 +77,7 @@ const TextSizeControl = styled.div`
 const ImageViewBtn = styled.div`
   width: 40px;
   height: 40px;
-  background-image: url("/assets/images/icon-Grid-filled.svg");
+  background-image: url("/images/icon-Grid-filled.svg");
   background-size: cover;
   background-repeat: no-repeat;
 `;
@@ -83,7 +85,7 @@ const ImageViewBtn = styled.div`
 const TextViewBtn = styled.div`
   width: 40px;
   height: 40px;
-  background-image: url("/assets/images/icon-Grid-list.svg");
+  background-image: url("/images/icon-Grid-list.svg");
   background-size: cover;
   background-repeat: no-repeat;
 `;

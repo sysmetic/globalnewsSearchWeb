@@ -24,7 +24,7 @@ const KeywordItem = styled.div`
   box-sizing: border-box;
   font-size: 16px;
   font-weight: 600;
-  background-color: ${(props) => props.theme.BlueGreenColor};
+  background-color: ${props => props.theme.BlueGreenColor};
   color: white;
   border-radius: 5px 0 0 0px;
 `;

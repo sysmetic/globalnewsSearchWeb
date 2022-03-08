@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import CommonContainer from "../layout/CommonContainer";
 import ImageFormatNews from "./ImageFormatNews";
-import TextformatNews from "./TextformatNews"
+import TextformatNews from "./TextformatNews";
 
 const NewsMain = () => {
   return (
@@ -13,7 +13,7 @@ const NewsMain = () => {
           <ImageFormatNews />
           <ImageFormatNews />
           <ImageFormatNews />
-          <TextformatNews/>
+          <TextformatNews />
         </Inner>
       </CommonContainer>
     </main>
@@ -26,6 +26,6 @@ const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap:20px 0;
+  gap: 20px 0;
   padding-bottom: 280px;
 `;

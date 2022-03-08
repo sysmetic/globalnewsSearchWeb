@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import BookmarkNav from "./BookmarkNav"
+import BookmarkNav from "./BookmarkNav";
 
 const Wrap = styled.div`
   background-color: #f9faff;

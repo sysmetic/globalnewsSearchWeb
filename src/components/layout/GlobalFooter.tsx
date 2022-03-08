@@ -100,13 +100,13 @@ const Sns = styled.div`
     font-size: 0;
     background-size: cover;
   }
-  a:nth-child(1) {
+  a:nth-of-type(1) {
     background-image: url("/images/icon-sns-facebook.svg");
   }
-  a:nth-child(2) {
+  a:nth-of-type(2) {
     background-image: url("/images/icon-sns-instagram.svg");
   }
-  a:nth-child(3) {
+  a:nth-of-type(3) {
     background-image: url("/images/icon-sns-kakaotalk.svg");
   }
 `;

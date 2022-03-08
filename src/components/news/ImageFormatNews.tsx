@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { NewsFeatures,AuthorInfo,NewsTitle} from "./common/NewsCommon";
-
+import { NewsFeatures, AuthorInfo, NewsTitle } from "./common/NewsCommon";
 
 const ImageFormatNews = () => {
   return (
@@ -9,8 +8,8 @@ const ImageFormatNews = () => {
         <Figure>
           <img src="https://placeimg.com/360/300/any" alt="뉴스기사1" />
         </Figure>
-        <NewsFeatures/>
-        <NewsTitle/>
+        <NewsFeatures />
+        <NewsTitle />
         <ArticleBody>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar
           turpis etiam egestas nibh feugiat. Sed neque dignissim morbi ac
@@ -44,7 +43,6 @@ const Figure = styled.figure`
   }
 `;
 
-
 const ArticleBody = styled.p`
   color: #7a7a7a;
   font-family: NotoSans-Display;
@@ -54,5 +52,3 @@ const ArticleBody = styled.p`
   line-height: 1.5rem;
   letter-spacing: -0.16px;
 `;
-
-

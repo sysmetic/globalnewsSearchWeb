@@ -31,6 +31,13 @@ export const AuthorInfo = ()=> {
   )
 } 
 
+const Title = styled.h2`
+  font-family: NotoSans-Display;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 14px;
+`;
+
 //NewsFeatures Style
 const Feautres = styled.div`
   display: flex;
@@ -101,9 +108,3 @@ const ArticleFooter = styled.footer`
 `;
 
 
-const Title = styled.h2`
-  font-family: NotoSans-Display;
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 14px;
-`;

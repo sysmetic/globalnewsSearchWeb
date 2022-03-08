@@ -65,6 +65,7 @@ const Search = () => {
             {filterListArr.map((item, index) => {
               return (
                 <SearchFilterItem
+                  key={item.label}
                   filterItem={item}
                   index={index}
                   isOpen={openIndex === index}

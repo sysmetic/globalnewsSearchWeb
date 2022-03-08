@@ -29,7 +29,7 @@ export const SearchFilterItem = ({
     </DefaultValue>
     <SelectList isOpen={isOpen}>
       {filterItem.list.map(item => {
-        return <SelectItem>{item}</SelectItem>;
+        return <SelectItem key={item}>{item}</SelectItem>;
       })}
     </SelectList>
   </FilterItem>

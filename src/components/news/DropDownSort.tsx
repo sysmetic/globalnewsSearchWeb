@@ -2,12 +2,17 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import React, { MouseEvent } from "react";
 
+interface SelectedMenu {
+  selected: String;
+  setSelected: React.Dispatch<React.SetStateAction<String>>;
+}
+
 const DropDownSort = () => {
   const [selected, setSelected] = useState<String>("정렬순");
   return <Menu selected={selected} setSelected={setSelected} />;
 };
 
-const Menu = ({ selected, setSelected }: any) => {
+const Menu = ({ selected, setSelected }: SelectedMenu) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const options: string[] = ["정렬순", "인기순", "가장 인기순"];

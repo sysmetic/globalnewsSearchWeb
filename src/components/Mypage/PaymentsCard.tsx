@@ -1,12 +1,35 @@
 import React from "react";
 import styled from "@emotion/styled";
-import CreditCard from "../../../public/CreditCard.svg"
-import Calendar from "../../../public/Calendar.svg"
+
+
+
+const PaymentsCard = () => {
+  return (
+    <CardWrap>
+      <h5>청구 및 결제</h5>
+      <Card>
+        <CardCont>    
+          <Credit>
+            <CreditCardIcon/>
+            <CreditInfo>MarsterCard (끝자리: ****1234)</CreditInfo>
+          </Credit>
+          <Payments>
+            <PaymentsIcon/>
+            <PaymentInfo>₩ 18,000/월<br/>
+            다음 결제일 : 2022년 3월 13일<br/>
+            연간플랜, 월별 결제</PaymentInfo>
+          </Payments>
+        </CardCont>
+        <CardBtn>청구 및 결제 편집</CardBtn>
+      </Card>
+    </CardWrap>
+  )
+}
+export default PaymentsCard;
 
 const CardWrap = styled.div`
   display: block;
   color: #414141;
-  margin-right: 37px;
   h5 {
     font-size: 20px;
     font-weight: 600;
@@ -42,7 +65,7 @@ const CreditInfo = styled.div`
 const CreditCardIcon = styled.div`
   width: 18px;
   height: 18px;
-  background: url("CreditCard.svg") no-repeat;
+  background: url("../images/CreditCard.svg") no-repeat;
 `
 
 const Payments = styled.div`
@@ -51,7 +74,7 @@ const Payments = styled.div`
 const PaymentsIcon = styled.div`
   width: 18px;
   height: 18px;
-  background: url("Calendar.svg") no-repeat;
+  background: url("../images/Calendar.svg") no-repeat;
 `
 const PaymentInfo = styled.div`
   margin-left: 11px;
@@ -70,26 +93,3 @@ const CardBtn = styled.div`
   line-height: 2.2;
   text-align: center;
 `
-
-export const PaymentsCard = () => {
-  return (
-    <CardWrap>
-      <h5>청구 및 결제</h5>
-      <Card>
-        <CardCont>    
-          <Credit>
-            <CreditCardIcon/>
-            <CreditInfo>MarsterCard (끝자리: ****1234)</CreditInfo>
-          </Credit>
-          <Payments>
-            <PaymentsIcon/>
-            <PaymentInfo>₩ 18,000/월<br/>
-            다음 결제일 : 2022년 3월 13일<br/>
-            연간플랜, 월별 결제</PaymentInfo>
-          </Payments>
-        </CardCont>
-        <CardBtn>청구 및 결제 편집</CardBtn>
-      </Card>
-    </CardWrap>
-  )
-}

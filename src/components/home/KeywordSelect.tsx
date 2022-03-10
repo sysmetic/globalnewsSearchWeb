@@ -6,6 +6,7 @@ type Props = {
   selectSortKey: (arg: string) => void;
   selectedSectorList: string[];
   startupData: string[];
+  categoryData: string[];
 };
 
 type KeywordTitleItemType = {
@@ -18,9 +19,10 @@ const KeywordSelect = ({
   categoryList,
   selectSortKey,
   selectedSectorList,
-  startupData
+  startupData,
+  categoryData
 }: Props) => {
-  const [keywordTitle, setKeywordTitle] = useState<Title>("Category");
+  const [keywordTitle, setKeywordTitle] = useState<Title>("Sector");
 
   const keywordTitleList: Title[] = ["Category", "Sector", "Startup"];
 
@@ -80,6 +82,17 @@ const KeywordSelect = ({
           </StartupKeywordList>
         </KeywordListContainer>
       )}
+      {keywordTitle === "Category" && (
+        <KeywordListContainer>
+          <StartupKeywordList>
+            <ul>
+              {categoryData.map(item => {
+                return <li>{item}</li>;
+              })}
+            </ul>
+          </StartupKeywordList>
+        </KeywordListContainer>
+      )}
     </KeywordSelectWrap>
   );
 };
@@ -104,6 +117,7 @@ const StartupKeywordList = styled.div`
       border-right: 1px solid #c4c4c4;
       border-bottom: 1px solid #c4c4c4;
       text-align: center;
+      cursor: pointer;
     }
   }
 `;
@@ -123,7 +137,7 @@ const KeywordSelectTitles = styled.div`
 
 const KeywordTitleItem = styled.strong<KeywordTitleItemType>`
   display: block;
-  width: 306px;
+  width: 329px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +163,6 @@ const CategoryList = styled.div`
   }
 `;
 const CategoryListItem = styled.li`
-  /* background: #f0fcfb; */
   height: 55px;
   display: flex;
   align-items: center;

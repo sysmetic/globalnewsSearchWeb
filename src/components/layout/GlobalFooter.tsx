@@ -55,7 +55,7 @@ const FooterInner = styled.div`
 const Logo = styled.div`
   width: 62.6px;
   height: 24px;
-  background-image: url("/assets/images/icon-Moya-logo.svg");
+  background-image: url("/images/icon-Moya-logo.svg");
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -100,13 +100,13 @@ const Sns = styled.div`
     font-size: 0;
     background-size: cover;
   }
-  a:nth-child(1) {
-    background-image: url("/assets/images/icon-sns-facebook.svg");
+  a:nth-of-type(1) {
+    background-image: url("/images/icon-sns-facebook.svg");
   }
-  a:nth-child(2) {
-    background-image: url("/assets/images/icon-sns-instagram.svg");
+  a:nth-of-type(2) {
+    background-image: url("/images/icon-sns-instagram.svg");
   }
-  a:nth-child(3) {
-    background-image: url("/assets/images/icon-sns-kakaotalk.svg");
+  a:nth-of-type(3) {
+    background-image: url("/images/icon-sns-kakaotalk.svg");
   }
 `;

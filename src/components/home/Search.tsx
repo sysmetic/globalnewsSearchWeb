@@ -65,6 +65,7 @@ const Search = () => {
             {filterListArr.map((item, index) => {
               return (
                 <SearchFilterItem
+                  key={item.label}
                   filterItem={item}
                   index={index}
                   isOpen={openIndex === index}
@@ -87,24 +88,6 @@ const Search = () => {
 
 export default Search;
 
-<<<<<<< HEAD
-const SearchBox = styled.div`
-  margin-left: 28px;
-  display: flex;
-  align-items: center;
-  background: url("images/search.svg") no-repeat 4.5%;
-  input {
-    height: 50px;
-    font-size: 18px;
-    margin-left: 50px;
-    width: 383.62px;
-    border: none;
-    outline: none;
-  }
-`;
-
-=======
->>>>>>> 37e3fe9b62c6c6ebde7490fad3e1bc9b366eb48b
 const SearchArea = styled.div`
   & > div:nth-of-type(1) {
     display: flex;

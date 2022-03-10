@@ -1,114 +1,126 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 
-const KeywordSelect = () => {
+type Props = {
+  categoryList: string[];
+  selectSortKey: (arg: string) => void;
+  selectedSectorList: string[];
+  startupData: string[];
+  categoryData: string[];
+};
+
+type KeywordTitleItemType = {
+  onSelected: boolean;
+};
+
+type Title = "Category" | "Sector" | "Startup";
+
+const KeywordSelect = ({
+  categoryList,
+  selectSortKey,
+  selectedSectorList,
+  startupData,
+  categoryData
+}: Props) => {
+  const [keywordTitle, setKeywordTitle] = useState<Title>("Sector");
+
+  const keywordTitleList: Title[] = ["Category", "Sector", "Startup"];
+
+  const setTitle = (title: Title) => {
+    setKeywordTitle(title);
+  };
+
   return (
     <KeywordSelectWrap>
       <KeywordSelectTitles>
-        <KeywordTitleItem>Category</KeywordTitleItem>
-        <KeywordTitleItem>Sector</KeywordTitleItem>
-        <KeywordTitleItem>Startup</KeywordTitleItem>
+        {keywordTitleList.map(item => {
+          return (
+            <KeywordTitleItem
+              key={item}
+              onClick={() => setTitle(item)}
+              onSelected={item === keywordTitle}
+            >
+              {item}
+            </KeywordTitleItem>
+          );
+        })}
       </KeywordSelectTitles>
-      <KeywordListContainer>
-        <SortCategoryList>
-          <ul>
-            <SortCategoryListItem>
-              <span>3</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>5</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-            <SortCategoryListItem>
-              <span>B</span>
-              <img src="" alt="" />
-            </SortCategoryListItem>
-          </ul>
-        </SortCategoryList>
-        <KeywordListWrap>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-          <KeywordListItem>Accelerators</KeywordListItem>
-        </KeywordListWrap>
-      </KeywordListContainer>
+      {keywordTitle === "Sector" && (
+        <KeywordListContainer>
+          <CategoryList>
+            <ul>
+              {categoryList.map(sortKeyItem => (
+                <CategoryListItem
+                  key={sortKeyItem}
+                  onClick={() => selectSortKey(sortKeyItem)}
+                >
+                  <span>{sortKeyItem}</span>
+                  <img src="" alt="" />
+                </CategoryListItem>
+              ))}
+            </ul>
+          </CategoryList>
+          <KeywordListWrap>
+            {selectedSectorList.map(keywordItem => {
+              return (
+                <KeywordListItem key={keywordItem}>
+                  {keywordItem}
+                </KeywordListItem>
+              );
+            })}
+          </KeywordListWrap>
+        </KeywordListContainer>
+      )}
+      {keywordTitle === "Startup" && (
+        <KeywordListContainer>
+          <StartupKeywordList>
+            <ul>
+              {startupData.map(item => {
+                return <li>{item}</li>;
+              })}
+            </ul>
+          </StartupKeywordList>
+        </KeywordListContainer>
+      )}
+      {keywordTitle === "Category" && (
+        <KeywordListContainer>
+          <StartupKeywordList>
+            <ul>
+              {categoryData.map(item => {
+                return <li>{item}</li>;
+              })}
+            </ul>
+          </StartupKeywordList>
+        </KeywordListContainer>
+      )}
     </KeywordSelectWrap>
   );
 };
 
 export default KeywordSelect;
+
+const StartupKeywordList = styled.div`
+  overflow-y: scroll;
+  ul {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 10px;
+    border-top: 1px solid #c4c4c4;
+    border-left: 1px solid #c4c4c4;
+    grid-gap: 0;
+
+    li {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #c4c4c4;
+      border-bottom: 1px solid #c4c4c4;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+`;
 
 const KeywordSelectWrap = styled.div`
   margin-top: 14px;
@@ -123,13 +135,16 @@ const KeywordSelectTitles = styled.div`
   border-bottom: 1px solid #c4c4c4;
 `;
 
-const KeywordTitleItem = styled.strong`
+const KeywordTitleItem = styled.strong<KeywordTitleItemType>`
   display: block;
-  width: 306px;
+  width: 329px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #787878;
+  color: ${({ onSelected, theme }) =>
+    onSelected ? theme.BlueGreenColor : "#787878"};
+  border-bottom: ${({ onSelected, theme }) =>
+    onSelected ? `4px solid ${theme.BlueGreenColor}` : null};
   cursor: pointer;
 `;
 
@@ -140,15 +155,14 @@ const KeywordListContainer = styled.div`
   display: flex;
 `;
 
-const SortCategoryList = styled.div`
+const CategoryList = styled.div`
   width: 324px;
   overflow-y: scroll;
   ul {
     margin-left: 10px;
   }
 `;
-const SortCategoryListItem = styled.li`
-  /* background: #f0fcfb; */
+const CategoryListItem = styled.li`
   height: 55px;
   display: flex;
   align-items: center;

@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import newsListReducer from "./modules/newsListSlice";
+
 export const store = configureStore({
   reducer: {
-    // posts: keywordReduer
+    newsList: newsListReducer
   }
 });
 

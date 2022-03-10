@@ -10,7 +10,7 @@ type Props = {
 };
 
 type KeywordTitleItemType = {
-  onSelected: boolean;
+  selected: boolean;
 };
 
 type Title = "Category" | "Sector" | "Startup";
@@ -38,7 +38,7 @@ const KeywordSelect = ({
             <KeywordTitleItem
               key={item}
               onClick={() => setTitle(item)}
-              onSelected={item === keywordTitle}
+              selected={item === keywordTitle}
             >
               {item}
             </KeywordTitleItem>
@@ -76,7 +76,7 @@ const KeywordSelect = ({
           <StartupKeywordList>
             <ul>
               {startupData.map(item => {
-                return <li>{item}</li>;
+                return <li key={item}>{item}</li>;
               })}
             </ul>
           </StartupKeywordList>
@@ -87,7 +87,7 @@ const KeywordSelect = ({
           <StartupKeywordList>
             <ul>
               {categoryData.map(item => {
-                return <li>{item}</li>;
+                return <li key={item}>{item}</li>;
               })}
             </ul>
           </StartupKeywordList>
@@ -141,11 +141,11 @@ const KeywordTitleItem = styled.strong<KeywordTitleItemType>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ onSelected, theme }) =>
-    onSelected ? theme.BlueGreenColor : "#787878"};
-  border-bottom: ${({ onSelected, theme }) =>
-    onSelected ? `4px solid ${theme.BlueGreenColor}` : null};
   cursor: pointer;
+  color: ${({ selected, theme }) =>
+    selected ? theme.BlueGreenColor : "#787878"};
+  border-bottom: ${({ selected, theme }) =>
+    selected ? `4px solid ${theme.BlueGreenColor}` : null};
 `;
 
 const KeywordListContainer = styled.div`

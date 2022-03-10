@@ -32,16 +32,20 @@ const NewsListSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(fetchNewList.pending, state => {
       state.loading = true;
+      state.newListData = [];
       state.error = null;
     });
 
     builder.addCase(fetchNewList.fulfilled, (state, { payload }) => {
+      state.loading = false;
       state.newListData = payload;
+      state.error = "";
     });
 
     builder.addCase(fetchNewList.rejected, (state, { payload }) => {
-      // if (payload) state.error = payload.message;
-      // state.status = "idle";
+      state.loading = false;
+      state.newListData = [];
+      state.error = "";
     });
   }
 });

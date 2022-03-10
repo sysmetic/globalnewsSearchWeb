@@ -2,7 +2,6 @@ import React from "react";
 import styled from "@emotion/styled";
 import  BookmarkNav  from "./BookmarkNav";
 import { Link } from "react-router-dom";
-import Page from "./Page";
 
 const Bookmark = () => {
   return (

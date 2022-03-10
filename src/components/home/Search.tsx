@@ -1,8 +1,58 @@
 import styled from "@emotion/styled";
 import { SearchFilterItem } from "./SearchFilterItem";
-import searchIcon from "../../assets/seach.svg";
+import { useState } from "react";
+import { useEffect } from "react";
+
+export type filterItem = {
+  label: string;
+  defaultValue: string;
+  list: string[];
+};
 
 const Search = () => {
+  const [openIndex, setOpen] = useState<null | number>(null);
+  const filterListArr: Array<filterItem> = [
+    {
+      label: "언론사",
+      defaultValue: "언론사이름",
+      list: []
+    },
+    {
+      label: "발행일",
+      defaultValue: "5분",
+      list: ["5분", "15분", "1시간", "하루", "1주일", "한달"]
+    },
+    {
+      label: "언어",
+      defaultValue: "영어",
+      list: ["영어", "한국어", "일본어", "중국어", "덴마크어", "그리스어"]
+    },
+    {
+      label: "새로고침 속도",
+      defaultValue: "10초",
+      list: ["10초", "30초", "1분", "10분", "새로고침 없음"]
+    }
+  ];
+
+  const openFilterList = (
+    index: number,
+    event: React.MouseEvent<HTMLDivElement>
+  ) => {
+    event.stopPropagation();
+    setOpen(index);
+  };
+
+  const closeAll = () => {
+    setOpen(null);
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("click", closeAll);
+    return () => {
+      document.body.removeEventListener("click", closeAll);
+    };
+  });
+
   return (
     <SearchArea>
       <div>
@@ -12,10 +62,16 @@ const Search = () => {
         <form>
           <SearchFilterSelectWrap>
             <Legend>뉴스 키워드 검색</Legend>
-            <SearchFilterItem />
-            <SearchFilterItem />
-            <SearchFilterItem />
-            <SearchFilterItem />
+            {filterListArr.map((item, index) => {
+              return (
+                <SearchFilterItem
+                  filterItem={item}
+                  index={index}
+                  isOpen={openIndex === index}
+                  openFilterList={openFilterList}
+                />
+              );
+            })}
             <SearchBox>
               <input
                 type="text"
@@ -31,6 +87,7 @@ const Search = () => {
 
 export default Search;
 
+<<<<<<< HEAD
 const SearchBox = styled.div`
   margin-left: 28px;
   display: flex;
@@ -46,6 +103,8 @@ const SearchBox = styled.div`
   }
 `;
 
+=======
+>>>>>>> 37e3fe9b62c6c6ebde7490fad3e1bc9b366eb48b
 const SearchArea = styled.div`
   & > div:nth-of-type(1) {
     display: flex;
@@ -77,4 +136,19 @@ const SearchWarp = styled.div`
   border-radius: 5px;
   border: solid 1px #f1f1f1;
   background-color: #fff;
+`;
+
+const SearchBox = styled.div`
+  margin-left: 28px;
+  display: flex;
+  align-items: center;
+  background: url("images/search.svg") no-repeat 4.5%;
+  input {
+    height: 50px;
+    font-size: 18px;
+    margin-left: 50px;
+    width: 383.62px;
+    border: none;
+    outline: none;
+  }
 `;

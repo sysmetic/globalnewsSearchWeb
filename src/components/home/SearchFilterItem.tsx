@@ -1,30 +1,39 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { filterItem } from "./Search";
+
+type Props = {
+  filterItem: filterItem;
+  isOpen: boolean;
+  index: number;
+  openFilterList: (
+    index: number,
+    event: React.MouseEvent<HTMLDivElement>
+  ) => void;
+};
 
 type SelecListProps = {
-  openList: boolean;
+  isOpen: boolean;
 };
-export const SearchFilterItem = () => {
-  const [openList, setOpenList] = useState(false);
-  return (
-    <FilterItem>
-      <Label>언론사</Label>
-      <DefaultValue onClick={clickForSelectList}>
-        <strong>언론사1</strong>
-        <img src="images/filterArrow.svg" alt="필터리스트 열기 아이콘" />
-      </DefaultValue>
-      <SelectList openList={openList}>
-        <SelectItem>언론사1</SelectItem>
-        <SelectItem>언론사2</SelectItem>
-        <SelectItem>언론사3</SelectItem>
-      </SelectList>
-    </FilterItem>
-  );
 
-  function clickForSelectList() {
-    setOpenList(openList => !openList);
-  }
-};
+export const SearchFilterItem = ({
+  filterItem,
+  isOpen,
+  openFilterList,
+  index
+}: Props) => (
+  <FilterItem>
+    <Label>{filterItem.label}</Label>
+    <DefaultValue onClick={e => openFilterList(index, e)}>
+      <strong>{filterItem.defaultValue}</strong>
+      <img src="images/filterArrow.svg" alt="필터리스트 열기 아이콘" />
+    </DefaultValue>
+    <SelectList isOpen={isOpen}>
+      {filterItem.list.map(item => {
+        return <SelectItem>{item}</SelectItem>;
+      })}
+    </SelectList>
+  </FilterItem>
+);
 
 const Label = styled.span`
   color: #717171;
@@ -44,7 +53,7 @@ const DefaultValue = styled.div`
 `;
 
 const SelectList = styled.ul<SelecListProps>`
-  display: ${({ openList }) => (openList ? "block" : "none")};
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   position: absolute;
   top: 50px;
   left: 0;

@@ -59,4 +59,5 @@ const CardBtn = styled.div`
   margin-left: 263px;
   line-height: 2.2;
   text-align: center;
+
 `

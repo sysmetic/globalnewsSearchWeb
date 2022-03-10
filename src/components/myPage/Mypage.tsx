@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 import  User  from "./User" 
 import  SideNav  from "./SideNav" 

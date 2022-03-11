@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import React, { MouseEvent } from "react";
 
 interface SelectedMenu {
   selected: String;
@@ -16,11 +15,6 @@ const Menu = ({ selected, setSelected }: SelectedMenu) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const options: string[] = ["정렬순", "인기순", "가장 인기순"];
-
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    const eventTarget = event.target as HTMLElement;
-    console.log(eventTarget.innerText);
-  };
 
   return (
     <Wrap>

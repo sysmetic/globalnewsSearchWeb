@@ -1,14 +1,12 @@
 import styled from "@emotion/styled";
 import React, { MouseEvent } from "react";
 import { album, text } from "../../redux/news/newsformatSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import CommonContainer from "../../components/layout/CommonContainer";
 import DropDownSort from "../../components/news/DropDownSort";
 
 const NewsControlContainer = () => {
-  const newsformatState = useAppSelector(state => state.formats);
   const dispatch = useAppDispatch();
-  console.log(newsformatState, "성공");
 
   function changeToImgFormat(event: MouseEvent<HTMLElement>) {
     dispatch(album());

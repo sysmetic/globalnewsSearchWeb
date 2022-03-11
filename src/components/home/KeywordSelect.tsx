@@ -51,7 +51,10 @@ const KeywordSelect = ({
                   onClick={() => selectSortKey(sortKeyItem)}
                 >
                   <span>{sortKeyItem}</span>
-                  <img src="" alt="" />
+                  <img
+                    src="/images/keyword-arrow.svg"
+                    alt="섹터 탭 키워드 정렬 화살표"
+                  />
                 </CategoryListItem>
               ))}
             </ul>
@@ -149,6 +152,7 @@ const KeywordTitleItem = styled.strong<KeywordTitleItemType>`
     selected ? theme.BlueGreenColor : "#787878"};
   border-bottom: ${({ selected, theme }) =>
     selected ? `4px solid ${theme.BlueGreenColor}` : null};
+  transition: all 0.2s ease;
 `;
 
 const KeywordListContainer = styled.div`
@@ -168,11 +172,23 @@ const CategoryList = styled.div`
 const CategoryListItem = styled.li`
   height: 55px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 40px;
   color: #4f4f4f;
   border-bottom: 1px solid #eeeeee;
   cursor: pointer;
+  transition: all 0.2s ease;
+  img {
+    padding-bottom: 3px;
+    display: none;
+  }
+  &:hover {
+    background: #f0fcfb;
+  }
+  &:hover img {
+    display: block;
+  }
 `;
 const KeywordListWrap = styled.div`
   width: 100%;

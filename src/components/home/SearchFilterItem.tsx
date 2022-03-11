@@ -55,13 +55,12 @@ const DefaultValue = styled.div`
 const SelectList = styled.ul<SelecListProps>`
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   position: absolute;
-  top: 50px;
+  top: 60px;
   left: 0;
   width: 100%;
   background: #ffffff;
   box-shadow: 0px 4px 7px rgba(196, 195, 195, 0.25);
   border-radius: 5px;
-  border: 1px solid black;
   padding: 11px 0;
 `;
 
@@ -76,6 +75,7 @@ const SelectItem = styled.li`
   &:hover {
     background: rgba(72, 192, 183, 0.1);
   }
+  transition: all 0.2s ease;
 `;
 
 const FilterItem = styled.div`

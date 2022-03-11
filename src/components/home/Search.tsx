@@ -15,6 +15,7 @@ type Props = {
 
 const Search = ({ openKeywordList }: Props) => {
   const [openIndex, setOpen] = useState<null | number>(null);
+  const [focused, setFocused] = useState<boolean>(false);
   const filterListArr: Array<filterItem> = [
     {
       label: "언론사",
@@ -77,7 +78,12 @@ const Search = ({ openKeywordList }: Props) => {
                 />
               );
             })}
-            <SearchBox>
+            <SearchBox
+              focused={focused}
+              onFocus={() => {
+                setFocused(true);
+              }}
+            >
               <input
                 type="text"
                 onFocus={() => {
@@ -128,11 +134,18 @@ const SearchWarp = styled.div`
   background-color: #fff;
 `;
 
-const SearchBox = styled.div`
+type SearchBoxProps = {
+  focused: boolean;
+};
+
+const SearchBox = styled.div<SearchBoxProps>`
   margin-left: 28px;
   display: flex;
   align-items: center;
-  background: url("images/search.svg") no-repeat 4.5%;
+  background: ${({ focused }) =>
+      focused ? "url(images/search-focused.svg)" : "url(images/search.svg)"}
+    no-repeat 4.5%;
+  transition: background 0.3s ease;
   input {
     height: 50px;
     font-size: 18px;

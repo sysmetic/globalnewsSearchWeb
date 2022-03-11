@@ -1,7 +1,6 @@
 import React from "react";
 import { Global, css } from "@emotion/react";
 
-
 const style = css`
   html,
   body,

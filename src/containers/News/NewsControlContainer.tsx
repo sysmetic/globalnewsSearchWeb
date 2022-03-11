@@ -6,16 +6,16 @@ import CommonContainer from "../../components/layout/CommonContainer";
 import DropDownSort from "../../components/news/DropDownSort";
 
 const NewsControlContainer = () => {
-  const test = useAppSelector(state => state.formats);
+  const newsformatState = useAppSelector(state => state.formats);
   const dispatch = useAppDispatch();
-  console.log(test, "성공");
+  console.log(newsformatState, "성공");
 
-  const changeToImgFormat = (event: MouseEvent<HTMLElement>) => {
+  function changeToImgFormat(event: MouseEvent<HTMLElement>) {
     dispatch(album());
-  };
-  const changeToTextFormat = (event: MouseEvent<HTMLElement>) => {
+  }
+  function changeToTextFormat(event: MouseEvent<HTMLElement>) {
     dispatch(text());
-  };
+  }
 
   return (
     <CommonContainer>
@@ -45,6 +45,7 @@ const TextSizeControl = styled.div`
   background-image: url("/images/icon-Text-Size.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
 
 const ImageFormatViewBtn = styled.div`
@@ -53,6 +54,7 @@ const ImageFormatViewBtn = styled.div`
   background-image: url("/images/icon-Grid-filled.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
 
 const TextFormatViewBtn = styled.div`
@@ -61,4 +63,5 @@ const TextFormatViewBtn = styled.div`
   background-image: url("/images/icon-Grid-list.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;

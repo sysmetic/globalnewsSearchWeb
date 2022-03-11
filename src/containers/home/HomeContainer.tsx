@@ -1,9 +1,8 @@
 import Intro from "../../components/home/Intro";
 import KeywordSelectContainer from "./KeywordSelectContainer";
 import SearchContainer from "./SearchContainer";
-// import { useDispatch, useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { fetchNewList } from "../../redux/news/newsListSlice";
 
 const HomeContainer = () => {
@@ -12,20 +11,21 @@ const HomeContainer = () => {
 
   const [isOpendKeywordList, setIsOpendKeywordList] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchNewList());
-    console.log(newsList);
-  }, []);
-
   function openKeywordList(isOpend: boolean) {
     setIsOpendKeywordList(isOpend);
+  }
+
+  function selectKeyword(keywordName: string) {
+    dispatch(fetchNewList(keywordName));
   }
 
   return (
     <>
       <Intro />
       <SearchContainer openKeywordList={openKeywordList} />
-      {isOpendKeywordList && <KeywordSelectContainer />}
+      {isOpendKeywordList && (
+        <KeywordSelectContainer selectKeyword={selectKeyword} />
+      )}
     </>
   );
 };

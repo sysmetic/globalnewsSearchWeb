@@ -35,8 +35,8 @@ export type SearchPayload = {
   access_token: String;
 };
 
-export async function getNewList(payload: SearchPayload): Promise<NewsType[]> {
-  let NEWS_API_URL = `https://api.cityfalcon.com/v0.2/stories?identifier_type=${payload.identifier_type}&identifiers=${payload.identifiers}&time_filter=${payload.time_filter}&categories=${payload.categories}&min_cityfalcon_score=${payload.min_cityfalcon_score}&order_by=${payload.order_by}&access_token=ea67d29c683a69e808a26cc6dc5a1445df84876e9e2d7aaf3d6f084210dce775`;
+export async function getNewList(payload: SearchPayload) {
+  const NEWS_API_URL = `https://api.cityfalcon.com/v0.2/stories?identifier_type=${payload.identifier_type}&identifiers=${payload.identifiers}&time_filter=${payload.time_filter}&categories=${payload.categories}&min_cityfalcon_score=${payload.min_cityfalcon_score}&order_by=${payload.order_by}&access_token=ea67d29c683a69e808a26cc6dc5a1445df84876e9e2d7aaf3d6f084210dce775`;
   const response = await axios.get(NEWS_API_URL);
-  return response.data;
+  return response;
 }

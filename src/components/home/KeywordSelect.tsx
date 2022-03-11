@@ -7,10 +7,7 @@ type Props = {
   selectedSectorList: string[];
   startupData: string[];
   categoryData: string[];
-};
-
-type KeywordTitleItemType = {
-  selected: boolean;
+  selectKeyword: (arg: string) => void;
 };
 
 type Title = "Category" | "Sector" | "Startup";
@@ -20,7 +17,8 @@ const KeywordSelect = ({
   selectSortKey,
   selectedSectorList,
   startupData,
-  categoryData
+  categoryData,
+  selectKeyword
 }: Props) => {
   const [keywordTitle, setKeywordTitle] = useState<Title>("Sector");
 
@@ -33,17 +31,15 @@ const KeywordSelect = ({
   return (
     <KeywordSelectWrap>
       <KeywordSelectTitles>
-        {keywordTitleList.map(item => {
-          return (
-            <KeywordTitleItem
-              key={item}
-              onClick={() => setTitle(item)}
-              selected={item === keywordTitle}
-            >
-              {item}
-            </KeywordTitleItem>
-          );
-        })}
+        {keywordTitleList.map(item => (
+          <KeywordTitleItem
+            key={item}
+            onClick={() => setTitle(item)}
+            selected={item === keywordTitle}
+          >
+            {item}
+          </KeywordTitleItem>
+        ))}
       </KeywordSelectTitles>
       {keywordTitle === "Sector" && (
         <KeywordListContainer>
@@ -51,7 +47,7 @@ const KeywordSelect = ({
             <ul>
               {categoryList.map(sortKeyItem => (
                 <CategoryListItem
-                  key={sortKeyItem}
+                  key={`Sector-${sortKeyItem}`}
                   onClick={() => selectSortKey(sortKeyItem)}
                 >
                   <span>{sortKeyItem}</span>
@@ -61,13 +57,9 @@ const KeywordSelect = ({
             </ul>
           </CategoryList>
           <KeywordListWrap>
-            {selectedSectorList.map(keywordItem => {
-              return (
-                <KeywordListItem key={keywordItem}>
-                  {keywordItem}
-                </KeywordListItem>
-              );
-            })}
+            {selectedSectorList.map(keywordItem => (
+              <KeywordListItem key={keywordItem}>{keywordItem}</KeywordListItem>
+            ))}
           </KeywordListWrap>
         </KeywordListContainer>
       )}
@@ -75,9 +67,9 @@ const KeywordSelect = ({
         <KeywordListContainer>
           <StartupKeywordList>
             <ul>
-              {startupData.map(item => {
-                return <li key={item}>{item}</li>;
-              })}
+              {startupData.map(item => (
+                <li key={`Startup-${item}`}>{item}</li>
+              ))}
             </ul>
           </StartupKeywordList>
         </KeywordListContainer>
@@ -86,9 +78,16 @@ const KeywordSelect = ({
         <KeywordListContainer>
           <StartupKeywordList>
             <ul>
-              {categoryData.map(item => {
-                return <li key={item}>{item}</li>;
-              })}
+              {categoryData.map(item => (
+                <li
+                  key={`Category-${item}`}
+                  onClick={() => {
+                    selectKeyword(item);
+                  }}
+                >
+                  {item}
+                </li>
+              ))}
             </ul>
           </StartupKeywordList>
         </KeywordListContainer>
@@ -134,6 +133,10 @@ const KeywordSelectTitles = styled.div`
   justify-content: end;
   border-bottom: 1px solid #c4c4c4;
 `;
+
+type KeywordTitleItemType = {
+  selected: boolean;
+};
 
 const KeywordTitleItem = styled.strong<KeywordTitleItemType>`
   display: block;

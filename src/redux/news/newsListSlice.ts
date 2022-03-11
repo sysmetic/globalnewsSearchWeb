@@ -3,18 +3,23 @@ import { getNewList, NewsType } from "./newsListApi";
 
 export const fetchNewList = createAsyncThunk(
   "newlist/fetchNewsList",
-  async () => {
+  async (keywordName: string, thunkApi) => {
     let searchPayload = {
       identifier_type: "assets",
-      identifiers: "McDonald's, General Electric, FTSE 100",
+      identifiers: keywordName,
       time_filter: "mth1",
       categories: "mp,op",
       min_cityfalcon_score: 0,
       order_by: "top",
-      access_token:
-        "ea67d29c683a69e808a26cc6dc5a1445df84876e9e2d7aaf3d6f084210dce775"
+      access_token: process.env.REACT_APP_API_ACCESS_TOKEN!
     };
-    return getNewList(searchPayload);
+    const response = await getNewList(searchPayload);
+
+    if (response.status !== 200) {
+      return thunkApi.rejectWithValue(response);
+    } else {
+      return response.data;
+    }
   }
 );
 

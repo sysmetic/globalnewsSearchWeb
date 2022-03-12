@@ -5,6 +5,7 @@ type Props = {
   filterItem: filterItem;
   isOpen: boolean;
   index: number;
+  filterList: string[];
   openFilterList: (
     index: number,
     event: React.MouseEvent<HTMLDivElement>
@@ -19,21 +20,24 @@ export const SearchFilterItem = ({
   filterItem,
   isOpen,
   openFilterList,
-  index
-}: Props) => (
-  <FilterItem>
-    <Label>{filterItem.label}</Label>
-    <DefaultValue onClick={e => openFilterList(index, e)}>
-      <strong>{filterItem.defaultValue}</strong>
-      <img src="images/filterArrow.svg" alt="필터리스트 열기 아이콘" />
-    </DefaultValue>
-    <SelectList isOpen={isOpen}>
-      {filterItem.list.map(item => {
-        return <SelectItem key={item}>{item}</SelectItem>;
-      })}
-    </SelectList>
-  </FilterItem>
-);
+  index,
+  filterList
+}: Props) => {
+  return (
+    <FilterItem>
+      <Label>{filterItem.label}</Label>
+      <DefaultValue onClick={e => openFilterList(index, e)}>
+        <strong>{filterItem.defaultValue}</strong>
+        <img src="images/filterArrow.svg" alt="필터리스트 열기 아이콘" />
+      </DefaultValue>
+      <SelectList isOpen={isOpen}>
+        {filterList.map(item => {
+          return <SelectItem key={item}>{item}</SelectItem>;
+        })}
+      </SelectList>
+    </FilterItem>
+  );
+};
 
 const Label = styled.span`
   color: #717171;
@@ -58,6 +62,8 @@ const SelectList = styled.ul<SelecListProps>`
   top: 60px;
   left: 0;
   width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
   background: #ffffff;
   box-shadow: 0px 4px 7px rgba(196, 195, 195, 0.25);
   border-radius: 5px;

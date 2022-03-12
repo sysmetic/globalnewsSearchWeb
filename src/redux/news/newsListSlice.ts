@@ -1,19 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getNewList, NewsType } from "./newsListApi";
+import { getNewList, NewsType } from "../../api/newsListApi";
 
 export const fetchNewList = createAsyncThunk(
   "newlist/fetchNewsList",
   async (keywordName: string, thunkApi) => {
-    let searchPayload = {
-      identifier_type: "assets",
-      identifiers: keywordName,
-      time_filter: "mth1",
-      categories: "mp,op",
-      min_cityfalcon_score: 0,
-      order_by: "top",
-      access_token: process.env.REACT_APP_API_ACCESS_TOKEN!
-    };
-    const response = await getNewList(searchPayload);
+    const response = await getNewList(keywordName);
 
     if (response.status !== 200) {
       return thunkApi.rejectWithValue(response);

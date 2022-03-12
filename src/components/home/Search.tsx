@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { SearchFilterItem } from "./SearchFilterItem";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 
 export type filterItem = {
   label: string;
@@ -16,6 +17,10 @@ type Props = {
 const Search = ({ openKeywordList }: Props) => {
   const [openIndex, setOpen] = useState<null | number>(null);
   const [focused, setFocused] = useState<boolean>(false);
+
+  const languageCode = useFetchLanguageCode();
+  const languageName = languageCode.languages.map(obj => obj.name);
+
   const filterListArr: Array<filterItem> = [
     {
       label: "언론사",
@@ -30,7 +35,7 @@ const Search = ({ openKeywordList }: Props) => {
     {
       label: "언어",
       defaultValue: "영어",
-      list: ["영어", "한국어", "일본어", "중국어", "덴마크어", "그리스어"]
+      list: languageName
     },
     {
       label: "새로고침 속도",
@@ -75,6 +80,7 @@ const Search = ({ openKeywordList }: Props) => {
                   index={index}
                   isOpen={openIndex === index}
                   openFilterList={openFilterList}
+                  filterList={item.list}
                 />
               );
             })}

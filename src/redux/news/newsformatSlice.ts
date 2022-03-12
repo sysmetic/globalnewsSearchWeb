@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
 interface FormatState {
-  value: boolean;
+  NewsFormats: "Image" | "Text";
 }
 
 const initialState: FormatState = {
-  value: true
+  NewsFormats: "Image"
 };
 
 const newsformatSlice = createSlice({
@@ -14,14 +14,14 @@ const newsformatSlice = createSlice({
   initialState,
   reducers: {
     album: state => {
-      state.value = true;
+      state.NewsFormats = "Image";
     },
     text: state => {
-      state.value = false;
+      state.NewsFormats = "Text";
     }
   }
 });
 
 export const { album, text } = newsformatSlice.actions;
-export const selectFormat = (state: RootState) => state.formats.value;
+export const selectFormat = (state: RootState) => state.formats.NewsFormats;
 export default newsformatSlice.reducer;

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import KeywordTab from "./keywordTab";
+import Tab from "./NewsTab";
 
 const TabAddBtnKeyword = () => {
   return (
@@ -9,21 +9,22 @@ const TabAddBtnKeyword = () => {
   );
 };
 
-const KeywordTabList = () => {
+const NewsTabList = () => {
   return (
     <div className="keywordTabs">
       <Wrap>
-        <KeywordTab />
+        <Tab />
         <TabAddBtnKeyword />
       </Wrap>
     </div>
   );
 };
 
-export default KeywordTabList;
+export default NewsTabList;
 
 const Wrap = styled.div`
   display: flex;
+  padding-top: 80px;
 `;
 
 const AddBtn = styled.button`

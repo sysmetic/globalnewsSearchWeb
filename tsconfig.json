@@ -16,6 +16,9 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/styles/emotion.d.ts"]
-
+  "include": [
+    "src",
+    "src/styles/emotion.d.ts",
+    "src/components/news/ControlSection/.tsx"
+  ]
 }

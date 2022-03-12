@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const KeywordTab = () => {
+const NewsTab = () => {
   return (
     <div>
       <Wrap>
@@ -10,7 +10,7 @@ const KeywordTab = () => {
   );
 };
 
-export default KeywordTab;
+export default NewsTab;
 
 const Wrap = styled.div`
   height: 100%;

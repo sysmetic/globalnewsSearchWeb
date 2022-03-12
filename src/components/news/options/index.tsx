@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import React, { MouseEvent } from "react";
-import { album, text } from "../../redux/news/newsformatSlice";
-import { useAppDispatch } from "../../redux/hooks";
-import CommonContainer from "../../components/layout/CommonContainer";
-import DropDownSort from "../../components/news/DropDownSort";
+import { album, text } from "../../../redux/news/newsformatSlice";
+import { useAppDispatch } from "../../../redux/hooks";
+import CommonContainer from "../../layout/CommonContainer";
+import SortOptions from "./SortOptions";
 
-const NewsControlContainer = () => {
+  const Options = () => {
+    
   const dispatch = useAppDispatch();
 
   function changeToImgFormat(event: MouseEvent<HTMLElement>) {
@@ -18,7 +19,7 @@ const NewsControlContainer = () => {
   return (
     <CommonContainer>
       <Features>
-        <DropDownSort />
+        <SortOptions/>
         <TextSizeControl onClick={() => {}} />
         <ImageFormatViewBtn onClick={changeToImgFormat} />
         <TextFormatViewBtn onClick={changeToTextFormat} />
@@ -27,7 +28,7 @@ const NewsControlContainer = () => {
   );
 };
 
-export default NewsControlContainer;
+export default Options;
 
 const Features = styled.div`
   display: flex;

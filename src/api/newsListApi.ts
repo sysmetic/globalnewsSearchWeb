@@ -56,5 +56,6 @@ export async function getNewList(searchPayload: SearchPayload) {
   };
   const NEWS_API_URL = `https://api.cityfalcon.com/v0.2/stories?identifier_type=${payload.identifier_type}&identifiers=${payload.identifiers}&time_filter=${payload.time_filter}&categories=${payload.categories}&languages=${payload.languages}&min_cityfalcon_score=${payload.min_cityfalcon_score}&order_by=${payload.order_by}&access_token=${payload.access_token}`;
   const response = await axios.get(NEWS_API_URL);
+  console.log(response);
   return response;
 }

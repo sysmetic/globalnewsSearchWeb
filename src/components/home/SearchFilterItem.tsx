@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
-import { filterItem } from "./Search";
+import { FilterItemType } from "./Search";
 
 type Props = {
-  filterItem: filterItem;
+  filterItem: FilterItemType;
   isOpen: boolean;
   index: number;
   filterList: string[];
   setLanguage: (arg: string) => void;
   setTimeFilter: (arg: string) => void;
+  setCategories: (arg: string) => void;
   openFilterList: (
     index: number,
     event: React.MouseEvent<HTMLDivElement>
@@ -26,10 +27,12 @@ export const SearchFilterItem = ({
   index,
   filterList,
   setLanguage,
-  setTimeFilter
+  setTimeFilter,
+  setCategories
 }: Props) => {
   const [defaultLanguage, setDefaultLanguage] = useState("영어");
   const [defaultTimeFilter, setDefaultTimeFilter] = useState("한달");
+  const [defaultCategory, setDefaultCategory] = useState("ALL");
 
   useEffect(() => {
     setLanguage(defaultLanguage); // api에 현재 디폴트 상태 셋팅하기
@@ -44,17 +47,27 @@ export const SearchFilterItem = ({
     setDefaultTimeFilter(timeName);
     setTimeFilter(timeName);
   };
+  const clickCategoryName = (categoryName: string) => {
+    setDefaultCategory(categoryName);
+    setCategories(categoryName);
+  };
+
+  const setDefaultName = (filterItem: FilterItemType) => {
+    if (filterItem.label === "언어") {
+      return defaultLanguage;
+    } else if (filterItem.label === "발행일") {
+      return defaultTimeFilter;
+    } else if (filterItem.label === "언론사") {
+      return defaultCategory;
+    } else {
+      return filterItem.defaultValue;
+    }
+  };
   return (
     <FilterItem>
       <Label>{filterItem.label}</Label>
       <DefaultValue onClick={e => openFilterList(index, e)}>
-        <strong>
-          {filterItem.label === "언어"
-            ? defaultLanguage
-            : filterItem.label === "발행일"
-            ? defaultTimeFilter
-            : filterItem.defaultValue}
-        </strong>
+        <strong>{setDefaultName(filterItem)}</strong>
         <img src="images/filterArrow.svg" alt="필터리스트 열기 아이콘" />
       </DefaultValue>
       <SelectList isOpen={isOpen}>
@@ -68,6 +81,12 @@ export const SearchFilterItem = ({
           } else if (filterItem.label === "발행일") {
             return (
               <SelectItem key={item} onClick={() => clickTimeFiterName(item)}>
+                {item}
+              </SelectItem>
+            );
+          } else if (filterItem.label === "언론사") {
+            return (
+              <SelectItem key={item} onClick={() => clickCategoryName(item)}>
                 {item}
               </SelectItem>
             );

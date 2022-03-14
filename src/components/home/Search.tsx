@@ -4,6 +4,7 @@ import { SetStateAction, useState } from "react";
 import { useEffect } from "react";
 import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
+import { useCategories } from "../../hooks/useCategories";
 
 type Props = {
   openKeywordList: (arg: boolean) => void;
@@ -12,7 +13,7 @@ type Props = {
   setIdentifiersString: (arg: string) => void;
   searchNews: () => void;
 };
-export type filterItem = {
+export type FilterItemType = {
   label: string;
   defaultValue: string;
   list: string[];
@@ -35,11 +36,14 @@ const Search = ({
   const timeFilterArr = useTimeFilter();
   const timeFilterName = timeFilterArr.map(obj => obj.name);
 
-  const filterListArr: Array<filterItem> = [
+  const categoriesArr = useCategories();
+  const categoriesName = categoriesArr.map(obj => obj.name);
+
+  const filterListArr: Array<FilterItemType> = [
     {
       label: "언론사",
-      defaultValue: "언론사이름",
-      list: ["major", "other", "research"]
+      defaultValue: "ALL",
+      list: categoriesName
     },
     {
       label: "발행일",
@@ -88,16 +92,26 @@ const Search = ({
     setTimeFilterCode(timeFilterItem.time_code);
   };
 
+  const setCategories = (categorieName: string) => {
+    const categoriesItem = categoriesArr.find(
+      item => item.name === categorieName
+    );
+    if (!categoriesItem) {
+      return;
+    }
+    setTimeFilterCode(categoriesItem.code);
+  };
+
   const onEnterPress = (e: React.KeyboardEvent) => {
     setIdentifiersString(inputText);
-    console.log(inputText);
+    console.log("onEnterPress", inputText);
     if (e.code === "Enter") {
       e.preventDefault();
       searchNews();
     }
   };
   const changeInputText = (value: SetStateAction<string>) => {
-    console.log(value);
+    console.log("changeInputText", value);
     setInputText(value);
   };
 
@@ -127,6 +141,7 @@ const Search = ({
                 filterList={item.list}
                 setLanguage={setLanguage}
                 setTimeFilter={setTimeFilter}
+                setCategories={setCategories}
               />
             ))}
             <SearchBox

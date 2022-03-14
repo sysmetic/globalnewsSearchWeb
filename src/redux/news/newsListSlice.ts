@@ -1,29 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getNewList, NewsType } from "../../api/newsListApi";
+import { getNewList, NewsType, SearchPayload } from "../../api/newsListApi";
 
 export const fetchNewList = createAsyncThunk(
   "newlist/fetchNewsList",
-  async (keywordName: string, thunkApi) => {
-    const response = await getNewList(keywordName);
+  async (searchPayload: SearchPayload, thunkApi) => {
+    const response = await getNewList(searchPayload);
 
     if (response.status !== 200) {
-      return thunkApi.rejectWithValue(response);
-    } else {
-      return response.data;
+      return thunkApi.rejectWithValue(response.data.error);
     }
+    return response.data;
   }
 );
 
 type NewsListState = {
   newListData: NewsType[];
   loading: boolean;
-  error: string | null;
+  error: any;
 };
 
 const initialState: NewsListState = {
   newListData: [],
   loading: false,
-  error: ""
+  error: null
 };
 
 const NewsListSlice = createSlice({
@@ -37,16 +36,16 @@ const NewsListSlice = createSlice({
       state.error = null;
     });
 
-    builder.addCase(fetchNewList.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchNewList.fulfilled, (state, action) => {
+      console.log(action);
       state.loading = false;
-      state.newListData = payload;
-      state.error = "";
+      state.newListData.push(...state.newListData, ...action.payload.stories);
     });
 
-    builder.addCase(fetchNewList.rejected, (state, { payload }) => {
+    builder.addCase(fetchNewList.rejected, (state, action: any) => {
+      console.log(action);
       state.loading = false;
-      state.newListData = [];
-      state.error = "";
+      state.error = action.error.message;
     });
   }
 });

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useEffect, useState } from "react";
 import { filterItem } from "./Search";
 
 type Props = {
@@ -6,6 +7,8 @@ type Props = {
   isOpen: boolean;
   index: number;
   filterList: string[];
+  setLanguage: (arg: string) => void;
+  setTimeFilter: (arg: string) => void;
   openFilterList: (
     index: number,
     event: React.MouseEvent<HTMLDivElement>
@@ -21,18 +24,54 @@ export const SearchFilterItem = ({
   isOpen,
   openFilterList,
   index,
-  filterList
+  filterList,
+  setLanguage,
+  setTimeFilter
 }: Props) => {
+  const [defaultLanguage, setDefaultLanguage] = useState("영어");
+  const [defaultTimeFilter, setDefaultTimeFilter] = useState("한달");
+
+  useEffect(() => {
+    setLanguage(defaultLanguage); // api에 현재 디폴트 상태 셋팅하기
+    setTimeFilter(defaultTimeFilter);
+  }, []);
+
+  const clickLanguageName = (lanName: string) => {
+    setDefaultLanguage(lanName); // UI에 디폴드 상태 나타내기
+    setLanguage(lanName); // api에 디폴트 상태 보내주기
+  };
+  const clickTimeFiterName = (timeName: string) => {
+    setDefaultTimeFilter(timeName);
+    setTimeFilter(timeName);
+  };
   return (
     <FilterItem>
       <Label>{filterItem.label}</Label>
       <DefaultValue onClick={e => openFilterList(index, e)}>
-        <strong>{filterItem.defaultValue}</strong>
+        <strong>
+          {filterItem.label === "언어"
+            ? defaultLanguage
+            : filterItem.label === "발행일"
+            ? defaultTimeFilter
+            : filterItem.defaultValue}
+        </strong>
         <img src="images/filterArrow.svg" alt="필터리스트 열기 아이콘" />
       </DefaultValue>
       <SelectList isOpen={isOpen}>
         {filterList.map(item => {
-          return <SelectItem key={item}>{item}</SelectItem>;
+          if (filterItem.label === "언어") {
+            return (
+              <SelectItem key={item} onClick={() => clickLanguageName(item)}>
+                {item}
+              </SelectItem>
+            );
+          } else if (filterItem.label === "발행일") {
+            return (
+              <SelectItem key={item} onClick={() => clickTimeFiterName(item)}>
+                {item}
+              </SelectItem>
+            );
+          }
         })}
       </SelectList>
     </FilterItem>

@@ -1,36 +1,50 @@
 import styled from "@emotion/styled";
 import { SearchFilterItem } from "./SearchFilterItem";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useEffect } from "react";
 import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
+import { useTimeFilter } from "../../hooks/useTimeFilter";
 
+type Props = {
+  openKeywordList: (arg: boolean) => void;
+  setLanguageCode: (arg: string) => void;
+  setTimeFilterCode: (arg: string) => void;
+  setIdentifiersString: (arg: string) => void;
+  searchNews: () => void;
+};
 export type filterItem = {
   label: string;
   defaultValue: string;
   list: string[];
 };
 
-type Props = {
-  openKeywordList: (arg: boolean) => void;
-};
-
-const Search = ({ openKeywordList }: Props) => {
+const Search = ({
+  openKeywordList,
+  setLanguageCode,
+  setTimeFilterCode,
+  setIdentifiersString,
+  searchNews
+}: Props) => {
   const [openIndex, setOpen] = useState<null | number>(null);
   const [focused, setFocused] = useState<boolean>(false);
+  const [inputText, setInputText] = useState(" ");
 
   const languageCode = useFetchLanguageCode();
   const languageName = languageCode.languages.map(obj => obj.name);
+
+  const timeFilterArr = useTimeFilter();
+  const timeFilterName = timeFilterArr.map(obj => obj.name);
 
   const filterListArr: Array<filterItem> = [
     {
       label: "언론사",
       defaultValue: "언론사이름",
-      list: []
+      list: ["major", "other", "research"]
     },
     {
       label: "발행일",
-      defaultValue: "5분",
-      list: ["5분", "15분", "1시간", "하루", "1주일", "한달"]
+      defaultValue: "mth1",
+      list: timeFilterName
     },
     {
       label: "언어",
@@ -56,6 +70,37 @@ const Search = ({ openKeywordList }: Props) => {
     setOpen(null);
   };
 
+  const setLanguage = (langName: string) => {
+    const langItem = languageCode.languages.find(
+      item => item.name === langName
+    );
+    if (!langItem) {
+      return;
+    }
+    setLanguageCode(langItem.code);
+  };
+
+  const setTimeFilter = (timeName: string) => {
+    const timeFilterItem = timeFilterArr.find(item => item.name === timeName);
+    if (!timeFilterItem) {
+      return;
+    }
+    setTimeFilterCode(timeFilterItem.time_code);
+  };
+
+  const onEnterPress = (e: React.KeyboardEvent) => {
+    setIdentifiersString(inputText);
+    console.log(inputText);
+    if (e.code === "Enter") {
+      e.preventDefault();
+      searchNews();
+    }
+  };
+  const changeInputText = (value: SetStateAction<string>) => {
+    console.log(value);
+    setInputText(value);
+  };
+
   useEffect(() => {
     document.body.addEventListener("click", closeAll);
     return () => {
@@ -72,18 +117,18 @@ const Search = ({ openKeywordList }: Props) => {
         <form>
           <SearchFilterSelectWrap>
             <Legend>뉴스 키워드 검색</Legend>
-            {filterListArr.map((item, index) => {
-              return (
-                <SearchFilterItem
-                  key={item.label}
-                  filterItem={item}
-                  index={index}
-                  isOpen={openIndex === index}
-                  openFilterList={openFilterList}
-                  filterList={item.list}
-                />
-              );
-            })}
+            {filterListArr.map((item, index) => (
+              <SearchFilterItem
+                key={item.label}
+                filterItem={item}
+                index={index}
+                isOpen={openIndex === index}
+                openFilterList={openFilterList}
+                filterList={item.list}
+                setLanguage={setLanguage}
+                setTimeFilter={setTimeFilter}
+              />
+            ))}
             <SearchBox
               focused={focused}
               onFocus={() => {
@@ -95,6 +140,10 @@ const Search = ({ openKeywordList }: Props) => {
                 onFocus={() => {
                   openKeywordList(true);
                 }}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  changeInputText(e.target.value)
+                }
+                onKeyDown={onEnterPress}
                 placeholder="AAPL, MSFT, 005930, Gold, Oil, DJIA, Nikkei eg... "
               />
             </SearchBox>

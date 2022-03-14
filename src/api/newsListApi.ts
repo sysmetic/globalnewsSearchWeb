@@ -25,27 +25,36 @@ type NewsListType = {
   stories: NewsType[];
 };
 
-export type SearchPayload = {
+export type QuaryStringType = {
   identifier_type: "assets" | "tickers" | "full_tickers" | "legal_id";
   identifiers: String;
-  time_filter: "mth1" | "m5" | "m15" | "h1" | "h8" | "d1" | "v1";
+  time_filter: String;
   categories: String;
   min_cityfalcon_score?: Number;
+  languages: string;
   order_by: "top" | "latest" | "populer";
   access_token: String;
 };
 
-export async function getNewList(identifiers: string) {
-  let payload: SearchPayload = {
+export type SearchPayload = {
+  identifiers: string;
+  language: string;
+  timeFilter: string;
+};
+
+export async function getNewList(searchPayload: SearchPayload) {
+  let payload: QuaryStringType = {
     identifier_type: "assets",
-    identifiers,
-    time_filter: "mth1",
+    identifiers: searchPayload.identifiers,
+    time_filter: searchPayload.timeFilter,
     categories: "mp,op",
     min_cityfalcon_score: 0,
+    languages: searchPayload.language,
     order_by: "top",
-    access_token: process.env.REACT_APP_API_ACCESS_TOKEN!
+    access_token:
+      "ea67d29c683a69e808a26cc6dc5a1445df84876e9e2d7aaf3d6f084210dce775"
   };
-  const NEWS_API_URL = `https://api.cityfalcon.com/v0.2/stories?identifier_type=${payload.identifier_type}&identifiers=${payload.identifiers}&time_filter=${payload.time_filter}&categories=${payload.categories}&min_cityfalcon_score=${payload.min_cityfalcon_score}&order_by=${payload.order_by}&access_token=${payload.access_token}`;
+  const NEWS_API_URL = `https://api.cityfalcon.com/v0.2/stories?identifier_type=${payload.identifier_type}&identifiers=${payload.identifiers}&time_filter=${payload.time_filter}&categories=${payload.categories}&languages=${payload.languages}&min_cityfalcon_score=${payload.min_cityfalcon_score}&order_by=${payload.order_by}&access_token=${payload.access_token}`;
   const response = await axios.get(NEWS_API_URL);
   return response;
 }

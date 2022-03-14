@@ -1,18 +1,27 @@
 import styled from "@emotion/styled";
+import React, { MouseEvent } from "react";
+import { album, text } from "../../redux/news/newsformatSlice";
+import { useAppDispatch } from "../../redux/hooks";
 import CommonContainer from "../../components/layout/CommonContainer";
-import * as React from "react";
 import DropDownSort from "../../components/news/DropDownSort";
 
-//뉴스 기능 컴포넌트: 최신,인기,가장 인기있는순, 텍스트 사이즈 조절등
-
 const NewsControlContainer = () => {
+  const dispatch = useAppDispatch();
+
+  function changeToImgFormat(event: MouseEvent<HTMLElement>) {
+    dispatch(album());
+  }
+  function changeToTextFormat(event: MouseEvent<HTMLElement>) {
+    dispatch(text());
+  }
+
   return (
     <CommonContainer>
       <Features>
         <DropDownSort />
-        <TextSizeControl />
-        <ImageViewBtn />
-        <TextViewBtn />
+        <TextSizeControl onClick={() => {}} />
+        <ImageFormatViewBtn onClick={changeToImgFormat} />
+        <TextFormatViewBtn onClick={changeToTextFormat} />
       </Features>
     </CommonContainer>
   );
@@ -34,20 +43,23 @@ const TextSizeControl = styled.div`
   background-image: url("/images/icon-Text-Size.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
 
-const ImageViewBtn = styled.div`
+const ImageFormatViewBtn = styled.div`
   width: 40px;
   height: 40px;
   background-image: url("/images/icon-Grid-filled.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
 
-const TextViewBtn = styled.div`
+const TextFormatViewBtn = styled.div`
   width: 40px;
   height: 40px;
   background-image: url("/images/icon-Grid-list.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;

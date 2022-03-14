@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+
 const User = () => {
   return (
     <Usercard>
@@ -22,23 +23,17 @@ const Usercard = styled.div`
   padding-right: 32px;
   color: rgba(255, 255, 255, 0.6);
   ;
-h4 {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-p {
-  margin-top: 0;
-  margin-bottom: 33px;
-}
 `
+
+
 const Profic = styled.div`
   width: 64px;
   height: 64px;
   border-radius: 50px;
   background-color: #fff;
   display: block;
-  margin-top: 20px;
-  margin-left: 70px;
+  margin-top: 75px;
+  margin-left: 8px;
   margin-bottom: 28px;
 `
 const EditBtn = styled.div`
@@ -55,3 +50,4 @@ const EditBtn = styled.div`
 const BottomLine = styled.div`
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 `
+

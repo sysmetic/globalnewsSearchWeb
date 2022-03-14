@@ -2,6 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 
 
+
+
 const PaymentsCard = () => {
   return (
     <CardWrap>
@@ -24,11 +26,13 @@ const PaymentsCard = () => {
     </CardWrap>
   )
 }
+
 export default PaymentsCard;
 
 const CardWrap = styled.div`
   display: block;
   color: #414141;
+  margin-right: 37px;
   h5 {
     font-size: 20px;
     font-weight: 600;
@@ -64,7 +68,7 @@ const CreditInfo = styled.div`
 const CreditCardIcon = styled.div`
   width: 18px;
   height: 18px;
-  background: url("../images/CreditCard.svg") no-repeat;
+  background: url("CreditCard.svg") no-repeat;
 `
 
 const Payments = styled.div`
@@ -73,7 +77,7 @@ const Payments = styled.div`
 const PaymentsIcon = styled.div`
   width: 18px;
   height: 18px;
-  background: url("../images/Calendar.svg") no-repeat;
+  background: url("Calendar.svg") no-repeat;
 `
 const PaymentInfo = styled.div`
   margin-left: 11px;

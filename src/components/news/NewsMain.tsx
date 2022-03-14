@@ -2,18 +2,17 @@ import styled from "@emotion/styled";
 import CommonContainer from "../layout/CommonContainer";
 import ImageFormatNews from "./ImageFormatNews";
 import TextformatNews from "./TextformatNews";
+import { useAppSelector } from "../../redux/hooks";
 
 const NewsMain = () => {
+  const ArticleformatState = useAppSelector(state => state.formats);
+  
   return (
     <main className="NewsMain">
       <CommonContainer>
         <Inner>
-          <ImageFormatNews />
-          <ImageFormatNews />
-          <ImageFormatNews />
-          <ImageFormatNews />
-          <ImageFormatNews />
-          <TextformatNews />
+          {ArticleformatState.value === true ? <ImageFormatNews /> : null}
+          {ArticleformatState.value === false ? <TextformatNews /> : null}
         </Inner>
       </CommonContainer>
     </main>

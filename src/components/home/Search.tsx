@@ -9,7 +9,11 @@ export type filterItem = {
   list: string[];
 };
 
-const Search = () => {
+type Props = {
+  openKeywordList: (arg: boolean) => void;
+};
+
+const Search = ({ openKeywordList }: Props) => {
   const [openIndex, setOpen] = useState<null | number>(null);
   const filterListArr: Array<filterItem> = [
     {
@@ -76,6 +80,9 @@ const Search = () => {
             <SearchBox>
               <input
                 type="text"
+                onFocus={() => {
+                  openKeywordList(true);
+                }}
                 placeholder="AAPL, MSFT, 005930, Gold, Oil, DJIA, Nikkei eg... "
               />
             </SearchBox>

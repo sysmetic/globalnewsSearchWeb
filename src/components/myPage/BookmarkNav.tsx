@@ -1,28 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom"
 import styled from "@emotion/styled";
 
-const BookmarkNav = () => { 
-  return (
-    <Wrap>
-      <li className="on"><Link to={"/"}>폴더이름</Link><Counts>192개</Counts></li>
-      <li><Link to={"/"}>폴더이름</Link><Counts>192개</Counts></li>
-      <li><Link to={"/"}>폴더이름</Link><Counts>192개</Counts></li>
-      <li><Link to={"/"}>폴더이름</Link><Counts>192개</Counts></li>
-      <NewFolderBtn><PlusIcon/>새 폴더 추가</NewFolderBtn>
-    </Wrap>
-  )
-}
-
-export default BookmarkNav;
-
 const Wrap = styled.ul`
-margin-top: 20px;
-padding-bottom: 275px;
 color: rgba(255, 255, 255, 0.6);
-  
+  h2 {
+    font-size: 22px;
+    margin-bottom: 67px;
+    font-weight: 600;
+  }
   li {
     display: flex;
+    width: 265px;
     list-style: none;
     font-size: 20px;
     font-weight: 600;
@@ -39,21 +26,16 @@ color: rgba(255, 255, 255, 0.6);
 
   .on {
     background-color: rgba(255, 255, 255, 0.1);
-    position: relative;
   }
   .on::before {
     content: '';
     border-left: 3px solid #48c0b7;
-    position: absolute;
-    height: 59px;
-    left: 0;
-    bottom: 0;
+    margin-left: -3px;
   }
   .on div {
     background-color: #48c0b7;
     color: #fff;
     border: #48c0b7;
-
   }
 `
 const Counts = styled.div`
@@ -72,17 +54,37 @@ const Counts = styled.div`
 const NewFolderBtn = styled.div`
   width: 259px;
   height: 59px;
-  padding: 27px 0 10px 0;
+  padding: 27px 0 10px 45px;
+  margin-left: 10px;
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
   color: #48C0B7;
   line-height: 20px;
+  img {
+    margin-bottom: -2px;
+    margin-right: 8px;
+  }
 `
 const PlusIcon = styled.span`
   display: inline-block;
   width: 15px;
   height: 15px;
-  background: url("../images/Plus.svg") no-repeat;
-  margin-right: 8px;
+  background: url("Plus.svg") no-repeat;
 `
+
+
+const BookmarkNav = () => { 
+  return (
+    <Wrap>
+      <h2>스크랩한 뉴스</h2>
+      <li className="on"><a href="/">폴더이름</a><Counts>192개</Counts></li>
+      <li><a href="/">폴더이름</a><Counts>192개</Counts></li>
+      <li><a href="/">폴더이름</a><Counts>192개</Counts></li>
+      <li><a href="/">폴더이름</a><Counts>192개</Counts></li>
+      <NewFolderBtn><PlusIcon/>New folder</NewFolderBtn>
+    </Wrap>
+  )
+}
+
+export default BookmarkNav

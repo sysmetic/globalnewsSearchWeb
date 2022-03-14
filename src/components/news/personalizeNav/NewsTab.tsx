@@ -1,12 +1,15 @@
 import styled from "@emotion/styled";
+import React, { useState, DragEvent } from "react";
 
-const NewsTab = () => {
+interface Props {
+  title: string;
+}
+
+const NewsTab = ({ title }: Props) => {
   return (
-    <div>
-      <Wrap>
-        <KeywordItem>Buy Now Pay Later</KeywordItem>
-      </Wrap>
-    </div>
+    <Wrap>
+      <KeywordItem>{title}</KeywordItem>
+    </Wrap>
   );
 };
 

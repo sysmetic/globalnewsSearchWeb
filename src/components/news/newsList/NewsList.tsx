@@ -2,12 +2,16 @@ import styled from "@emotion/styled";
 import CommonContainer from "../../layout/CommonContainer";
 import ImageFormatNews from "./ImageFormatNews";
 import TextformatNews from "./TextformatNews";
-import { useAppSelector } from "../../../redux/hooks";
+import { useNewsList } from "../hooks/useNewsList";
 import dummyData from "../common/dummyData.json";
-const NewsList = () => {
-  const ArticleformatState = useAppSelector(state => state.formats);
+import { useEffect } from "react";
 
-  console.log(dummyData);
+const NewsList = () => {
+  const { newsFormats } = useNewsList();
+
+  useEffect( ()=>{
+    
+  },[])
 
   return (
     <CommonContainer>
@@ -16,7 +20,7 @@ const NewsList = () => {
           const { title, uuid, description, imageUrls } = article;
 
           switch (true) {
-            case ArticleformatState.NewsFormats === "Image":
+            case newsFormats === "Image":
               return (
                 <ImageFormatNews
                   key={uuid}
@@ -25,7 +29,7 @@ const NewsList = () => {
                   newsimageUrls={imageUrls}
                 />
               );
-            case ArticleformatState.NewsFormats === "Text":
+            case newsFormats === "Text":
               return (
                 <TextformatNews newsTitle={title} newsContent={description} />
               );
@@ -47,3 +51,5 @@ const Content = styled.div`
   gap: 20px 0;
   padding-bottom: 280px;
 `;
+
+//데이터를 [0]번째 인덱스만 출력하게해라

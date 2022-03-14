@@ -1,25 +1,13 @@
 import styled from "@emotion/styled";
-import React, { MouseEvent } from "react";
-import { album, text } from "../../../redux/news/newsformatSlice";
-import { useAppDispatch } from "../../../redux/hooks";
 import CommonContainer from "../../layout/CommonContainer";
-import SortOptions from "./SortOptions";
-
-  const Options = () => {
-    
-  const dispatch = useAppDispatch();
-
-  function changeToImgFormat(event: MouseEvent<HTMLElement>) {
-    dispatch(album());
-  }
-  function changeToTextFormat(event: MouseEvent<HTMLElement>) {
-    dispatch(text());
-  }
-
+import SortOptionContainer from "./SortOptionContainer";
+import { useNewsList } from "../hooks/useNewsList";
+const Options = () => {
+  const { changeToTextFormat, changeToImgFormat } = useNewsList();
   return (
     <CommonContainer>
       <Features>
-        <SortOptions/>
+        <SortOptionContainer />
         <TextSizeControl onClick={() => {}} />
         <ImageFormatViewBtn onClick={changeToImgFormat} />
         <TextFormatViewBtn onClick={changeToTextFormat} />

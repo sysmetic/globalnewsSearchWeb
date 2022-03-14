@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
-interface FormatState {
+interface Props {
   NewsFormats: "Image" | "Text";
 }
 
-const initialState: FormatState = {
+const initialState: Props = {
   NewsFormats: "Image"
 };
 

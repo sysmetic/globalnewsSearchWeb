@@ -7,12 +7,10 @@ const PersonalizeNav = () => {
   return (
     <Wrap>
       <CommonContainer>
-        <Inner>
-          <div className="pt-31">
-            <KeywordSearchForm />
-          </div>
-          <NewsTabList />
-        </Inner>
+        <div className="pt-31">
+          <KeywordSearchForm />
+        </div>
+        <NewsTabList />
       </CommonContainer>
     </Wrap>
   );
@@ -28,8 +26,6 @@ const Wrap = styled.section`
     #fdddd2 185%
   );
   height: 345px;
-`;
-const Inner = styled.div`
   .pt-31 {
     padding-top: 31px;
   }

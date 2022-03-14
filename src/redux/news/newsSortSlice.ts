@@ -1,31 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface Props {
-  newsSortList: string[];
-  newsSortState: string;
+  newsSortState: "정렬순" | "인기순" | "최신순";
 }
 
 const initialState: Props = {
-  newsSortList: ["정렬 순", "최신 순", "인기 순"],
-  newsSortState: "default"
+  newsSortState: "정렬순"
 };
 
-const newssortSlice = createSlice({
+const newsSortSlice = createSlice({
   name: "NewsSort",
   initialState,
   reducers: {
-    default: state => {
-      state.newsSortState = "dafault";
-    },
-    popular: state => {
-      state.newsSortState = "poplular";
-    },
-    latest: state => {
-      state.newsSortState = "latest";
+    changeNewsOption: (state, action) => {
+      state.newsSortState = action.payload;
     }
   }
 });
 
-export const { popular, latest } = newssortSlice.actions;
+export const { changeNewsOption } = newsSortSlice.actions;
 
-export default newssortSlice.reducer;
+export default newsSortSlice.reducer;

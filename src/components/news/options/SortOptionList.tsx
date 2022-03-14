@@ -1,31 +1,22 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import React, { MouseEvent } from "react";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { popular, latest } from "../../../redux/news/newsSortSlice";
+import { useNewsList } from "../hooks/useNewsList";
 
-const SortOptions = () => {
-  const [newsCurOption, setNewsCurOption] = useState<String>("정렬순");
-  return (
-    <List newsCurOption={newsCurOption} setNewsCurOption={setNewsCurOption} />
-  );
-};
+const options: string[] = ["정렬순", "최신순", "인기순"];
 
 interface Props {
   newsCurOption: String;
   setNewsCurOption: React.Dispatch<React.SetStateAction<String>>;
 }
 
-const List = ({ newsCurOption, setNewsCurOption }: Props) => {
+const SortOptionList = ({ newsCurOption, setNewsCurOption }: Props) => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  // const newsSortState = useAppSelector(state => state.newsSorts);
-  const dispatch = useAppDispatch();
-  const options: string[] = ["정렬순", "최신순", "인기순"];
 
-  function controlOption(option: string) {
+  const { reportOptionToAPI } = useNewsList();
+
+  function showDropDown(option: string) {
     setNewsCurOption(option);
     setIsActive(!isActive);
-    dispatch(popular());
   }
 
   return (
@@ -39,9 +30,10 @@ const List = ({ newsCurOption, setNewsCurOption }: Props) => {
           options.map(option => (
             <li
               className="dropdown-item"
-              onClick={(event: MouseEvent<HTMLElement>) =>
-                controlOption(option)
-              }
+              onClick={() => {
+                showDropDown(option);
+                reportOptionToAPI(option);
+              }}
             >
               {option}
             </li>
@@ -51,7 +43,7 @@ const List = ({ newsCurOption, setNewsCurOption }: Props) => {
   );
 };
 
-export default SortOptions;
+export default SortOptionList;
 
 const ListWrap = styled.div`
   position: relative;

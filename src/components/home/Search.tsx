@@ -171,7 +171,7 @@ const Search = ({
 
 export default Search;
 
-const SearchArea = styled.div`
+export const SearchArea = styled.div`
   & > div:nth-of-type(1) {
     display: flex;
     justify-content: end;
@@ -197,7 +197,7 @@ const SearchWarp = styled.div`
   box-sizing: border-box;
   width: 1240px;
   height: 120px;
-  margin: 20px 0 0;
+  margin: 32px 0 0;
   padding: 26px 76.1px 24px 0;
   border-radius: 5px;
   border: solid 1px #f1f1f1;

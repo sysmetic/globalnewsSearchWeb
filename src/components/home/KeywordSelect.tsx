@@ -7,10 +7,7 @@ type Props = {
   selectedSectorList: string[];
   startupData: string[];
   categoryData: string[];
-};
-
-type KeywordTitleItemType = {
-  selected: boolean;
+  selectKeyword: (arg: string) => void;
 };
 
 type Title = "Category" | "Sector" | "Startup";
@@ -20,7 +17,8 @@ const KeywordSelect = ({
   selectSortKey,
   selectedSectorList,
   startupData,
-  categoryData
+  categoryData,
+  selectKeyword
 }: Props) => {
   const [keywordTitle, setKeywordTitle] = useState<Title>("Sector");
 
@@ -33,17 +31,15 @@ const KeywordSelect = ({
   return (
     <KeywordSelectWrap>
       <KeywordSelectTitles>
-        {keywordTitleList.map(item => {
-          return (
-            <KeywordTitleItem
-              key={item}
-              onClick={() => setTitle(item)}
-              selected={item === keywordTitle}
-            >
-              {item}
-            </KeywordTitleItem>
-          );
-        })}
+        {keywordTitleList.map(item => (
+          <KeywordTitleItem
+            key={item}
+            onClick={() => setTitle(item)}
+            selected={item === keywordTitle}
+          >
+            {item}
+          </KeywordTitleItem>
+        ))}
       </KeywordSelectTitles>
       {keywordTitle === "Sector" && (
         <KeywordListContainer>
@@ -51,23 +47,22 @@ const KeywordSelect = ({
             <ul>
               {categoryList.map(sortKeyItem => (
                 <CategoryListItem
-                  key={sortKeyItem}
+                  key={`Sector-${sortKeyItem}`}
                   onClick={() => selectSortKey(sortKeyItem)}
                 >
                   <span>{sortKeyItem}</span>
-                  <img src="" alt="" />
+                  <img
+                    src="/images/keyword-arrow.svg"
+                    alt="섹터 탭 키워드 정렬 화살표"
+                  />
                 </CategoryListItem>
               ))}
             </ul>
           </CategoryList>
           <KeywordListWrap>
-            {selectedSectorList.map(keywordItem => {
-              return (
-                <KeywordListItem key={keywordItem}>
-                  {keywordItem}
-                </KeywordListItem>
-              );
-            })}
+            {selectedSectorList.map(keywordItem => (
+              <KeywordListItem key={keywordItem}>{keywordItem}</KeywordListItem>
+            ))}
           </KeywordListWrap>
         </KeywordListContainer>
       )}
@@ -75,9 +70,9 @@ const KeywordSelect = ({
         <KeywordListContainer>
           <StartupKeywordList>
             <ul>
-              {startupData.map(item => {
-                return <li key={item}>{item}</li>;
-              })}
+              {startupData.map(item => (
+                <li key={`Startup-${item}`}>{item}</li>
+              ))}
             </ul>
           </StartupKeywordList>
         </KeywordListContainer>
@@ -86,9 +81,16 @@ const KeywordSelect = ({
         <KeywordListContainer>
           <StartupKeywordList>
             <ul>
-              {categoryData.map(item => {
-                return <li key={item}>{item}</li>;
-              })}
+              {categoryData.map(item => (
+                <li
+                  key={`Category-${item}`}
+                  onClick={() => {
+                    selectKeyword(item);
+                  }}
+                >
+                  {item}
+                </li>
+              ))}
             </ul>
           </StartupKeywordList>
         </KeywordListContainer>
@@ -135,6 +137,10 @@ const KeywordSelectTitles = styled.div`
   border-bottom: 1px solid #c4c4c4;
 `;
 
+type KeywordTitleItemType = {
+  selected: boolean;
+};
+
 const KeywordTitleItem = styled.strong<KeywordTitleItemType>`
   display: block;
   width: 329px;
@@ -146,6 +152,7 @@ const KeywordTitleItem = styled.strong<KeywordTitleItemType>`
     selected ? theme.BlueGreenColor : "#787878"};
   border-bottom: ${({ selected, theme }) =>
     selected ? `4px solid ${theme.BlueGreenColor}` : null};
+  transition: all 0.2s ease;
 `;
 
 const KeywordListContainer = styled.div`
@@ -165,11 +172,23 @@ const CategoryList = styled.div`
 const CategoryListItem = styled.li`
   height: 55px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 40px;
   color: #4f4f4f;
   border-bottom: 1px solid #eeeeee;
   cursor: pointer;
+  transition: all 0.2s ease;
+  img {
+    padding-bottom: 3px;
+    display: none;
+  }
+  &:hover {
+    background: #f0fcfb;
+  }
+  &:hover img {
+    display: block;
+  }
 `;
 const KeywordListWrap = styled.div`
   width: 100%;

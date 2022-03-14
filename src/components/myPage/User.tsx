@@ -8,6 +8,7 @@ const User = () => {
       <h4>kim hana</h4>
       <p>kimhana1234@gamil.com</p>
       <EditBtn>프로필 편집</EditBtn>
+      <BottomLine/>
     </Usercard>
   )
 }
@@ -17,9 +18,10 @@ export default User;
 const Usercard = styled.div`
   margin-bottom: 36px;
   padding-top: 43px;
-  padding-bottom: 36px;
+  padding-left: 30px;
+  padding-right: 32px;
   color: rgba(255, 255, 255, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  ;
 h4 {
   margin-top: 0;
   margin-bottom: 10px;
@@ -48,4 +50,8 @@ const EditBtn = styled.div`
   text-align: center;
   line-height: 2.3;
   margin-left: 43px;
+  margin-bottom: 36px;
+`
+const BottomLine = styled.div`
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 `

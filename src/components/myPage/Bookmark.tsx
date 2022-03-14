@@ -1,8 +1,56 @@
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import  BookmarkNav  from "./BookmarkNav";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Pagination from "./Pagination"
+
+
+interface Airline {
+  id: number;
+  name: string;
+  country: string;
+  logo: string;
+  slogan: string;
+  head_quaters: string;
+  website: string;
+  established: string;
+}
+
+interface Passenger {
+  _id: string;
+  name: string;
+  trips: number;
+  airline: Airline,
+  __v: number;
+}
+
+interface Response {
+  totalPassengers: number;
+  totalPages: number;
+  data: Array<Passenger>;
+}
 
 const Bookmark = () => {
+  const [page, setPage] = useState<number>(0)
+  const [totalPages, setTotalPages] = useState<number>(0)
+  const [items, setItems] = useState<Array<Passenger>>([])
+
+  const handlePageChange = (crrentPage: number): void => {
+    setPage(crrentPage)
+  }
+
+  useEffect(() => {
+    const fetch = async () => {
+      const params = { page, size: 6 }
+      const { data: { totalPages, data }} = await axios.get<Response>("https://api.instantwebtools.net/v1/passenger", { params });
+
+      setTotalPages(totalPages)
+      setItems(data)
+    }
+    fetch()
+  }, [page]);
+
   return (
   <Wrap>
     <Container>
@@ -22,75 +70,22 @@ const Bookmark = () => {
             </select>
           </FilterList>
           <BookmarkList>
-            <li>
-              <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
-              <LogoPress/>
-              <PressName>NDTV</PressName>
-              <Wtime>3 minutes ago</Wtime>
-              <Link to={"/"}>
-                <MoreIcon/>
+            {items.map((item) => (
+              <li>
+                <h2>{item.name}</h2>
+                <LogoPress></LogoPress>
+                <PressName>{item.name}</PressName>
+                <Wtime>3 minutes ago</Wtime>
+                <Link to={"/"}>
+                <MoreIcon><img src="../images/More.svg" alt="more icon" /></MoreIcon>
               </Link>
-            </li>
-            <li>
-              <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
-              <LogoPress/>
-              <PressName>NDTV</PressName>
-              <Wtime>3 minutes ago</Wtime>
-              <Link to={"/"}>
-                <MoreIcon/>
-              </Link>
-            </li>
-            <li>
-              <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
-              <LogoPress/>
-              <PressName>NDTV</PressName>
-              <Wtime>3 minutes ago</Wtime>
-              <Link to={"/"}>
-                <MoreIcon/>
-              </Link>
-            </li>
-            <li>
-              <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
-              <LogoPress/>
-              <PressName>NDTV</PressName>
-              <Wtime>3 minutes ago</Wtime>
-              <Link to={"/"}>
-                <MoreIcon/>
-              </Link>
-            </li>
-            <li>
-              <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
-              <LogoPress/>
-              <PressName>NDTV</PressName>
-              <Wtime>3 minutes ago</Wtime>
-              <Link to={"/"}>
-                <MoreIcon/>
-              </Link>
-            </li>
-            <li>
-              <h2>Elon Musk donated over $5.7 bn in Tesla shares to charity in November</h2>
-              <LogoPress/>
-              <PressName>NDTV</PressName>
-              <Wtime>3 minutes ago</Wtime>
-              <Link to={"/"}>
-                <MoreIcon/>
-              </Link>
-            </li>
-            
+              </li>
+            ))}
           </BookmarkList>
 
           <PageNationItems>
-            <span>pages 2 of 10</span>
-            <PageNation>
-              <PageArrow><Link to={"/"}><DoubleLeftIcon/></Link></PageArrow>
-              <PageArrow><Link to={"/"}><LeftIcon/></Link></PageArrow>
-              <Pages><Link to={"/"}>1</Link></Pages>
-              <Pages><Link to={"/"} className="on">2</Link></Pages>
-              <Pages>...</Pages>
-              <Pages><Link to={"/"}>10</Link></Pages>
-              <PageArrow><Link to={"/"}><RightIcon/></Link></PageArrow>
-              <PageArrow><Link to={"/"}><DoubleRightIcon/></Link></PageArrow>
-            </PageNation>
+            <span>pages {page + 1} of {totalPages}</span>
+            <Pagination count={totalPages} page={page} onPageChange={handlePageChange} />
           </PageNationItems>
         </ContContainer>
       </Content>
@@ -211,69 +206,4 @@ const PageNationItems = styled.div`
 const MoreIcon = styled.div`
   width: 16px;
   height: 4px;
-  background: url("../images/More.svg") no-repeat;
-  
-`
-
-const PageNation = styled.ul`
-  margin-top: 51px;
-  margin-left: 325px;
-  li {
-    display: inline-block;
-  }
-  li:nth-of-type(5){
-    width: 24px;
-    height: 24px;
-  }
-`
-
-const Pages = styled.li`
-  font-size: 14px;
-  color: #9BA3A7;
-  line-height: 1.5;
-  text-align: center;
-  a {
-    display: block;
-    width: 24px;
-    height: 24px;
-    background-color: #fff;
-    text-decoration: none;
-    color: #9BA3A7;
-  }
-  a.on {
-    background-color: #C3EAE7;
-    color: #37474F;
-  }
-`
-
-
-
-const DoubleLeftIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  background: url("../images/DoubleLeft.svg") no-repeat;
-  margin-top: 15px;
-`
-const DoubleRightIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  background: url("../images/DoubleRight.svg") no-repeat;
-  margin-top: 15px;
-`
-const LeftIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  background: url("../images/Left.svg") no-repeat;
-  margin-top: 15px;
-`
-const RightIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  background: url("../images/Right.svg") no-repeat;
-  margin-top: 15px;
-`
-
-const PageArrow = styled.li`
-  width: 40px;
-  height: 40px;
 `

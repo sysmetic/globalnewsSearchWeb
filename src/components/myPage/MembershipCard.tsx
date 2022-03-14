@@ -1,6 +1,24 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+const MembershipCard = () => {
+  return (
+    <CardWrap>
+      <h5>내 구독 정보</h5>
+      <Card>
+        <CardCont>    
+          <h5>유료 멤버십</h5>
+          <p>메인메뉴 키워드 탭 최대 10개 생성</p>
+        </CardCont>
+        <CardBtn>구독관리</CardBtn>
+      </Card>
+    </CardWrap>
+  )
+}
+
+export default MembershipCard;
+
+
 const CardWrap = styled.div`
   display: block;
   color: #414141;
@@ -44,20 +62,3 @@ const CardBtn = styled.div`
   line-height: 2.2;
   text-align: center;
 `
-
-const MembershipCard = () => {
-  return (
-    <CardWrap>
-      <h5>내 구독 정보</h5>
-      <Card>
-        <CardCont>    
-          <h5>유료 멤버십</h5>
-          <p>메인메뉴 키워드 탭 최대 10개 생성</p>
-        </CardCont>
-        <CardBtn>구독관리</CardBtn>
-      </Card>
-    </CardWrap>
-  )
-}
-
-export default MembershipCard

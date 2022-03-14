@@ -22,7 +22,6 @@ const KeywordsWarp = styled.div`
     font-weight: 600;
     font-size: 20px;
     margin-bottom: 20px;
-    
   }
 `
 
@@ -37,5 +36,4 @@ const Keywords = styled.div`
   font-weight: 600;
   line-height: 30px;
   margin-right: 20px;
-  
 `

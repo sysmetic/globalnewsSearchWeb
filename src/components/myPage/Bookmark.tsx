@@ -125,6 +125,7 @@ const SideBar = styled.div`
     font-size: 22px;
     font-weight: 600;
     color: #144056;
+    margin-bottom: 20px;
   }
 `
 const Content = styled.div`

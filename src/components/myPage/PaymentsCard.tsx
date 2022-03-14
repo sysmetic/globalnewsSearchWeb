@@ -11,11 +11,11 @@ const PaymentsCard = () => {
       <Card>
         <CardCont>    
           <Credit>
-            <CreditCardIcon/>
+            <CreditCardIcon><img src="../images/CreditCard.svg" alt="카드 아이콘"/></CreditCardIcon>
             <CreditInfo>MarsterCard (끝자리: ****1234)</CreditInfo>
           </Credit>
           <Payments>
-            <PaymentsIcon/>
+            <PaymentsIcon><img src="../images/Calendar.svg" alt="달력 아이콘"/></PaymentsIcon>
             <PaymentInfo>₩ 18,000/월<br/>
             다음 결제일 : 2022년 3월 13일<br/>
             연간플랜, 월별 결제</PaymentInfo>
@@ -68,7 +68,6 @@ const CreditInfo = styled.div`
 const CreditCardIcon = styled.div`
   width: 18px;
   height: 18px;
-  background: url("CreditCard.svg") no-repeat;
 `
 
 const Payments = styled.div`
@@ -77,7 +76,6 @@ const Payments = styled.div`
 const PaymentsIcon = styled.div`
   width: 18px;
   height: 18px;
-  background: url("Calendar.svg") no-repeat;
 `
 const PaymentInfo = styled.div`
   margin-left: 11px;

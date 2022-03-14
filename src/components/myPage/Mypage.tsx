@@ -23,6 +23,7 @@ const MyPage = () => {
             <PaymentsCard/>
           </ContTop>
           <MyKeyword/>
+          <EditKeywords>키워드 편집<img src="../images/icon-navi-bottom.svg" alt="키워드 편집" /></EditKeywords>
         </ContContainer>
       </Content>
     </Container>
@@ -50,12 +51,35 @@ const SideContainer = styled.div`
 const ContContainer = styled.div`
   margin-left: 50px;
   margin-top: 135px;
-  
 `
 
 const ContTop = styled.div`
   display: flex;
+  
 `
+const Content = styled.div`
+  background-color: #f9faff;
+  width: 975px;
+  float: left;
+  position: relative;
+`
+
+const EditKeywords = styled.div`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  display: inline;
+  color: #7A7A7A;
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  img {
+    transform: rotate(-90deg);
+    margin-bottom: -14px;
+    margin-left: -10px;
+  }
+`
+
 const SideBar = styled.div`
   width: 265px;
   margin-top: 85px;
@@ -67,9 +91,4 @@ const SideBar = styled.div`
     color: #144056;
     margin-bottom: 20px;
   }
-`
-const Content = styled.div`
-  background-color: #f9faff;
-  width: 975px;
-  float: left;
 `

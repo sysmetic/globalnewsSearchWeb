@@ -1,54 +1,51 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import React, { MouseEvent } from "react";
+import { useNewsList } from "../hooks/useNewsList";
 
-interface SelectedMenu {
-  selected: String;
-  setSelected: React.Dispatch<React.SetStateAction<String>>;
+const options: string[] = ["정렬순", "최신순", "인기순"];
+
+interface Props {
+  newsCurOption: String;
+  setNewsCurOption: React.Dispatch<React.SetStateAction<String>>;
 }
 
-const DropDownSort = () => {
-  const [selected, setSelected] = useState<String>("정렬순");
-  return <Menu selected={selected} setSelected={setSelected} />;
-};
-
-const Menu = ({ selected, setSelected }: SelectedMenu) => {
+const SortOptionList = ({ newsCurOption, setNewsCurOption }: Props) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  const options: string[] = ["정렬순", "인기순", "가장 인기순"];
+  const { reportOptionToAPI } = useNewsList();
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    const eventTarget = event.target as HTMLElement;
-    console.log(eventTarget.innerText);
-  };
+  function showDropDown(option: string) {
+    setNewsCurOption(option);
+    setIsActive(!isActive);
+  }
 
   return (
-    <Wrap>
+    <ListWrap>
       <DropDownBtn onClick={e => setIsActive(!isActive)}>
-        {selected}
+        {newsCurOption}
         <i className="nav-bottom"></i>
       </DropDownBtn>
-      <DropDownMenu>
+      <DropDownList>
         {isActive &&
           options.map(option => (
             <li
               className="dropdown-item"
-              onClick={e => {
-                setSelected(option);
-                setIsActive(!isActive);
+              onClick={() => {
+                showDropDown(option);
+                reportOptionToAPI(option);
               }}
             >
               {option}
             </li>
           ))}
-      </DropDownMenu>
-    </Wrap>
+      </DropDownList>
+    </ListWrap>
   );
 };
 
-export default DropDownSort;
+export default SortOptionList;
 
-const Wrap = styled.div`
+const ListWrap = styled.div`
   position: relative;
 `;
 const DropDownBtn = styled.div`
@@ -72,7 +69,7 @@ const DropDownBtn = styled.div`
     background-size: cover;
   }
 `;
-const DropDownMenu = styled.ul`
+const DropDownList = styled.ul`
   position: absolute;
   top: 100%;
   background-color: #fff;

@@ -1,26 +1,13 @@
 import styled from "@emotion/styled";
-import React, { MouseEvent } from "react";
-import { album, text } from "../../redux/news/newsformatSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import CommonContainer from "../../components/layout/CommonContainer";
-import DropDownSort from "../../components/news/DropDownSort";
-
-const NewsControlContainer = () => {
-  const test = useAppSelector(state => state.formats);
-  const dispatch = useAppDispatch();
-  console.log(test, "성공");
-
-  const changeToImgFormat = (event: MouseEvent<HTMLElement>) => {
-    dispatch(album());
-  };
-  const changeToTextFormat = (event: MouseEvent<HTMLElement>) => {
-    dispatch(text());
-  };
-
+import CommonContainer from "../../layout/CommonContainer";
+import SortOptionContainer from "./SortOptionContainer";
+import { useNewsList } from "../hooks/useNewsList";
+const Options = () => {
+  const { changeToTextFormat, changeToImgFormat } = useNewsList();
   return (
     <CommonContainer>
       <Features>
-        <DropDownSort />
+        <SortOptionContainer />
         <TextSizeControl onClick={() => {}} />
         <ImageFormatViewBtn onClick={changeToImgFormat} />
         <TextFormatViewBtn onClick={changeToTextFormat} />
@@ -29,7 +16,7 @@ const NewsControlContainer = () => {
   );
 };
 
-export default NewsControlContainer;
+export default Options;
 
 const Features = styled.div`
   display: flex;
@@ -45,6 +32,7 @@ const TextSizeControl = styled.div`
   background-image: url("/images/icon-Text-Size.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
 
 const ImageFormatViewBtn = styled.div`
@@ -53,6 +41,7 @@ const ImageFormatViewBtn = styled.div`
   background-image: url("/images/icon-Grid-filled.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
 
 const TextFormatViewBtn = styled.div`
@@ -61,4 +50,5 @@ const TextFormatViewBtn = styled.div`
   background-image: url("/images/icon-Grid-list.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;

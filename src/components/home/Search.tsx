@@ -11,7 +11,8 @@ type Props = {
   setLanguageCode: (arg: string) => void;
   setTimeFilterCode: (arg: string) => void;
   setIdentifiersString: (arg: string) => void;
-  searchNews: () => void;
+  setCategoriesCode: (arg: string) => void;
+  searchNews: (str?: string) => void;
 };
 export type FilterItemType = {
   label: string;
@@ -24,6 +25,7 @@ const Search = ({
   setLanguageCode,
   setTimeFilterCode,
   setIdentifiersString,
+  setCategoriesCode,
   searchNews
 }: Props) => {
   const [openIndex, setOpen] = useState<null | number>(null);
@@ -99,19 +101,17 @@ const Search = ({
     if (!categoriesItem) {
       return;
     }
-    setTimeFilterCode(categoriesItem.code);
+    setCategoriesCode(categoriesItem.code);
   };
 
   const onEnterPress = (e: React.KeyboardEvent) => {
     setIdentifiersString(inputText);
-    console.log("onEnterPress", inputText);
     if (e.code === "Enter") {
       e.preventDefault();
       searchNews();
     }
   };
   const changeInputText = (value: SetStateAction<string>) => {
-    console.log("changeInputText", value);
     setInputText(value);
   };
 

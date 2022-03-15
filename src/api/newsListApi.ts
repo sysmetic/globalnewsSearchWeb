@@ -40,6 +40,7 @@ export type SearchPayload = {
   identifiers: string;
   language: string;
   timeFilter: string;
+  categories: string;
 };
 
 export async function getNewList(searchPayload: SearchPayload) {
@@ -47,7 +48,7 @@ export async function getNewList(searchPayload: SearchPayload) {
     identifier_type: "assets",
     identifiers: searchPayload.identifiers,
     time_filter: searchPayload.timeFilter,
-    categories: "mp,op",
+    categories: searchPayload.categories,
     min_cityfalcon_score: 0,
     languages: searchPayload.language,
     order_by: "top",

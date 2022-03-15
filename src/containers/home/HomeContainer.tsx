@@ -1,7 +1,7 @@
 import Intro from "../../components/home/Intro";
 import KeywordSelectContainer from "./KeywordSelectContainer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { fetchNewList } from "../../redux/news/newsListSlice";
 import Search from "../../components/home/Search";
 
@@ -21,6 +21,7 @@ const HomeContainer = () => {
 
   function setIdentifiersString(Identifier: string) {
     setIdentifiers(Identifier);
+    console.log(identifiers);
   }
   const setLanguageCode = (langCode: string) => {
     setLanguage(langCode);
@@ -28,28 +29,39 @@ const HomeContainer = () => {
   const setTimeFilterCode = (timeCode: string) => {
     setTimeFilter(timeCode);
   };
+  const setCategoriesCode = (categoriesCode: string) => {
+    setCategories(categoriesCode);
+  };
 
-  const searchNews = () => {
+  const searchNews = (str?: string) => {
+    const identifier = str ? str : identifiers;
     const searchPayload = {
-      identifiers,
+      identifiers: identifier,
       language,
-      timeFilter
+      timeFilter,
+      categories
     };
     dispatch(fetchNewList(searchPayload));
   };
 
   return (
     <>
+      {identifiers}
       <Intro />
       <Search
         openKeywordList={openKeywordList}
         setLanguageCode={setLanguageCode}
         setTimeFilterCode={setTimeFilterCode}
         setIdentifiersString={setIdentifiersString}
+        setCategoriesCode={setCategoriesCode}
         searchNews={searchNews}
       />
       {isOpendKeywordList && (
-        <KeywordSelectContainer selectKeyword={setIdentifiersString} />
+        <KeywordSelectContainer
+          setIdentifiersString={setIdentifiersString}
+          searchNews={searchNews}
+          setIdentifiers={setIdentifiers}
+        />
       )}
     </>
   );

@@ -7,7 +7,9 @@ type Props = {
   selectedSectorList: string[];
   startupData: string[];
   categoryData: string[];
-  selectKeyword: (arg: string) => void;
+  setIdentifiersString: (arg: string) => void;
+  searchNews: (str: string) => void;
+  setIdentifiers: (arg: string) => void;
 };
 
 type Title = "Category" | "Sector" | "Startup";
@@ -18,7 +20,9 @@ const KeywordSelect = ({
   selectedSectorList,
   startupData,
   categoryData,
-  selectKeyword
+  setIdentifiersString,
+  searchNews,
+  setIdentifiers
 }: Props) => {
   const [keywordTitle, setKeywordTitle] = useState<Title>("Sector");
 
@@ -26,6 +30,10 @@ const KeywordSelect = ({
 
   const setTitle = (title: Title) => {
     setKeywordTitle(title);
+  };
+
+  const fetchNewsApi = (identifier: string) => {
+    searchNews(identifier);
   };
 
   return (
@@ -60,8 +68,15 @@ const KeywordSelect = ({
             </ul>
           </CategoryList>
           <KeywordListWrap>
-            {selectedSectorList.map(keywordItem => (
-              <KeywordListItem key={keywordItem}>{keywordItem}</KeywordListItem>
+            {selectedSectorList.map(item => (
+              <KeywordListItem
+                key={item}
+                onClick={() => {
+                  fetchNewsApi(item);
+                }}
+              >
+                {item}
+              </KeywordListItem>
             ))}
           </KeywordListWrap>
         </KeywordListContainer>
@@ -71,7 +86,14 @@ const KeywordSelect = ({
           <StartupKeywordList>
             <ul>
               {startupData.map(item => (
-                <li key={`Startup-${item}`}>{item}</li>
+                <li
+                  key={`Startup-${item}`}
+                  onClick={() => {
+                    fetchNewsApi(item);
+                  }}
+                >
+                  {item}
+                </li>
               ))}
             </ul>
           </StartupKeywordList>
@@ -85,7 +107,7 @@ const KeywordSelect = ({
                 <li
                   key={`Category-${item}`}
                   onClick={() => {
-                    selectKeyword(item);
+                    fetchNewsApi(item);
                   }}
                 >
                   {item}

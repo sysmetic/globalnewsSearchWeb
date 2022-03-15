@@ -1,15 +1,13 @@
 import styled from "@emotion/styled";
 import CommonContainer from "../../layout/CommonContainer";
 import NewsTabList from "./NewsTabList";
-import KeywordSearchForm from "../../../containers/home/SearchContainer";
+// import KeywordSearchForm from "../../../containers/home/SearchContainer";
 
 const PersonalizeNav = () => {
   return (
     <Wrap>
       <CommonContainer>
-        <div className="pt-31">
-          <KeywordSearchForm />
-        </div>
+        <div className="pt-31">{/* <KeywordSearchForm /> */}</div>
         <NewsTabList />
       </CommonContainer>
     </Wrap>

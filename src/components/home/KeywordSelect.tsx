@@ -9,7 +9,6 @@ type Props = {
   categoryData: string[];
   setIdentifiersString: (arg: string) => void;
   searchNews: (str: string) => void;
-  setIdentifiers: (arg: string) => void;
 };
 
 type Title = "Category" | "Sector" | "Startup";
@@ -21,8 +20,7 @@ const KeywordSelect = ({
   startupData,
   categoryData,
   setIdentifiersString,
-  searchNews,
-  setIdentifiers
+  searchNews
 }: Props) => {
   const [keywordTitle, setKeywordTitle] = useState<Title>("Sector");
 

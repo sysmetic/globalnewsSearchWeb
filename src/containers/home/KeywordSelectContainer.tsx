@@ -11,13 +11,11 @@ type sectorKeywordType = {
 type Props = {
   setIdentifiersString: (arg: string) => void;
   searchNews: (str: string) => void;
-  setIdentifiers: (arg: string) => void;
 };
 
 const KeywordSelectContainer = ({
   setIdentifiersString,
-  searchNews,
-  setIdentifiers
+  searchNews
 }: Props) => {
   const [sectorKeyword] = useState<sectorKeywordType>(sector);
   const [selectedKey, setSelectedKey] = useState<string>("A");
@@ -41,7 +39,6 @@ const KeywordSelectContainer = ({
       categoryData={category.category}
       setIdentifiersString={setIdentifiersString}
       searchNews={searchNews}
-      setIdentifiers={setIdentifiers}
     />
   );
 };

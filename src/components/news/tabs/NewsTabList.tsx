@@ -1,45 +1,48 @@
 import styled from "@emotion/styled";
-// import NewsTab from "./NewsTab";
-import React, { useState, DragEvent } from "react";
-import { useNewsList } from "../hooks/useNewsList";
-
+import React, { useState, DragEvent  } from "react";
+import { useNewsList } from "./../hooks/useNewsList";
 const NewsTabList = () => {
   const { userSavedKeywords } = useNewsList();
   const [keywordList, setKeywordlist] = React.useState(userSavedKeywords);
   const [start, setStart] = useState<any>(null); //시작 위치
   const [currentTab, setCurrentTab] = useState(0);
+
   return (
-    <TabList>
-      {keywordList.map((list, index) => (
-        <li
-          key={index}
-          data-position={index}
-          draggable
-          onDragOver={dragOver}
-          onDragStart={dragstart}
-          onDragEnd={dragEnd}
-          onDrop={drop}
-          className={currentTab === index ? "keywordTab focused" : "keywordTab"}
-          onClick={() => selectMenuHandler(index)}
-        >
-          {list.title}
-        </li>
-      ))}
-      <TabAddBtn role="button">
-        <i>+</i>키워드 추가
-      </TabAddBtn>
-    </TabList>
+    <Wrap>
+      <TabList>
+        {keywordList.map((list:any, index:number) => (
+          <li
+            key={index}
+            data-position={index}
+            draggable
+            onDragOver={dragOver}
+            onDragStart={dragstart}
+            onDragEnd={dragEnd}
+            onDrop={drop}
+            className={
+              currentTab === index ? "keywordTab focused" : "keywordTab"
+            }
+            onClick={() => selectMenuHandler(index)}
+          >
+            {list.title}
+          </li>
+        ))}
+        <TabAddBtn role="button">
+          <i>+</i>키워드 추가
+        </TabAddBtn>
+      </TabList>
+    </Wrap>
   );
 
   function selectMenuHandler(index: number) {
     setCurrentTab(index);
   }
 
-  function dragOver(e: DragEvent<HTMLLIElement>) {
+  function dragOver(e: any) {
     e.preventDefault();
   }
 
-  function dragstart(e: DragEvent<HTMLLIElement>) {
+  function dragstart(e: any) {
     const target = e.target as HTMLElement;
     setStart(target);
     console.log(target);
@@ -48,13 +51,13 @@ const NewsTabList = () => {
     e.dataTransfer.setData("text/html", `${target}`);
   }
 
-  function dragEnd(e: DragEvent<HTMLLIElement>) {
+  function dragEnd(e: any) {
     const target = e.target as HTMLElement;
     target.classList.remove("grabbing");
     e.dataTransfer.dropEffect = "move"; //drag effeect
   }
 
-  function drop(e: DragEvent<HTMLLIElement>) {
+  function drop(e: any) {
     const target = e.target as HTMLElement;
     target.classList.remove("grabbing");
     target.classList.toggle("active");
@@ -73,37 +76,16 @@ const NewsTabList = () => {
 };
 
 export default NewsTabList;
-const TabAddBtn = styled.li`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  outline: none;
-  border: none;
-  font-family: NotoSans-Display;
-  font-size: 16px;
-  padding: 10px 32px 10px 20px;
-  background-color: rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  cursor: pointer;
-  i {
-    width: 40px;
-    height: 40px;
-    background-image: url("/images/icon-Add.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    border-radius: 0 4px 0 0;
-    font-size: 0;
-  }
-`;
+
+const Wrap = styled.div``;
 
 const TabList = styled.ul`
   display: flex;
-  padding-top: 80px;
   text-decoration: none;
   .keywordTab {
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 60px;
     padding: 19px 30px;
     box-sizing: border-box;
     font-size: 16px;
@@ -128,5 +110,28 @@ const TabList = styled.ul`
     &.focused {
       background-color: ${props => props.theme.BlueGreenColor};
     }
+  }
+`;
+
+const TabAddBtn = styled.li`
+  display: flex;
+  align-items: center;
+  height: 60px;
+  outline: none;
+  border: none;
+  font-family: NotoSans-Display;
+  font-size: 16px;
+  padding: 10px 32px 10px 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  cursor: pointer;
+  i {
+    width: 40px;
+    height: 40px;
+    background-image: url("images/icon-Add.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 0 4px 0 0;
+    font-size: 0;
   }
 `;

@@ -33,14 +33,14 @@ const Feautres = styled.div`
     .bookmark {
       width: 40px;
       height: 100%;
-      background-image: url("/images/icon-Bookmark-outline.svg");
+      background-image: url("images/icon-Bookmark-outline.svg");
       background-size: cover;
       background-repeat: no-repeat;
     }
     .share {
       width: 40px;
       height: 100%;
-      background-image: url("/images/icon-Share-outline.svg");
+      background-image: url("images/icon-Share-outline.svg");
       background-size: cover;
       background-repeat: no-repeat;
     }

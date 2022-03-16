@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import React, { useState, DragEvent } from "react";
 
 interface Props {
   title: string;

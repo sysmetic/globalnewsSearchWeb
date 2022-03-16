@@ -1,35 +1,61 @@
 import styled from "@emotion/styled";
 import { SearchFilterItem } from "./SearchFilterItem";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useEffect } from "react";
+import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
+import { useTimeFilter } from "../../hooks/useTimeFilter";
+import { useCategories } from "../../hooks/useCategories";
 
-export type filterItem = {
+type Props = {
+  openKeywordList: (arg: boolean) => void;
+  setLanguageCode: (arg: string) => void;
+  setTimeFilterCode: (arg: string) => void;
+  setIdentifiersString: (arg: string) => void;
+  setCategoriesCode: (arg: string) => void;
+  searchNews: (str?: string) => void;
+};
+export type FilterItemType = {
   label: string;
   defaultValue: string;
   list: string[];
 };
 
-type Props = {
-  openKeywordList: (arg: boolean) => void;
-};
-
-const Search = ({ openKeywordList }: Props) => {
+const Search = ({
+  openKeywordList,
+  setLanguageCode,
+  setTimeFilterCode,
+  setIdentifiersString,
+  setCategoriesCode,
+  searchNews
+}: Props) => {
   const [openIndex, setOpen] = useState<null | number>(null);
-  const filterListArr: Array<filterItem> = [
+  const [focused, setFocused] = useState<boolean>(false);
+  const [inputText, setInputText] = useState(" ");
+
+  const languageCode = useFetchLanguageCode();
+  const languageName = languageCode.languages.map(obj => obj.name);
+
+  const timeFilterArr = useTimeFilter();
+  const timeFilterName = timeFilterArr.map(obj => obj.name);
+
+  const categoriesArr = useCategories();
+  const categoriesName = categoriesArr.map(obj => obj.name);
+
+  const filterListArr: Array<FilterItemType> = [
     {
       label: "언론사",
-      defaultValue: "언론사이름",
-      list: []
+      defaultValue: "ALL",
+      list: categoriesName
     },
     {
       label: "발행일",
-      defaultValue: "5분",
-      list: ["5분", "15분", "1시간", "하루", "1주일", "한달"]
+      defaultValue: "mth1",
+      list: timeFilterName
     },
     {
       label: "언어",
       defaultValue: "영어",
-      list: ["영어", "한국어", "일본어", "중국어", "덴마크어", "그리스어"]
+      list: languageName
     },
     {
       label: "새로고침 속도",
@@ -50,6 +76,45 @@ const Search = ({ openKeywordList }: Props) => {
     setOpen(null);
   };
 
+  const setLanguage = (langName: string) => {
+    const langItem = languageCode.languages.find(
+      item => item.name === langName
+    );
+    if (!langItem) {
+      return;
+    }
+    setLanguageCode(langItem.code);
+  };
+
+  const setTimeFilter = (timeName: string) => {
+    const timeFilterItem = timeFilterArr.find(item => item.name === timeName);
+    if (!timeFilterItem) {
+      return;
+    }
+    setTimeFilterCode(timeFilterItem.time_code);
+  };
+
+  const setCategories = (categorieName: string) => {
+    const categoriesItem = categoriesArr.find(
+      item => item.name === categorieName
+    );
+    if (!categoriesItem) {
+      return;
+    }
+    setCategoriesCode(categoriesItem.code);
+  };
+
+  const onEnterPress = (e: React.KeyboardEvent) => {
+    setIdentifiersString(inputText);
+    if (e.code === "Enter") {
+      e.preventDefault();
+      searchNews();
+    }
+  };
+  const changeInputText = (value: SetStateAction<string>) => {
+    setInputText(value);
+  };
+
   useEffect(() => {
     document.body.addEventListener("click", closeAll);
     return () => {
@@ -66,23 +131,34 @@ const Search = ({ openKeywordList }: Props) => {
         <form>
           <SearchFilterSelectWrap>
             <Legend>뉴스 키워드 검색</Legend>
-            {filterListArr.map((item, index) => {
-              return (
-                <SearchFilterItem
-                  key={item.label}
-                  filterItem={item}
-                  index={index}
-                  isOpen={openIndex === index}
-                  openFilterList={openFilterList}
-                />
-              );
-            })}
-            <SearchBox>
+            {filterListArr.map((item, index) => (
+              <SearchFilterItem
+                key={item.label}
+                filterItem={item}
+                index={index}
+                isOpen={openIndex === index}
+                openFilterList={openFilterList}
+                filterList={item.list}
+                setLanguage={setLanguage}
+                setTimeFilter={setTimeFilter}
+                setCategories={setCategories}
+              />
+            ))}
+            <SearchBox
+              focused={focused}
+              onFocus={() => {
+                setFocused(true);
+              }}
+            >
               <input
                 type="text"
                 onFocus={() => {
                   openKeywordList(true);
                 }}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  changeInputText(e.target.value)
+                }
+                onKeyDown={onEnterPress}
                 placeholder="AAPL, MSFT, 005930, Gold, Oil, DJIA, Nikkei eg... "
               />
             </SearchBox>
@@ -95,7 +171,7 @@ const Search = ({ openKeywordList }: Props) => {
 
 export default Search;
 
-const SearchArea = styled.div`
+export const SearchArea = styled.div`
   & > div:nth-of-type(1) {
     display: flex;
     justify-content: end;
@@ -121,18 +197,25 @@ const SearchWarp = styled.div`
   box-sizing: border-box;
   width: 1240px;
   height: 120px;
-  margin: 20px 0 0;
+  margin: 32px 0 0;
   padding: 26px 76.1px 24px 0;
   border-radius: 5px;
   border: solid 1px #f1f1f1;
   background-color: #fff;
 `;
 
-const SearchBox = styled.div`
+type SearchBoxProps = {
+  focused: boolean;
+};
+
+const SearchBox = styled.div<SearchBoxProps>`
   margin-left: 28px;
   display: flex;
   align-items: center;
-  background: url("images/search.svg") no-repeat 4.5%;
+  background: ${({ focused }) =>
+      focused ? "url(images/search-focused.svg)" : "url(images/search.svg)"}
+    no-repeat 4.5%;
+  transition: background 0.3s ease;
   input {
     height: 50px;
     font-size: 18px;

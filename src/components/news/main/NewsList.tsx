@@ -24,4 +24,6 @@ const NewsList = () => {
 
 export default NewsList;
 
-const ViewFilter = styled.div``;
+const ViewFilter = styled.div`
+  min-height: 500px;
+`;

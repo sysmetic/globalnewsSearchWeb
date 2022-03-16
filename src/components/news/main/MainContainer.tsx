@@ -1,7 +1,7 @@
 import React from "react";
 import NewsList from "./NewsList";
 import Options from "./options";
-// import { useAppSelector, useAppDispatch } from "./../../../redux/hooks";
+import styled from "@emotion/styled";
 
 const MainContainer = () => {
   // const tabList = arr.filter(keyword => keyword === "일치");
@@ -23,3 +23,4 @@ const MainContainer = () => {
 };
 
 export default MainContainer;
+

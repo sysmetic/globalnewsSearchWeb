@@ -125,7 +125,10 @@ const Search = ({
   return (
     <SearchArea>
       <div>
-        <KeywordSearchButton>키워드 전체보기</KeywordSearchButton>
+        <KeywordSearchButton>
+          키워드 전체보기
+          <i className="icon-keyword"></i>
+        </KeywordSearchButton>
       </div>
       <SearchWarp>
         <form>
@@ -181,7 +184,22 @@ export const SearchArea = styled.div`
 const KeywordSearchButton = styled.button`
   border: none;
   background: none;
-  color: #515151;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #48c0b7;
+  cursor: pointer;
+  .icon-keyword {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 7px;
+    background-repeat: no-repeat;
+    background-image: url("images/keyword-arrow.svg");
+    background-size: contain;
+  }
 `;
 
 const Legend = styled.legend`

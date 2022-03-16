@@ -7,7 +7,7 @@ import HeaderModal from "./HeaderModal";
 
 const GlobalHeader = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  
+
   function viewModal(event: MouseEvent<HTMLElement>) {
     setIsActive(!isActive);
   }
@@ -53,7 +53,7 @@ const GlobalHeader = () => {
 export default GlobalHeader;
 
 const Wrap = styled.header`
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;

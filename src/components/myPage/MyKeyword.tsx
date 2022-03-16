@@ -25,7 +25,7 @@ const KeywordsWarp = styled.div`
   }
 `
 
-const Keywords = styled.div`
+const Keywords = styled.button`
   display: inline-block;
   padding: 12px 40px 16px;
   border: solid 1px #48c0b7;
@@ -36,4 +36,5 @@ const Keywords = styled.div`
   font-weight: 600;
   line-height: 30px;
   margin-right: 20px;
+  cursor: pointer;
 `

@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
 import { useCategories } from "../../hooks/useCategories";
+import Modal from "../edit/Modal"
+import EditContainer from "../edit/EditContainer"
 
 type Props = {
   openKeywordList: (arg: boolean) => void;
@@ -122,10 +124,20 @@ const Search = ({
     };
   });
 
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  
+  const handleOpen = () => setIsOpen(true)
+  const handleClose = () => setIsOpen(false)
+
   return (
     <SearchArea>
       <div>
-        <KeywordSearchButton>키워드 전체보기</KeywordSearchButton>
+        <KeywordSearchButton onClick={handleOpen}>키워드 전체보기</KeywordSearchButton>
+        <Modal isOpen={isOpen} onClose={handleClose}>
+          <ModalBody>
+            <EditContainer/>
+          </ModalBody>
+        </Modal>
       </div>
       <SearchWarp>
         <form>
@@ -182,6 +194,7 @@ const KeywordSearchButton = styled.button`
   border: none;
   background: none;
   color: #515151;
+  cursor: pointer;
 `;
 
 const Legend = styled.legend`
@@ -224,4 +237,15 @@ const SearchBox = styled.div<SearchBoxProps>`
     border: none;
     outline: none;
   }
+`;
+
+const ModalBody = styled.div`
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+  max-height: calc(100vh - 16px);
+  overflow: hidden auto;
+  position: relative;
+  padding-block: 12px;
+  padding-inline: 24px;
 `;

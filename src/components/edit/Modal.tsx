@@ -30,7 +30,7 @@ const Overlay = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: scroll;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +46,7 @@ const Dim = styled.div`
 `
 
 const Container = styled.div`
-  max-width: 456px;
+  max-width: 1300px;
   position: relative;
   width: 100%;
 `

@@ -4,8 +4,16 @@ import  SideNav  from "./SideNav"
 import  MembershipCard  from "./MembershipCard"  
 import  PaymentsCard  from "./PaymentsCard"  
 import MyKeyword  from "./MyKeyword"  
+import Modal from "../edit/Modal";
+import EditContainer from "../edit/EditContainer";
+import { useState } from "react";
 
 const MyPage = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  
+  const handleOpen = () => setIsOpen(true)
+  const handleClose = () => setIsOpen(false)
+
   return (
   <Wrap>
     <Container>
@@ -23,7 +31,12 @@ const MyPage = () => {
             <PaymentsCard/>
           </ContTop>
           <MyKeyword/>
-          <EditKeywords>키워드 편집<img src="../images/icon-navi-bottom.svg" alt="키워드 편집" /></EditKeywords>
+          <EditKeywords onClick={handleOpen}>키워드 편집<img src="../images/icon-navi-bottom.svg" alt="키워드 편집" /></EditKeywords>
+          <Modal isOpen={isOpen} onClose={handleClose}>
+          <ModalBody>
+            <EditContainer/>
+          </ModalBody>
+        </Modal>
         </ContContainer>
       </Content>
     </Container>
@@ -64,7 +77,9 @@ const Content = styled.div`
   position: relative;
 `
 
-const EditKeywords = styled.div`
+const EditKeywords = styled.button`
+  border: 0;
+  background-color: inherit;
   font-weight: 500;
   font-size: 16px;
   line-height: 30px;
@@ -73,6 +88,7 @@ const EditKeywords = styled.div`
   position: absolute;
   bottom: 75px;
   right: 0;
+  cursor: pointer;
   img {
     transform: rotate(-90deg);
     margin-bottom: -14px;
@@ -92,3 +108,14 @@ const SideBar = styled.div`
     margin-bottom: 20px;
   }
 `
+
+const ModalBody = styled.div`
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+  max-height: calc(100vh - 16px);
+  overflow: hidden auto;
+  position: relative;
+  padding-block: 12px;
+  padding-inline: 24px;
+`;

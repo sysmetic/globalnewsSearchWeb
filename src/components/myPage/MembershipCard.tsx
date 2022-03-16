@@ -51,7 +51,8 @@ const CardCont = styled.div`
   }
 `
 
-const CardBtn = styled.div`
+const CardBtn = styled.button`
+  border: 0;
   width: 99px;
   height: 37px;
   border-radius: 5px;
@@ -61,4 +62,5 @@ const CardBtn = styled.div`
   margin-left: 263px;
   line-height: 2.2;
   text-align: center;
+  cursor: pointer;
 `

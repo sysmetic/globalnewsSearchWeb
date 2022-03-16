@@ -47,7 +47,7 @@ const Profic = styled.div`
   margin-left: 70px;
   margin-bottom: 28px;
 `
-const EditBtn = styled.div`
+const EditBtn = styled.button`
   width: 118px;
   height: 37px;
   border-radius: 5px;
@@ -55,9 +55,10 @@ const EditBtn = styled.div`
   color: #48c0b7;
   text-align: center;
   line-height: 2.3;
-  margin-left: 43px;
+  background-color: inherit;
   margin-bottom: 36px;
   margin-top: 33px;
+  cursor: pointer;
 `
 const BottomLine = styled.div`
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);

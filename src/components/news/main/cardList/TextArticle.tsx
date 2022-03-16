@@ -38,8 +38,8 @@ const TextArticle = ({
         <div className="logo">
           <img src={`${newsSource.imageUrl}`} alt="기사1" />
           {newsSource.brandName}
+          <div className="article-time">{changeMoment(publishTime)}</div>
         </div>
-        <div className="article-time">{changeMoment(publishTime)}</div>
         <i className="nav-btn" role="button" onClick={showContent}>
           미리 보기
         </i>
@@ -55,6 +55,7 @@ export default TextArticle;
 
 const Wrap = styled.article`
   width: 100%;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.05);
 `;
 
 const Title = styled.h2`
@@ -109,6 +110,7 @@ const ArticleFooter = styled.footer`
     text-align: left;
     color: #313131;
     margin-right: 70px;
+    margin-left: 28px;
   }
   .nav-btn {
     position: absolute;

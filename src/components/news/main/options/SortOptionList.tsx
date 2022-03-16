@@ -1,34 +1,31 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
 import { MouseEvent } from "react";
-import { useNewsFilter } from './../../hooks/useNewsFilter';
-const options: string[] = ["top" ,"latest" , "populer"];
+import { useNewsFilter } from "./../../hooks/useNewsFilter";
+import { useNewsSorts } from "./../../hooks/useNewsSorts";
+
+const options: string[] = ["정렬순", "최신순", "인기순"];
 
 interface Props {
   newsCurOption: String;
   setNewsCurOption: React.Dispatch<React.SetStateAction<String>>;
 }
 
-const SortOptionList = ({ newsCurOption, setNewsCurOption }: Props) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-
+const SortOptionList = () => {
+  
   const { reportOptionToAPI } = useNewsFilter();
-
-  function showDropDown(option: string) {
-    setNewsCurOption(option);
-    setIsActive(!isActive);
-  }
+  const { showDropDown, newsCurOption, isActive, setIsActive } = useNewsSorts();
   return (
     <ListWrap>
       <DropDownBtn onClick={(e: MouseEvent) => setIsActive(!isActive)}>
         {newsCurOption}
-        <i className='nav-bottom'></i>
+        <i className="nav-bottom"></i>
       </DropDownBtn>
       <DropDownList>
         {isActive &&
-          options.map((option) => (
+          options.map(option => (
             <li
-              className='dropdown-item'
+              className="dropdown-item"
               onClick={(e: MouseEvent) => {
                 showDropDown(option);
                 reportOptionToAPI(option);

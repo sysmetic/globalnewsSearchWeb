@@ -26,6 +26,7 @@ const Feautres = styled.div`
     color: white;
     border: none;
     outline: none;
+    border-radius: 3px;
   }
   div {
     display: flex;
@@ -36,6 +37,7 @@ const Feautres = styled.div`
       background-image: url("images/icon-Bookmark-outline.svg");
       background-size: cover;
       background-repeat: no-repeat;
+      cursor: pointer;
     }
     .share {
       width: 40px;
@@ -43,6 +45,7 @@ const Feautres = styled.div`
       background-image: url("images/icon-Share-outline.svg");
       background-size: cover;
       background-repeat: no-repeat;
+      cursor: pointer;
     }
   }
 `;

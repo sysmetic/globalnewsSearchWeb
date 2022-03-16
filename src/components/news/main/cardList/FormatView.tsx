@@ -4,7 +4,7 @@ import CommonContainer from "../../../layout/CommonContainer";
 import TextArticleList from "./TextArticleList";
 import ImageArticleList from "./ImageArticleList";
 import { useNewsFormats } from "./../../hooks/useNewsFormat";
-
+// 이미지 형식 텍스트 형식으로 기사를 전환시킵니다
 const FormatView = () => {
   const { NewsFormats } = useNewsFormats();
   useEffect(() => {}, []);

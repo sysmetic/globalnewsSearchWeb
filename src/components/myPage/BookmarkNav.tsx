@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 import {Link} from "react-router-dom";
 
@@ -16,7 +17,8 @@ const BookmarkNav = () => {
 export default BookmarkNav;
 
 const Wrap = styled.ul`
-padding-bottom: 345px;
+/* padding-bottom: 345px; */
+height: 640px;
 color: rgba(255, 255, 255, 0.6);
   h2 {
     font-size: 22px;
@@ -41,9 +43,13 @@ color: rgba(255, 255, 255, 0.6);
 
   .on {
     background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
   }
   .on::before {
     content: '';
+    position: absolute;
+    height: 100%;
+    top: 0;
     border-left: 5px solid #48c0b7;
   }
   .on div {
@@ -64,7 +70,7 @@ const Counts = styled.div`
   margin-top: 20px;
   margin-left: 50px;
 
-`
+` 
 const NewFolderBtn = styled.div`
   width: 259px;
   font-weight: 600;

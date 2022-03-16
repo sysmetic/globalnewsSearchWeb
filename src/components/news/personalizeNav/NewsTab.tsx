@@ -1,16 +1,19 @@
 import styled from "@emotion/styled";
+import React, { useState, DragEvent } from "react";
 
-const KeywordTab = () => {
+interface Props {
+  title: string;
+}
+
+const NewsTab = ({ title }: Props) => {
   return (
-    <div>
-      <Wrap>
-        <KeywordItem>Buy Now Pay Later</KeywordItem>
-      </Wrap>
-    </div>
+    <Wrap>
+      <KeywordItem>{title}</KeywordItem>
+    </Wrap>
   );
 };
 
-export default KeywordTab;
+export default NewsTab;
 
 const Wrap = styled.div`
   height: 100%;

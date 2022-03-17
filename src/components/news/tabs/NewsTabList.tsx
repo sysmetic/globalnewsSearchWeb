@@ -14,7 +14,7 @@ const NewsTabList = () => {
   return (
     <Wrap>
       <TabList>
-        {keywordList.map((list: any, index: number) => (
+        {keywordList.map((list: string, index: number) => (
           <li
             key={index}
             data-position={index}
@@ -28,7 +28,7 @@ const NewsTabList = () => {
             }
             onClick={() => selectMenuHandler(index)}
           >
-            {list.title}
+            {list}
           </li>
         ))}
         <TabAddBtn role="button">

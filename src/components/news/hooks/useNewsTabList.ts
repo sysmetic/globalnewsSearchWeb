@@ -1,18 +1,21 @@
 import React from "react";
 import type { RootState } from "../../../redux/store";
 import { useState } from "react";
-import { useNewsList } from "./../hooks/useNewsList";
-//이미지,텍스트 필터와 인기순 최신순 정렬을 필터
-
+import { useAppSelector } from "../../../redux/hooks";
+import { useSearch } from "../../../hooks/useSearch";
+import { useNewsTabSearch } from "./useNewsTabSearch";
 export const useNewsTabList = () => {
-  const { userSavedKeywords } = useNewsList();
-  const [keywordList, setKeywordlist] = React.useState(userSavedKeywords);
+  const dataList = useAppSelector(state => state.keywords.myKeywords)
+  const [keywordList, setKeywordlist] = React.useState(dataList);
   const [start, setStart] = useState<any>(null); //시작 위치
   const [currentTab, setCurrentTab] = useState(0);
-
+   const {searchTabKeywordNews}=useNewsTabSearch()
   function selectMenuHandler(index: number) {
     setCurrentTab(index);
+    searchTabKeywordNews(keywordList[currentTab])  
   }
+  console.log(keywordList[currentTab])
+
 
   function dragOver(e: any) {
     e.preventDefault();

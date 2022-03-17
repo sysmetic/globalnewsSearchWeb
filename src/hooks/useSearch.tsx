@@ -30,7 +30,7 @@ export const useSearch = () => {
     setCategories(categoriesCode);
   };
 
-  const searchNews = (searchTitle?: SearchTitleType, str?: string) => {
+  const searchNews = (searchTitle?: SearchTitleType | string, str?: string) => {
     const identifier = str ? str : identifiers;
     if (str) {
       CameltoCababString(str);
@@ -52,6 +52,12 @@ export const useSearch = () => {
     setLanguageCode,
     setTimeFilterCode,
     setCategoriesCode,
-    searchNews
+    searchNews,
+
+    //민지님 제가 쓰려는 데이터입니다 안건드려주셔도 됩니당
+    timeFilter,
+    language,
+    identifiers,
+    categories,
   };
 };

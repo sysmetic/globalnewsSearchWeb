@@ -8,7 +8,6 @@ const MykeyWordArea = () => {
   const myKeywords = useAppSelector(
     (state: RootState) => state.keywords
   );
-  console.log(myKeywords);
 
   const [edited, setEdited] = useState(false)
   

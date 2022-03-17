@@ -127,7 +127,6 @@ const TabAddBtn = styled.li`
 
 const ModalBody = styled.div`
   border-radius: 5px;
-  background-color: #fff;
   max-height: calc(100vh - 16px);
   overflow: hidden auto;
   position: relative;

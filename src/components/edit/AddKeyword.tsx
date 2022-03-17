@@ -1,18 +1,17 @@
 import styled from "@emotion/styled";
 import CommonContainer from "../layout/CommonContainer";
 import KeywordItem from "./KeywordItem";
-import MykeyWordArea from "./MykeyWordArea";
 import { useKeywordList } from "../../hooks/useKeywordList";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useState } from "react";
 import { RootState } from "../../redux/store";
+
 
 const AddKeyword = () => {
   const keywordList = useKeywordList();
   const myKeywords = useAppSelector(
     (state: RootState) => state.keywords
   );
-  console.log(myKeywords);
 
   return (
     <Wrap>
@@ -59,6 +58,10 @@ const KeyWordSearch = styled.div`
     padding: 11px 0 10px 16px;
     background-color: rgba(72, 192, 183, 0.05);
   }
+  input:focus {
+    outline: none;
+  }
+
 `
 export const KeyWordTitle = styled.h5`
   font-weight: 500;
@@ -75,3 +78,6 @@ const MyKeywordInner = styled.div`
   margin-right: 10px;
   padding-top: 16px;
 `;
+function addKeyword(item: string): any {
+  throw new Error("Function not implemented.");
+}

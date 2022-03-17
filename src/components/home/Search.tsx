@@ -278,6 +278,10 @@ const KeywordSearchButton = styled.button`
     background-image: url("images/keyword-arrow.svg");
     background-size: contain;
   }
+  a {
+    text-decoration: none;
+    color: #48c0b7;
+  }
 `;
 
 const Legend = styled.legend`

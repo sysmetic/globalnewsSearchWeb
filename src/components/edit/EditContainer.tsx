@@ -14,11 +14,11 @@ const EditContainer = () => {
         <KeyWordTitle>My Keyword</KeyWordTitle>
         <MykeyWordArea />
         <KeywordListWrap>
-          {keywordList.map(item => (
-            <KeywordList>
+          {keywordList.map((item, index) => (
+            <KeywordList key={index}>
               <SubTitle>{item.title}</SubTitle>
-              {item.data.map((item) => (
-                <KeywordItem item={item}/>
+              {item.data.map((item,index) => (
+                <KeywordItem item={item} key={`mykeyword-${item}-${index}`}/>
               ))}
             </KeywordList>
           ))}

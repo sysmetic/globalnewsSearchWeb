@@ -17,12 +17,14 @@ type NewsListState = {
   newListData: NewsType[];
   loading: boolean;
   error: any;
+  nextPageToken?:string | undefined
 };
 
 const initialState: NewsListState = {
   newListData: [],
   loading: false,
-  error: null
+  error: null,
+  nextPageToken:""
 };
 
 const NewsListSlice = createSlice({
@@ -39,6 +41,7 @@ const NewsListSlice = createSlice({
     builder.addCase(fetchNewList.fulfilled, (state, action) => {
       console.log(action);
       state.loading = false;
+      state.nextPageToken=action.payload.nextPageToken || "" 
       state.newListData.push(...state.newListData, ...action.payload.stories);
     });
 

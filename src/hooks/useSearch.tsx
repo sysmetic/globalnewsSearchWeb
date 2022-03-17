@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchTitleType } from "../api/newsListApi";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch,useAppSelector} from "../redux/hooks";
 import { fetchNewList } from "../redux/news/newsListSlice";
 
 export const useSearch = () => {
@@ -13,7 +13,7 @@ export const useSearch = () => {
   const [timeFilter, setTimeFilter] = useState("m5");
   const [categories, setCategories] = useState("mp,op,r");
   const [identifiers, setIdentifiers] = useState("");
-
+  const {nextPageToken}=useAppSelector(state => state.newsList)
   function openKeywordList(isOpend: boolean) {
     setIsOpendKeywordList(isOpend);
   }
@@ -38,7 +38,8 @@ export const useSearch = () => {
       identifiers: identifier,
       language,
       timeFilter,
-      categories
+      categories,
+      nextPageToken:nextPageToken,
     };
     dispatch(fetchNewList(searchPayload));
     navigate("/news");

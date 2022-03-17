@@ -7931,6 +7931,18 @@
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.10.tgz"
   "version" "6.0.10"
 
+"react-infinite-scroll-hook@^4.0.2":
+  "integrity" "sha512-/2/Qqq3N2EhavXEs7cK++TMvpEGTqUobmWwA+7qQZiMigs5QdEYqT4MtH37lxxod5pKTJvunkA+vSX8oIjryNw=="
+  "resolved" "https://registry.npmjs.org/react-infinite-scroll-hook/-/react-infinite-scroll-hook-4.0.2.tgz"
+  "version" "4.0.2"
+  dependencies:
+    "react-intersection-observer-hook" "^2.0.3"
+
+"react-intersection-observer-hook@^2.0.3":
+  "integrity" "sha512-6LcrY/oUtZqn7HbwLTgSk43/KdZD5LZJsWUOwQB11aMPi3OkjyDcm2dwAQ1ydlbrSDlL4fHUNXisNt4B470UJg=="
+  "resolved" "https://registry.npmjs.org/react-intersection-observer-hook/-/react-intersection-observer-hook-2.0.3.tgz"
+  "version" "2.0.3"
+
 "react-intersection-observer@^8.33.1":
   "integrity" "sha512-3v+qaJvp3D1MlGHyM+KISVg/CMhPiOlO6FgPHcluqHkx4YFCLuyXNlQ/LE6UkbODXlQcLOppfX6UMxCEkUhDLw=="
   "resolved" "https://registry.npmjs.org/react-intersection-observer/-/react-intersection-observer-8.33.1.tgz"

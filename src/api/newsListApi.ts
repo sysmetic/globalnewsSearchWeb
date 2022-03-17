@@ -57,7 +57,7 @@ export async function getNewList(searchPayload: SearchPayload) {
     access_token:
       "ea67d29c683a69e808a26cc6dc5a1445df84876e9e2d7aaf3d6f084210dce775"
   };
-  const NEWS_API_URL = "https://api.cityfalcon.com/v0.2/stories?";
+  const NEWS_API_URL = "https://api.cityfalcon.com/v0.2/stories?limit=10";
   const response = await axios.get(NEWS_API_URL, {
     params: {
       identifier_type: payload.identifier_type,

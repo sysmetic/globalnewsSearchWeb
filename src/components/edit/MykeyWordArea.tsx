@@ -5,14 +5,14 @@ import KeywordItem from "./KeywordItem";
 
 const MykeyWordArea = () => {
   const myKeywords = useAppSelector(
-    (state: RootState) => state.keywords.myKeywords
+    (state: RootState) => state.keywords
   );
   console.log(myKeywords);
   return (
     <Wrap>
       <MyKeywordInner>
         {myKeywords.map(item => (
-          <KeywordItem key={`mykeyword-${item}`} item={item} />
+          <KeywordItem key={`mykeyword-${item}`} item={item.data}/>
         ))}
       </MyKeywordInner>
       <EditButton>편집</EditButton>

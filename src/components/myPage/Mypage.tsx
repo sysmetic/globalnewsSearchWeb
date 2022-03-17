@@ -53,7 +53,6 @@ const Wrap = styled.div`
 const Container = styled.div`
   width: 1240px;
   margin: 0 auto;
-  background-color: #f9faff;
 `
 const SideContainer = styled.div`
   background-color: #144056;

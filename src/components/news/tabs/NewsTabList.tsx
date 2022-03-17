@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 import { useNewsTabList } from "../hooks/useNewsTabList";
+import EditContainer from "../../edit/EditContainer";
+import Modal from "../../edit/Modal";
 
 const NewsTabList = () => {
   const {
@@ -11,6 +14,11 @@ const NewsTabList = () => {
     dragEnd,
     drop
   } = useNewsTabList();
+  
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  
+  const handleOpen = () => setIsOpen(true)
+  const handleClose = () => setIsOpen(false)
   return (
     <Wrap>
       <TabList>
@@ -31,11 +39,16 @@ const NewsTabList = () => {
             {list.title}
           </li>
         ))}
-        <TabAddBtn role="button">
+        <TabAddBtn role="button" onClick={handleOpen}>
           <i>+</i>
           <span>키워드 추가</span>
         </TabAddBtn>
       </TabList>
+      <Modal isOpen={isOpen} onClose={handleClose}>
+          <ModalBody>
+            <EditContainer/>
+          </ModalBody>
+        </Modal>
     </Wrap>
   );
 };
@@ -108,4 +121,15 @@ const TabAddBtn = styled.li`
     font-size: 0;
     box-sizing: border-box;
   }
+`;
+
+const ModalBody = styled.div`
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+  max-height: calc(100vh - 16px);
+  overflow: hidden auto;
+  position: relative;
+  padding-block: 12px;
+  padding-inline: 24px;
 `;

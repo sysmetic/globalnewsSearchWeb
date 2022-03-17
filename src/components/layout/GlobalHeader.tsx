@@ -59,6 +59,7 @@ const Wrap = styled.header`
   left: 0;
   height: 68px;
   background-color: #fff;
+  z-index: 10;
 `;
 
 const Inner = styled.div`

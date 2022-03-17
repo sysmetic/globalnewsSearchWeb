@@ -39,7 +39,7 @@ const Wrap = styled.div`
 
 const Container = styled.div`
   width: 1240px;
-  height: 740px;
+  height: 940px;
   margin: 0 auto;
   display: flex;
 `

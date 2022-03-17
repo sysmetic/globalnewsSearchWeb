@@ -95,8 +95,12 @@ const Member = styled.div`
     background-color: #fff;
     color: #575757;
   }
-  .usename {
+  .user-name {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
+    line-height: 19px;
     color: #575757;
   }
 `;
@@ -107,11 +111,12 @@ const Profile = styled.div`
   align-items: center;
   margin-left: 12px;
   .profile-icon {
-    width: 16px;
-    height: 16px;
-    background-image: url("https://placeimg.com/16/16/any");
+    width: 24px;
+    height: 24px;
+    background-image: url("https://placeimg.com/24/24/any");
     background-size: cover;
     margin-right: 12px;
+    margin-top: 2px;
     border-radius: 50%;
     cursor: pointer;
   }

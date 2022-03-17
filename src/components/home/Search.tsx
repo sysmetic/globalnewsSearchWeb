@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
 import { useCategories } from "../../hooks/useCategories";
-
+import { useSearch } from "./../../hooks/useSearch";
 type Props = {
   openKeywordList: (arg: boolean) => void;
   setLanguageCode: (arg: string) => void;
@@ -31,7 +31,7 @@ const Search = ({
   const [openIndex, setOpen] = useState<null | number>(null);
   const [focused, setFocused] = useState<boolean>(false);
   const [inputText, setInputText] = useState(" ");
-
+  const { isOpendKeywordList } = useSearch();
   const languageCode = useFetchLanguageCode();
   const languageName = languageCode.languages.map(obj => obj.name);
 
@@ -153,11 +153,10 @@ const Search = ({
                 setFocused(true);
               }}
             >
-              <i className="move"></i>
               <input
                 type="text"
                 onFocus={() => {
-                  openKeywordList(true);
+                  openKeywordList(!isOpendKeywordList);
                 }}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   changeInputText(e.target.value)

@@ -39,6 +39,7 @@ const ImageContent = styled.div`
   column-count: 3;
   column-gap: 20px;
   padding-bottom: 280px;
+  padding-top: 50px;
 `;
 const TextContent = styled.div`
   width: 100%;

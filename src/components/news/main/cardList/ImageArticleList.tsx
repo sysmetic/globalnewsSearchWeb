@@ -3,16 +3,6 @@ import { Key } from "react";
 import ImageArticle from "./ImageArticle";
 import { useAppSelector } from "./../../../../redux/hooks";
 
-// interface Props {
-//   uuid: Key | null | undefined;
-//   title: string;
-//   description: string;
-//   imageUrls: string[] | null;
-// publishTime
-// }
-
-
-
 const ImageArticleList = () => {
   const { newListData } = useAppSelector(state => state.newsList);
   console.log(newListData, "이미지 기사 출력");

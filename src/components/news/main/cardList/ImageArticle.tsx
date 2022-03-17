@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { NewsFeatures } from "../../common/NewsCommon";
+import { useNewsFormats } from "./../../hooks/useNewsFormat";
 import moment from "moment";
-
 
 interface Props {
   newsTitle: string;
@@ -27,6 +27,8 @@ const ImageArticle = ({
   newsLink,
   publishTime
 }: Props) => {
+
+  const { textSize } = useNewsFormats();
   return (
     <Wrap>
       <Inner>
@@ -41,7 +43,7 @@ const ImageArticle = ({
             {newsTitle}
           </a>
         </Title>
-        <ArticleBody>{newsContent}</ArticleBody>
+        <ArticleBody textSize={textSize}>{newsContent}</ArticleBody>
         <ArticleFooter>
           <div className="Jounal-mark">
             <img src={`${newsSource.imageUrl}`} alt="기사1" />
@@ -76,11 +78,13 @@ const Figure = styled.figure`
     margin: 0;
   }
 `;
-
-export const ArticleBody = styled.p`
+interface Text {
+  textSize: boolean;
+}
+ const ArticleBody = styled.p<Text>`
   color: #7a7a7a;
   font-family: NotoSans-Display;
-  font-size: 16px;
+  font-size: ${({textSize }) => (textSize === true ? "16px" : "32px")};
   font-weight: normal;
   font-stretch: normal;
   line-height: 1.5rem;

@@ -1,19 +1,21 @@
 import PersonalizeNav from "./nav";
 import TabListContainer from "./tabs/TabListContainer";
-import MainContainer from './main/MainContainer';
+import MainContainer from "./main/MainContainer";
+import styled from "@emotion/styled";
 
 const NewsContainer = () => {
   return (
-    <>
+    <ResponseView>
       <PersonalizeNav />
       <TabListContainer></TabListContainer>
       <MainContainer />
-    </>
+    </ResponseView>
   );
 };
 
 export default NewsContainer;
 
+const ResponseView = styled.section``;
 //1. 키워드 탭 리스트 데이터를 Redux에서 관리한다.
 //이유: 키워드를 지우고 추가하고 할텐데 모든 상태에서 알아야함. and Props drillng이 심함.
 //2. 클릭 시 조건부렌더링 구사

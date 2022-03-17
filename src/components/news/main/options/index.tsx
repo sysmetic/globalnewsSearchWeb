@@ -3,16 +3,16 @@ import React from "react";
 import CommonContainer from "./../../../layout/CommonContainer";
 import { useNewsFormats } from "./../../hooks/useNewsFormat";
 import SortOptionList from "./SortOptionList";
-import { useState } from "react";
-const Options = () => {
-  const { changeToTextFormat, changeToImgFormat, focused } = useNewsFormats();
 
-  console.log(focused);
+const Options = () => {
+  const { changeToTextFormat, changeToImgFormat, focused, handleTextSize } =
+    useNewsFormats();
   return (
     <CommonContainer>
       <Features>
+        <span className="result">Results of ‘Silver’</span>
         <SortOptionList />
-        <TextSizeControl onClick={() => {}} />
+        <TextSizeControl onClick={handleTextSize} />
         <ImageFormatViewBtn onClick={changeToImgFormat} focused={focused} />
         <TextFormatViewBtn focused={focused} onClick={changeToTextFormat} />
       </Features>
@@ -23,11 +23,23 @@ const Options = () => {
 export default Options;
 
 const Features = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 99px;
   border-bottom: 1px solid #d9d9d9;
+  .result {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+    font-family: "Noto Sans";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #2d2d2d;
+  }
 `;
 
 const TextSizeControl = styled.div`

@@ -1,32 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect, useState, useRef } from "react";
-import ImageArticle from "./ImageArticle";
-import { useAppSelector } from "./../../../../redux/hooks";
 import styled from "@emotion/styled";
-import { useAppDispatch } from "./../../../../redux/hooks";
-import { fetchNewList } from "../../../../redux/news/newsListSlice";
-const ObserverEl = styled.div``;
-const ImageArticleList = () => {
-  const ObserverRef = useRef(null);
-  const { newListData } = useAppSelector(state => state.newsList);
-  const dispatch = useAppDispatch();
+import ImageArticle from "./ImageArticle";
 
-  const options = {
-    threshold: 1.0
-  };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entry, observer) => {
-      if (entry[0].intersectionRatio > 0) {
-      }
-    }, options);
-    const Observerloction: any = ObserverRef;
-    observer.observe(Observerloction.current);
-  }, []);
+const ImageArticleList = ({ newListData }: any) => {
+  // const { ref, inView } = useInView({ threshold: 0.3, rootMargin: '0px 0px 800px 0px' });
 
   return (
     <>
-      {newListData.map((article: any, index) => (
+      {newListData.map((article: any, index: number) => (
         <ImageArticle
           key={`${index}-${article.uuid}`}
           newsTitle={article.title}
@@ -37,7 +19,7 @@ const ImageArticleList = () => {
           publishTime={article.publishTime}
         />
       ))}
-      <ObserverEl ref={ObserverRef} />
+      {/* <ObserverView ref={ref} /> */}
     </>
   );
 };

@@ -24,53 +24,22 @@ const PersonalizeNav = () => {
   });
 
   return (
-    <Wrap scrollPosition={scrollPosition}>
-      <CommonContainer>
-        <div className="pt-31">
-          <Search
-            openKeywordList={openKeywordList}
-            setLanguageCode={setLanguageCode}
-            setTimeFilterCode={setTimeFilterCode}
-            setIdentifiersString={setIdentifiersString}
-            setCategoriesCode={setCategoriesCode}
-            searchNews={searchNews}
-          />
-          {isOpendKeywordList && (
-            <KeywordSelectContainer searchNews={searchNews} />
-          )}
-        </div>
-      </CommonContainer>
-    </Wrap>
+    <CommonContainer>
+      <Search
+        openKeywordList={openKeywordList}
+        setLanguageCode={setLanguageCode}
+        setTimeFilterCode={setTimeFilterCode}
+        setIdentifiersString={setIdentifiersString}
+        setCategoriesCode={setCategoriesCode}
+        searchNews={searchNews}
+      />
+      {isOpendKeywordList && <KeywordSelectContainer searchNews={searchNews} />}
+    </CommonContainer>
   );
 };
 
 export default PersonalizeNav;
 
 interface Props {
-  scrollPosition:number
+  scrollPosition: number;
 }
-
-const Wrap = styled.section<Props>`
-  background-image: linear-gradient(
-    179deg,
-    #fff -207%,
-    #dff8f4 6%,
-    #fdddd2 185%
-  );
-  height: auto;
-
-  .original_header {
-    position: relative;
-  }
-  .change_header {
-    position: fixed;
-    top: 70px;
-    width: 100%;
-    height: 100%;
-  }
-  /* height: 373px; */
-  .pt-31 {
-    padding-top: 113px;
-    padding-bottom: 140px;
-  }
-`;

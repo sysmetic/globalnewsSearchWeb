@@ -1,13 +1,10 @@
 import React from "react";
-import { Key } from "react";
-import { useAppSelector } from "../../../../redux/hooks";
 import TextArticle from "./TextArticle";
 
-const TextArticleList = () => {
-  const { newListData } = useAppSelector(state => state.newsList);
+const TextArticleList = ({ newListData }: any) => {
   return (
     <>
-      {newListData.map((article: any,index:number) => (
+      {newListData.map((article: any, index: number) => (
         <TextArticle
           key={`${index}-${article.uuid}`}
           newsTitle={article.title}

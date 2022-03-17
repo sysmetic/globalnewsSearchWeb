@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { SearchTitleType } from "../api/newsListApi";
 import { useAppDispatch } from "../redux/hooks";
 import { fetchNewList } from "../redux/news/newsListSlice";
-import { CameltoCababString } from "../utils";
 
 export const useSearch = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [isOpendKeywordList, setIsOpendKeywordList] = useState(false);
   const [language, setLanguage] = useState("en");
@@ -32,9 +33,6 @@ export const useSearch = () => {
 
   const searchNews = (searchTitle?: SearchTitleType, str?: string) => {
     const identifier = str ? str : identifiers;
-    if (str) {
-      CameltoCababString(str);
-    }
     const searchPayload = {
       searchTitle,
       identifiers: identifier,
@@ -43,6 +41,7 @@ export const useSearch = () => {
       categories
     };
     dispatch(fetchNewList(searchPayload));
+    navigate("/news");
   };
 
   return {

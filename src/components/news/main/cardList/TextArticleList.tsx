@@ -7,9 +7,9 @@ const TextArticleList = () => {
   const { newListData } = useAppSelector(state => state.newsList);
   return (
     <>
-      {newListData.map((article: any) => (
+      {newListData.map((article: any,index:number) => (
         <TextArticle
-          key={article.index}
+          key={`${index}-${article.uuid}`}
           newsTitle={article.title}
           newsLink={article.url}
           newsContent={article.description}

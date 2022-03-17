@@ -33,7 +33,7 @@ export const useSearch = () => {
 
   const searchNews = (searchTitle?: SearchTitleType | string, str?: string) => {
     const identifier = str ? str : identifiers;
-    const searchPayload = {
+    const searchPayload: any = {
       searchTitle,
       identifiers: identifier,
       language,
@@ -57,6 +57,6 @@ export const useSearch = () => {
     timeFilter,
     language,
     identifiers,
-    categories,
+    categories
   };
 };

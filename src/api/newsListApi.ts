@@ -43,6 +43,8 @@ export type SearchPayload = {
   categories: string;
 };
 
+export type SearchTitleType = "Category" | "Sector" | "Startup";
+
 export async function getNewList(searchPayload: SearchPayload) {
   let payload: QuaryStringType = {
     identifier_type: "assets",
@@ -55,8 +57,19 @@ export async function getNewList(searchPayload: SearchPayload) {
     access_token:
       "ea67d29c683a69e808a26cc6dc5a1445df84876e9e2d7aaf3d6f084210dce775"
   };
-  const NEWS_API_URL = `https://api.cityfalcon.com/v0.2/stories?identifier_type=${payload.identifier_type}&identifiers=${payload.identifiers}&time_filter=${payload.time_filter}&categories=${payload.categories}&languages=${payload.languages}&min_cityfalcon_score=${payload.min_cityfalcon_score}&order_by=${payload.order_by}&access_token=${payload.access_token}`;
-  const response = await axios.get(NEWS_API_URL);
+  const NEWS_API_URL = "https://api.cityfalcon.com/v0.2/stories?";
+  const response = await axios.get(NEWS_API_URL, {
+    params: {
+      identifier_type: payload.identifier_type,
+      identifiers: payload.identifiers,
+      time_filter: payload.time_filter,
+      categories: payload.categories,
+      languages: payload.languages,
+      min_cityfalcon_score: 0,
+      order_by: "top",
+      access_token: payload.access_token
+    }
+  });
   console.log(response);
   return response;
 }

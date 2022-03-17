@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
 import { useCategories } from "../../hooks/useCategories";
+import { SearchTitleType } from "../../api/newsListApi";
 
 type Props = {
   openKeywordList: (arg: boolean) => void;
@@ -12,7 +13,7 @@ type Props = {
   setTimeFilterCode: (arg: string) => void;
   setIdentifiersString: (arg: string) => void;
   setCategoriesCode: (arg: string) => void;
-  searchNews: (str?: string) => void;
+  searchNews: (searchTitle?: SearchTitleType, str?: string) => void;
 };
 export type FilterItemType = {
   label: string;

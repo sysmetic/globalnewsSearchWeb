@@ -1,6 +1,18 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+const MyKeyword = () => {
+  return (
+    <KeywordsWarp>
+      <h3>마이키워드</h3>
+      <Keywords className="on">accelerators</Keywords>
+      <Keywords>Social Media Marketing & Advertising</Keywords>
+    </KeywordsWarp>
+  )
+}
+
+export default MyKeyword;
+
 const KeywordsWarp = styled.div`
   margin-top: 40px;  
   .on {
@@ -10,11 +22,10 @@ const KeywordsWarp = styled.div`
     font-weight: 600;
     font-size: 20px;
     margin-bottom: 20px;
-    
   }
 `
 
-const Keywords = styled.div`
+const Keywords = styled.button`
   display: inline-block;
   padding: 12px 40px 16px;
   border: solid 1px #48c0b7;
@@ -25,16 +36,5 @@ const Keywords = styled.div`
   font-weight: 600;
   line-height: 30px;
   margin-right: 20px;
-  
+  cursor: pointer;
 `
-
-
-export const MyKeyword = () => {
-  return (
-    <KeywordsWarp>
-      <h3>마이키워드</h3>
-      <Keywords className="on">accelerators</Keywords>
-      <Keywords>Social Media Marketing & Advertising</Keywords>
-    </KeywordsWarp>
-  )
-}

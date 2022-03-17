@@ -48,6 +48,7 @@ export type SearchPayload = {
   nextPageToken?: string;
 };
 
+
 export type SearchTitleType =
   | "Category"
   | "Sector"

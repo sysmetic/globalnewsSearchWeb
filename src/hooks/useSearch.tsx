@@ -1,8 +1,10 @@
-import { useState } from "react";
+
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchTitleType } from "../api/newsListApi";
 import { useAppDispatch } from "../redux/hooks";
 import { fetchNewList } from "../redux/news/newsListSlice";
+import { cameltoCababString } from "../utils";
 
 export const useSearch = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +35,9 @@ export const useSearch = () => {
 
   const searchNews = (searchTitle?: SearchTitleType, str?: string) => {
     const identifier = str ? str : identifiers;
+    if (str) {
+      cameltoCababString(str);
+    }
     const searchPayload = {
       searchTitle,
       identifiers: identifier,

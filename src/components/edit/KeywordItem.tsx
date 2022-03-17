@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { ReactChild, ReactChildren } from "react";
 import { useKeywordList } from "../../hooks/useKeywordList";
 import { useAppDispatch } from "../../redux/hooks";
-import { addKeyword } from "../../redux/keyword/keywordsSlice";
+import { addKeyword, deleteKeyword } from "../../redux/keyword/keywordsSlice";
 
 type Props = {
   // children: ReactChild | ReactChildren;
@@ -12,14 +12,12 @@ type Props = {
 const KeywordItem = ({ item }: Props) => {
   const keywordList = useKeywordList();
   const dispatch = useAppDispatch();
+  const handleAdd = () => dispatch(addKeyword(item))
+  const handleDelete = () => dispatch(deleteKeyword(item))
   return (
-    <KeyWordItemWrap
-      onClick={() => {
-        dispatch(addKeyword(item));
-      }}
-    >
-      <KeywordText>{item}</KeywordText>
-      <DeleteBtn>
+    <KeyWordItemWrap>
+      <KeywordText onClick={handleAdd}>{item}</KeywordText>
+      <DeleteBtn onClick={handleDelete}>
         <img src="images/keyword-delete.svg" alt="삭제하기 버튼" />
       </DeleteBtn>
     </KeyWordItemWrap>

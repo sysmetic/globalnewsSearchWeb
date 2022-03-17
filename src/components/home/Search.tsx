@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { SearchFilterItem } from "./SearchFilterItem";
 import { SetStateAction, useState } from "react";
+import { Link } from "react-router-dom"
 import { useEffect } from "react";
 import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
@@ -8,6 +9,7 @@ import { useCategories } from "../../hooks/useCategories";
 import { SearchTitleType } from "../../api/newsListApi";
 import { useSearch } from "./../../hooks/useSearch";
 import searchKeyword from "../../assets/csvjson.json";
+
 
 type Props = {
   openKeywordList: (arg: boolean) => void;
@@ -45,7 +47,6 @@ const Search = ({
   const [instanseKeyword, setInstanseKeyword] = useState<Array<keyWordEntity>>(
     []
   );
-
   const { isOpendKeywordList } = useSearch();
   const languageCode = useFetchLanguageCode();
   const languageName = languageCode.languages.map(obj => obj.name);
@@ -163,10 +164,8 @@ const Search = ({
   return (
     <SearchArea>
       <div>
-        <KeywordSearchButton>
-          키워드 전체보기
-          <i className="icon-keyword"></i>
-        </KeywordSearchButton>
+        <KeywordSearchButton><Link to={"/edit"}>키워드 전체보기</Link></KeywordSearchButton>
+
       </div>
       <SearchWarp>
         <form>
@@ -263,14 +262,13 @@ export const SearchArea = styled.div`
 const KeywordSearchButton = styled.button`
   border: none;
   background: none;
+  cursor: pointer;
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
   color: #48c0b7;
-  cursor: pointer;
-
   .icon-keyword {
     display: inline-block;
     width: 10px;

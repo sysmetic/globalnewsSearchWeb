@@ -12,7 +12,6 @@ interface Props {
 }
 
 const SortOptionList = () => {
-  
   const { reportOptionToAPI } = useNewsFilter();
   const { showDropDown, newsCurOption, isActive, setIsActive } = useNewsSorts();
   return (
@@ -53,6 +52,8 @@ const DropDownBtn = styled.div`
   box-sizing: border-box;
   position: relative;
   background-color: #fff;
+  border-radius: 3px;
+  margin-right: 20px;
   cursor: pointer;
   .nav-bottom {
     position: absolute;

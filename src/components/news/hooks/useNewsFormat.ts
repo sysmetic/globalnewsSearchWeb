@@ -11,12 +11,12 @@ export const useNewsFormats = () => {
   const [focused, setFocused] = useState<boolean>(true);
   const changeToImgFormat = (event: MouseEvent<HTMLElement>): void => {
     dispatch(album());
-    setFocused(!focused);
+    setFocused(true);
   };
 
   const changeToTextFormat = (event: MouseEvent<HTMLElement>): void => {
     dispatch(text());
-    setFocused(!focused);
+    setFocused(false);
   };
   return {
     NewsFormats,

@@ -32,7 +32,8 @@ const NewsTabList = () => {
           </li>
         ))}
         <TabAddBtn role="button">
-          <i>+</i>키워드 추가
+          <i>+</i>
+          <span>키워드 추가</span>
         </TabAddBtn>
       </TabList>
     </Wrap>
@@ -53,13 +54,14 @@ const TabList = styled.ul`
     padding: 19px 30px;
     box-sizing: border-box;
     font-size: 16px;
-    font-weight: 600;
-    color: white;
-    border-radius: 5px 0 0 0px;
+    font-weight: 400;
+    color: #7a7a7a;
+    background-color: #f4f4f4;
+    border-top: 5px solid transparent;
     cursor: pointer;
-    /* &:first-of-type {
-      background-color: ${props => props.theme.BlueGreenColor};
-    } */
+    &:first-of-type {
+      border-radius: 5px 0 0 0px;
+    }
     &.grabbing {
       cursor: grabbing;
     }
@@ -72,7 +74,10 @@ const TabList = styled.ul`
       transform: translate(0, 41px);
     }
     &.focused {
-      background-color: ${props => props.theme.BlueGreenColor};
+      border-top: 5px solid ${props => props.theme.BlueGreenColor};
+      font-weight: 600;
+      background-color: #fff;
+      color: ${props => props.theme.BlueGreenColor};
     }
   }
 `;
@@ -80,22 +85,27 @@ const TabList = styled.ul`
 const TabAddBtn = styled.li`
   display: flex;
   align-items: center;
+  width: 166px;
   height: 60px;
+  font-family: NotoSans-Display;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
   outline: none;
   border: none;
-  font-family: NotoSans-Display;
-  font-size: 16px;
-  padding: 10px 32px 10px 20px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: ${props => props.theme.BlueGreenColor};
   box-sizing: border-box;
+  border-radius: 0px 5px 0px 0px;
+  padding-left: 14px;
   cursor: pointer;
   i {
     width: 40px;
     height: 40px;
-    background-image: url("images/icon-Add.svg");
+    background-image: url("images/icon-add-white.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    border-radius: 0 4px 0 0;
     font-size: 0;
+    box-sizing: border-box;
   }
 `;

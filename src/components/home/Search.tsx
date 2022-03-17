@@ -153,6 +153,7 @@ const Search = ({
                 setFocused(true);
               }}
             >
+              <i className="move"></i>
               <input
                 type="text"
                 onFocus={() => {
@@ -227,9 +228,9 @@ type SearchBoxProps = {
 };
 
 const SearchBox = styled.div<SearchBoxProps>`
-  margin-left: 28px;
   display: flex;
   align-items: center;
+  width: 506px;
   background: ${({ focused }) =>
       focused ? "url(images/search-focused.svg)" : "url(images/search.svg)"}
     no-repeat 4.5%;
@@ -238,7 +239,7 @@ const SearchBox = styled.div<SearchBoxProps>`
     height: 50px;
     font-size: 18px;
     margin-left: 50px;
-    width: 383.62px;
+    width: 100%;
     border: none;
     outline: none;
   }

@@ -48,7 +48,7 @@ const ImageFormatViewBtn = styled.div<Props>`
   background-repeat: no-repeat;
   cursor: pointer;
   background: ${({ focused }) =>
-      focused
+      focused === true
         ? "url(images/icon-Grid-filled.svg)"
         : "url(images/icon-Grid.svg)"}
     no-repeat 4.5%;
@@ -58,7 +58,7 @@ const TextFormatViewBtn = styled.div<Props>`
   width: 40px;
   height: 40px;
   background: ${({ focused }) =>
-      focused
+      focused === true
         ? "url(images/icon-Grid-list.svg)"
         : "url(images/icon-hamburger-button.svg)"}
     no-repeat 4.5%;

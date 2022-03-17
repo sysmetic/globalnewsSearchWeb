@@ -27,7 +27,7 @@ type NewsListType = {
 };
 
 export type QuarystringType = {
-  identifier_type: "assets" | "tickers" | "full_tickers" | "legal_id";
+  identifier_type: any;
   identifiers: string;
   time_filter: string;
   categories: string;
@@ -53,47 +53,72 @@ export type SearchTitleType =
   | "index"
   | "commodities"
   | "events"
-  | "topics";
+  | "topics"
+  | "macrotopic";
+
+const access_token =
+  "ea67d29c683a69e808a26cc6dc5a1445df84876e9e2d7aaf3d6f084210dce775";
+
+function serchType(type: SearchTitleType) {
+  if (type === "tikers") {
+    return "full_tikers";
+  } else if (type === "commodities" || type === "macrotopic") {
+    return "assets";
+  }
+}
 
 export async function getNewList(searchPayload: SearchPayload) {
   let payload: QuarystringType = {
-    identifier_type: "assets",
+    identifier_type: searchPayload.searchTitle,
     identifiers: searchPayload.identifiers,
     time_filter: searchPayload.timeFilter,
     categories: searchPayload.categories,
     min_cityfalcon_score: 0,
     languages: searchPayload.language,
     order_by: "top",
-    access_token:
-      "ea67d29c683a69e808a26cc6dc5a1445df84876e9e2d7aaf3d6f084210dce775"
+    access_token
   };
 
+  //조건에 따른 다른 파라미터 넣어주는 객체들
   const sectorParams = {
     sector_categories: cameltoCababString(payload.identifiers),
     time_filter: payload.time_filter,
     categories: payload.categories,
     languages: payload.languages,
     order_by: "top",
-    access_token: payload.access_token
+    access_token
+  };
+
+  const eventsParams = {
+    events: cameltoCababString(payload.identifiers),
+    time_filter: payload.time_filter,
+    categories: payload.categories,
+    languages: payload.languages,
+    order_by: "top",
+    access_token
   };
 
   const params = {
-    identifier_type: payload.identifier_type,
+    identifier_type: serchType(payload.identifier_type),
     identifiers: payload.identifiers,
     time_filter: payload.time_filter,
     categories: payload.categories,
     languages: payload.languages,
     min_cityfalcon_score: 0,
     order_by: "top",
-    access_token: payload.access_token
+    access_token
   };
 
   const NEWS_API_URL = "https://api.cityfalcon.com/v0.2/stories?";
+
   function setParams() {
-    if (searchPayload.searchTitle === "Sector") {
-      return sectorParams;
-    } else {
-      return params;
+    switch (searchPayload.searchTitle) {
+      case "Sector":
+        return sectorParams;
+      case "events":
+        return eventsParams;
+      default:
+        return params;
     }
   }
   const response = await axios.get(NEWS_API_URL, {

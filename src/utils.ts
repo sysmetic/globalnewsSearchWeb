@@ -1,11 +1,20 @@
 export const cameltoCababString = (str: string) => {
   if (!hasWhiteSpace(str)) {
     return str.toLowerCase();
-  } else {
-    return str
-      .split(" ")
-      .map(item => item.charAt(0).toLowerCase() + item.slice(1))
+  } else if (str.includes("&")) {
+    const newStr = str
+      .split(" & ")
+      .map(item => item.toLowerCase())
       .join("-");
+    console.log(newStr);
+    return newStr;
+  } else {
+    const newStr = str
+      .split(" ")
+      .map(item => item.toLowerCase())
+      .join("-");
+    console.log(newStr);
+    return newStr;
   }
 };
 

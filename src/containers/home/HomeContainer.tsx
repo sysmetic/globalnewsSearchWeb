@@ -26,12 +26,7 @@ const HomeContainer = () => {
         setCategoriesCode={setCategoriesCode}
         searchNews={searchNews}
       />
-      {isOpendKeywordList && (
-        <KeywordSelectContainer
-          setIdentifiersString={setIdentifiersString}
-          searchNews={searchNews}
-        />
-      )}
+      {isOpendKeywordList && <KeywordSelectContainer searchNews={searchNews} />}
     </>
   );
 };

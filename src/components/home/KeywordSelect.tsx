@@ -1,38 +1,38 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { SearchTitleType } from "../../api/newsListApi";
+import sector from "../../assets/sector.json";
 
 type Props = {
-  categoryList: string[];
-  selectSortKey: (arg: string) => void;
-  selectedSectorList: string[];
   startupData: string[];
   categoryData: string[];
-  setIdentifiersString: (arg: string) => void;
   searchNews: (searchTitle?: SearchTitleType, str?: string) => void;
+};
+
+type sectorKeywordType = {
+  [data: string]: string[];
 };
 
 type Title = "Category" | "Sector" | "Startup";
 
-const KeywordSelect = ({
-  categoryList,
-  selectSortKey,
-  selectedSectorList,
-  startupData,
-  categoryData,
-  setIdentifiersString,
-  searchNews
-}: Props) => {
+const KeywordSelect = ({ startupData, categoryData, searchNews }: Props) => {
   const [keywordTitle, setKeywordTitle] = useState<Title>("Sector");
+  const [sectorKeyword] = useState<sectorKeywordType>(sector);
 
   const keywordTitleList: Title[] = ["Category", "Sector", "Startup"];
+  const [selectedKey, setSelectedKey] = useState<string>("A");
 
+  const categoryList = Object.keys(sectorKeyword);
   const setTitle = (title: Title) => {
     setKeywordTitle(title);
   };
 
   const fetchNewsApi = (identifier: string, searchTitle: SearchTitleType) => {
     searchNews(searchTitle, identifier);
+  };
+
+  const selectSortKey = (key: string) => {
+    setSelectedKey(key);
   };
 
   return (
@@ -67,9 +67,9 @@ const KeywordSelect = ({
             </ul>
           </CategoryList>
           <KeywordListWrap>
-            {selectedSectorList.map(item => (
+            {sectorKeyword[selectedKey].map((item, index) => (
               <KeywordListItem
-                key={item}
+                key={`Sector-${item}-${index}`}
                 onClick={() => {
                   fetchNewsApi(item, "Sector");
                 }}
@@ -128,8 +128,8 @@ const StartupKeywordList = styled.div`
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     margin: 10px;
-    border-top: 1px solid #c4c4c4;
-    border-left: 1px solid #c4c4c4;
+    /* border-top: 1px solid #c4c4c4;
+    border-left: 1px solid #c4c4c4; */
     grid-gap: 0;
 
     li {
@@ -137,10 +137,19 @@ const StartupKeywordList = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      border-right: 1px solid #c4c4c4;
-      border-bottom: 1px solid #c4c4c4;
       text-align: center;
       cursor: pointer;
+    }
+    & > li:nth-of-type(12n + 1),
+    & > li:nth-of-type(12n + 2),
+    & > li:nth-of-type(12n + 3),
+    & > li:nth-of-type(12n + 4),
+    & > li:nth-of-type(12n + 5),
+    & > li:nth-of-type(12n + 6) {
+      background-color: #fbfbfb;
+    }
+    li:hover {
+      background: #f0fcfb;
     }
   }
 `;
@@ -219,11 +228,6 @@ const KeywordListWrap = styled.div`
   align-content: start;
   overflow-y: scroll;
 
-  & > p:nth-of-type(1n),
-  & > p:nth-of-type(2n) {
-    border-right: 1px solid #c4c4c4;
-  }
-
   & > p:nth-of-type(3n) {
     border: none;
   }
@@ -232,6 +236,9 @@ const KeywordListWrap = styled.div`
   & > p:nth-of-type(6n + 2),
   & > p:nth-of-type(6n + 3) {
     background-color: #fbfbfb;
+  }
+  & > p:hover {
+    background: #f0fcfb;
   }
 `;
 

@@ -28,10 +28,7 @@ const PersonalizeNav = () => {
             searchNews={searchNews}
           />
           {isOpendKeywordList && (
-            <KeywordSelectContainer
-              setIdentifiersString={setIdentifiersString}
-              searchNews={searchNews}
-            />
+            <KeywordSelectContainer searchNews={searchNews} />
           )}
         </div>
       </CommonContainer>

@@ -28,7 +28,7 @@ const ImageArticle = ({
   publishTime
 }: Props) => {
 
-  const { textSize } = useNewsFormats();
+    const { textSize } = useNewsFormats();
   return (
     <Wrap>
       <Inner>
@@ -43,7 +43,11 @@ const ImageArticle = ({
             {newsTitle}
           </a>
         </Title>
-        <ArticleBody textSize={textSize}>{newsContent}</ArticleBody>
+        <ArticleBody>
+          <p className={`${textSize === true ? "small" : "big"}`}>
+            {newsContent}
+          </p>
+        </ArticleBody>
         <ArticleFooter>
           <div className="Jounal-mark">
             <img src={`${newsSource.imageUrl}`} alt="기사1" />
@@ -78,19 +82,25 @@ const Figure = styled.figure`
     margin: 0;
   }
 `;
-interface Text {
-  textSize: boolean;
-}
- const ArticleBody = styled.p<Text>`
-  color: #7a7a7a;
-  font-family: NotoSans-Display;
-  font-size: ${({textSize }) => (textSize === true ? "16px" : "32px")};
-  font-weight: normal;
-  font-stretch: normal;
-  line-height: 1.5rem;
-  letter-spacing: -0.16px;
-  padding-bottom: 19.5px;
-  border-bottom: 1px solid #dfdfdf; ;
+
+const ArticleBody = styled.div`
+  p {
+    color: #7a7a7a;
+    font-family: NotoSans-Display;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.5rem;
+    letter-spacing: -0.16px;
+    padding-bottom: 19.5px;
+    border-bottom: 1px solid #dfdfdf;
+  }
+  .small {
+    font-size: 16px;
+  }
+  .big {
+    font-size: 32px;
+  }
 `;
 const Title = styled.h2`
   font-family: NotoSans-Display;

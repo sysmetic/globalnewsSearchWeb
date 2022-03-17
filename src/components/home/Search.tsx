@@ -7,6 +7,7 @@ import { useTimeFilter } from "../../hooks/useTimeFilter";
 import { useCategories } from "../../hooks/useCategories";
 import { SearchTitleType } from "../../api/newsListApi";
 import { useSearch } from "./../../hooks/useSearch";
+import searchKeyword from "../../assets/csvjson.json";
 
 type Props = {
   openKeywordList: (arg: boolean) => void;
@@ -22,6 +23,13 @@ export type FilterItemType = {
   list: string[];
 };
 
+type keyWordEntity = {
+  name: string;
+  sub_name: string;
+  data_type: SearchTitleType;
+  exchange: string;
+};
+
 const Search = ({
   openKeywordList,
   setLanguageCode,
@@ -33,6 +41,11 @@ const Search = ({
   const [openIndex, setOpen] = useState<null | number>(null);
   const [focused, setFocused] = useState<boolean>(false);
   const [inputText, setInputText] = useState(" ");
+  const [isOpenInstanseSearch, setIsOpenInstanseSearch] = useState(false);
+  const [instanseKeyword, setInstanseKeyword] = useState<Array<keyWordEntity>>(
+    []
+  );
+
   const { isOpendKeywordList } = useSearch();
   const languageCode = useFetchLanguageCode();
   const languageName = languageCode.languages.map(obj => obj.name);
@@ -117,6 +130,28 @@ const Search = ({
     setInputText(value);
   };
 
+  const instanseSearch = () => {
+    if (inputText === " " || !inputText) {
+      setInstanseKeyword([]);
+      setIsOpenInstanseSearch(false);
+      return;
+    }
+    //TODO: any 타입정의 다시해야함
+    const keyword: any = searchKeyword.filter(item =>
+      item.name.includes(inputText)
+    );
+    if (!keyword || keyword.length === 0) {
+      setIsOpenInstanseSearch(false);
+      return;
+    }
+    setIsOpenInstanseSearch(true);
+    setInstanseKeyword(keyword);
+  };
+
+  const search = (item: keyWordEntity) => {
+    searchNews(item.data_type, item.name);
+  };
+
   useEffect(() => {
     document.body.addEventListener("click", closeAll);
     return () => {
@@ -163,6 +198,7 @@ const Search = ({
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   changeInputText(e.target.value)
                 }
+                onKeyUp={instanseSearch}
                 onKeyDown={onEnterPress}
                 placeholder="AAPL, MSFT, 005930, Gold, Oil, DJIA, Nikkei eg... "
               />
@@ -170,13 +206,38 @@ const Search = ({
           </SearchFilterSelectWrap>
         </form>
       </SearchWarp>
+      {isOpenInstanseSearch && (
+        <InstanseSearchDropDown>
+          {instanseKeyword.map(item => (
+            <div key={item.name} onClick={() => search(item)}>
+              {item.name}
+            </div>
+          ))}
+        </InstanseSearchDropDown>
+      )}
     </SearchArea>
   );
 };
 
 export default Search;
 
+const InstanseSearchDropDown = styled.div`
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ededed;
+  background: #fff;
+  position: absolute;
+
+  //임시적인 디자인
+  display: flex;
+  div {
+    margin: 15px;
+    cursor: pointer;
+  }
+`;
+
 export const SearchArea = styled.div`
+  position: relative;
   & > div:nth-of-type(1) {
     display: flex;
     justify-content: end;

@@ -126,6 +126,7 @@ const Search = ({
       searchNews();
     }
   };
+
   const changeInputText = (value: SetStateAction<string>) => {
     setInputText(value);
   };
@@ -208,6 +209,7 @@ const Search = ({
       </SearchWarp>
       {isOpenInstanseSearch && (
         <InstanseSearchDropDown>
+          <h3>Tickers</h3>
           {instanseKeyword.map(item => (
             <div key={item.name} onClick={() => search(item)}>
               {item.name}
@@ -222,17 +224,31 @@ const Search = ({
 export default Search;
 
 const InstanseSearchDropDown = styled.div`
-  width: 100%;
+  width: 519px;
   height: 300px;
   border: 1px solid #ededed;
+  box-shadow: 0px 4px 7px rgba(196, 195, 195, 0.25);
+  right: 0;
   background: #fff;
   position: absolute;
+  overflow: scroll;
+  border-radius: 5px;
 
-  //임시적인 디자인
-  display: flex;
+  h3 {
+    padding: 10px 23px;
+    color: ${({ theme }) => theme.BlueGreenColor};
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+  }
+
   div {
-    margin: 15px;
+    padding: 11px 23px;
     cursor: pointer;
+    color: #424242;
+    &:hover {
+      background: #f0fcfb;
+    }
   }
 `;
 
@@ -254,6 +270,7 @@ const KeywordSearchButton = styled.button`
   line-height: 22px;
   color: #48c0b7;
   cursor: pointer;
+
   .icon-keyword {
     display: inline-block;
     width: 10px;

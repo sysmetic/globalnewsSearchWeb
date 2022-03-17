@@ -1,18 +1,12 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom"
 import  User  from "./User" 
 import  SideNav  from "./SideNav" 
 import  MembershipCard  from "./MembershipCard"  
 import  PaymentsCard  from "./PaymentsCard"  
 import MyKeyword  from "./MyKeyword"  
-import Modal from "../edit/Modal";
-import EditContainer from "../edit/EditContainer";
-import { useState } from "react";
 
 const MyPage = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  
-  const handleOpen = () => setIsOpen(true)
-  const handleClose = () => setIsOpen(false)
 
   return (
   <Wrap>
@@ -31,12 +25,7 @@ const MyPage = () => {
             <PaymentsCard/>
           </ContTop>
           <MyKeyword/>
-          <EditKeywords onClick={handleOpen}>키워드 편집<img src="../images/icon-navi-bottom.svg" alt="키워드 편집" /></EditKeywords>
-          <Modal isOpen={isOpen} onClose={handleClose}>
-          <ModalBody>
-            <EditContainer/>
-          </ModalBody>
-        </Modal>
+          <EditKeywords><Link to={"/edit"}>키워드 편집<img src="../images/icon-navi-bottom.svg" alt="키워드 편집" /></Link></EditKeywords>
         </ContContainer>
       </Content>
     </Container>
@@ -108,14 +97,3 @@ const SideBar = styled.div`
     margin-bottom: 20px;
   }
 `
-
-const ModalBody = styled.div`
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  background: #fff;
-  max-height: calc(100vh - 16px);
-  overflow: hidden auto;
-  position: relative;
-  padding-block: 12px;
-  padding-inline: 24px;
-`;

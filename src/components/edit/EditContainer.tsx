@@ -5,7 +5,6 @@ import MykeyWordArea from "./MykeyWordArea";
 import { useKeywordList } from "../../hooks/useKeywordList";
 import { useAppDispatch } from "../../redux/hooks";
 
-
 const EditContainer = () => {
   const keywordList = useKeywordList();
   
@@ -18,8 +17,8 @@ const EditContainer = () => {
           {keywordList.map(item => (
             <KeywordList>
               <SubTitle>{item.title}</SubTitle>
-              {item.data.map(item => (
-                <KeywordItem item={item} />
+              {item.data.map((item) => (
+                <KeywordItem item={item}/>
               ))}
             </KeywordList>
           ))}

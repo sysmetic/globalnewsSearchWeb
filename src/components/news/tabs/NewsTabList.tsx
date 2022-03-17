@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
 import { useNewsTabList } from "../hooks/useNewsTabList";
-import EditContainer from "../../edit/EditContainer";
 import Modal from "../../edit/Modal";
+import { useState } from "react";
+import AddKeyword from "../../edit/AddKeyword";
 
 const NewsTabList = () => {
   const {
@@ -19,6 +19,7 @@ const NewsTabList = () => {
   
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
+  
   return (
     <Wrap>
       <TabList>
@@ -43,12 +44,12 @@ const NewsTabList = () => {
           <i>+</i>
           <span>키워드 추가</span>
         </TabAddBtn>
-      </TabList>
-      <Modal isOpen={isOpen} onClose={handleClose}>
+        <Modal isOpen={isOpen} onClose={handleClose}>
           <ModalBody>
-            <EditContainer/>
+            <AddKeyword/>
           </ModalBody>
         </Modal>
+      </TabList>
     </Wrap>
   );
 };
@@ -60,6 +61,7 @@ const Wrap = styled.div``;
 const TabList = styled.ul`
   display: flex;
   text-decoration: none;
+  position: relative;
   .keywordTab {
     display: flex;
     align-items: center;
@@ -124,9 +126,8 @@ const TabAddBtn = styled.li`
 `;
 
 const ModalBody = styled.div`
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  background: #fff;
+  border-radius: 5px;
+  background-color: #fff;
   max-height: calc(100vh - 16px);
   overflow: hidden auto;
   position: relative;

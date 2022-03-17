@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 import { useAppSelector } from "../../redux/hooks";
 import { RootState } from "../../redux/store";
 import KeywordItem from "./KeywordItem";
@@ -8,14 +9,21 @@ const MykeyWordArea = () => {
     (state: RootState) => state.keywords
   );
   console.log(myKeywords);
+
+  const [edited, setEdited] = useState(false)
+  
+
+  const onClickEditButton = () => {
+    edited ? setEdited(false) : setEdited(true)
+  }
   return (
     <Wrap>
       <MyKeywordInner>
         {myKeywords.map(item => (
-          <KeywordItem key={`mykeyword-${item}`} item={item.data}/>
+          <KeywordItem key={`mykeyword-${item.data}`} item={item.data}/>
         ))}
       </MyKeywordInner>
-      <EditButton>편집</EditButton>
+     <EditButton onClick={onClickEditButton}>{edited ? '저장' : '편집'}</EditButton>
     </Wrap>
   );
 };
@@ -34,6 +42,7 @@ const EditButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
 `;
+
 const MyKeywordInner = styled.div`
   display: flex;
   gap: 0 10px;

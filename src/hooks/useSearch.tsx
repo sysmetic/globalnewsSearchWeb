@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { SearchTitleType } from "../api/newsListApi";
 import { useAppDispatch } from "../redux/hooks";
 import { fetchNewList } from "../redux/news/newsListSlice";
+import { CameltoCababString } from "../utils";
 
 export const useSearch = () => {
   const dispatch = useAppDispatch();
@@ -28,9 +30,13 @@ export const useSearch = () => {
     setCategories(categoriesCode);
   };
 
-  const searchNews = (str?: string) => {
+  const searchNews = (searchTitle?: SearchTitleType, str?: string) => {
     const identifier = str ? str : identifiers;
+    if (str) {
+      CameltoCababString(str);
+    }
     const searchPayload = {
+      searchTitle,
       identifiers: identifier,
       language,
       timeFilter,

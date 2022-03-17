@@ -3,6 +3,7 @@ import sector from "../../assets/sector.json";
 import startup from "../../assets/startup.json";
 import category from "../../assets/category.json";
 import { useState } from "react";
+import { SearchTitleType } from "../../api/newsListApi";
 
 type sectorKeywordType = {
   [data: string]: string[];
@@ -10,7 +11,7 @@ type sectorKeywordType = {
 
 type Props = {
   setIdentifiersString: (arg: string) => void;
-  searchNews: (str: string) => void;
+  searchNews: (searchTitle?: SearchTitleType, str?: string) => void;
 };
 
 const KeywordSelectContainer = ({

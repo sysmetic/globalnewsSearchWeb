@@ -9,6 +9,9 @@ const keywordList = createSlice({
     addKeyword: (state, action: PayloadAction<string>) => {
       state.myKeywords.push(action.payload);
     }
+    // deleteKeyword: (state, action: PayloadAction<string>): string[] => {
+    //   state.myKeywords.filter(keyword => keyword !== action.payload);
+    // }
   }
 });
 

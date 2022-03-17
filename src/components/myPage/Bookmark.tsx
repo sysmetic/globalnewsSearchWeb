@@ -35,7 +35,6 @@ export default Bookmark;
 
 const Wrap = styled.div`
   background-color: #f9faff;
-  height: 120vh;
 `;
 
 const Container = styled.div`

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { SearchTitleType } from "../../api/newsListApi";
 
 type Props = {
   categoryList: string[];
@@ -8,7 +9,7 @@ type Props = {
   startupData: string[];
   categoryData: string[];
   setIdentifiersString: (arg: string) => void;
-  searchNews: (str: string) => void;
+  searchNews: (searchTitle?: SearchTitleType, str?: string) => void;
 };
 
 type Title = "Category" | "Sector" | "Startup";
@@ -30,8 +31,8 @@ const KeywordSelect = ({
     setKeywordTitle(title);
   };
 
-  const fetchNewsApi = (identifier: string) => {
-    searchNews(identifier);
+  const fetchNewsApi = (identifier: string, searchTitle: SearchTitleType) => {
+    searchNews(searchTitle, identifier);
   };
 
   return (
@@ -70,7 +71,7 @@ const KeywordSelect = ({
               <KeywordListItem
                 key={item}
                 onClick={() => {
-                  fetchNewsApi(item);
+                  fetchNewsApi(item, "Sector");
                 }}
               >
                 {item}
@@ -87,7 +88,7 @@ const KeywordSelect = ({
                 <li
                   key={`Startup-${item}`}
                   onClick={() => {
-                    fetchNewsApi(item);
+                    fetchNewsApi(item, "Startup");
                   }}
                 >
                   {item}
@@ -105,7 +106,7 @@ const KeywordSelect = ({
                 <li
                   key={`Category-${item}`}
                   onClick={() => {
-                    fetchNewsApi(item);
+                    fetchNewsApi(item, "Category");
                   }}
                 >
                   {item}
@@ -146,8 +147,8 @@ const StartupKeywordList = styled.div`
 
 const KeywordSelectWrap = styled.div`
   margin-top: 14px;
-  width: 1240px;
   background: #fff;
+  border-radius: 0px 0px 5px 5px;
 `;
 
 const KeywordSelectTitles = styled.div`
@@ -239,8 +240,10 @@ const KeywordListItem = styled.p`
   height: 37px;
   padding-left: 20px;
   align-items: center;
-  font-style: normal;
+  font-family: "Noto Sans";
   font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
   color: #4f4f4f;
   cursor: pointer;
 `;

@@ -6,6 +6,7 @@ import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
 import { useCategories } from "../../hooks/useCategories";
 import { SearchTitleType } from "../../api/newsListApi";
+import { useSearch } from "./../../hooks/useSearch";
 
 type Props = {
   openKeywordList: (arg: boolean) => void;
@@ -32,7 +33,7 @@ const Search = ({
   const [openIndex, setOpen] = useState<null | number>(null);
   const [focused, setFocused] = useState<boolean>(false);
   const [inputText, setInputText] = useState(" ");
-
+  const { isOpendKeywordList } = useSearch();
   const languageCode = useFetchLanguageCode();
   const languageName = languageCode.languages.map(obj => obj.name);
 
@@ -126,7 +127,10 @@ const Search = ({
   return (
     <SearchArea>
       <div>
-        <KeywordSearchButton>키워드 전체보기</KeywordSearchButton>
+        <KeywordSearchButton>
+          키워드 전체보기
+          <i className="icon-keyword"></i>
+        </KeywordSearchButton>
       </div>
       <SearchWarp>
         <form>
@@ -154,7 +158,7 @@ const Search = ({
               <input
                 type="text"
                 onFocus={() => {
-                  openKeywordList(true);
+                  openKeywordList(!isOpendKeywordList);
                 }}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   changeInputText(e.target.value)
@@ -182,7 +186,22 @@ export const SearchArea = styled.div`
 const KeywordSearchButton = styled.button`
   border: none;
   background: none;
-  color: #515151;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #48c0b7;
+  cursor: pointer;
+  .icon-keyword {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 7px;
+    background-repeat: no-repeat;
+    background-image: url("images/keyword-arrow.svg");
+    background-size: contain;
+  }
 `;
 
 const Legend = styled.legend`
@@ -210,9 +229,9 @@ type SearchBoxProps = {
 };
 
 const SearchBox = styled.div<SearchBoxProps>`
-  margin-left: 28px;
   display: flex;
   align-items: center;
+  width: 506px;
   background: ${({ focused }) =>
       focused ? "url(images/search-focused.svg)" : "url(images/search.svg)"}
     no-repeat 4.5%;
@@ -221,7 +240,7 @@ const SearchBox = styled.div<SearchBoxProps>`
     height: 50px;
     font-size: 18px;
     margin-left: 50px;
-    width: 383.62px;
+    width: 100%;
     border: none;
     outline: none;
   }

@@ -70,6 +70,8 @@ export async function getNewList(searchPayload: SearchPayload) {
       access_token: payload.access_token
     }
   });
+
+  //todo : sector에 따라 다른 파라미터 넣어주기
   console.log(response);
   return response;
 }

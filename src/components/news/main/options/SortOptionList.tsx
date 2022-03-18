@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
 import { MouseEvent } from "react";
 import { useNewsFilter } from "./../../hooks/useNewsFilter";
 import { useNewsSorts } from "./../../hooks/useNewsSorts";
+import { useSearch } from "../../../../hooks/useSearch";
+import { useParams } from "react-router-dom";
 
 const options: string[] = ["정렬순", "최신순", "인기순"];
 
@@ -14,6 +15,8 @@ interface Props {
 const SortOptionList = () => {
   const { reportOptionToAPI } = useNewsFilter();
   const { showDropDown, newsCurOption, isActive, setIsActive } = useNewsSorts();
+  const { searchNews } = useSearch();
+  const { identifier } = useParams();
   return (
     <ListWrap>
       <DropDownBtn onClick={(e: MouseEvent) => setIsActive(!isActive)}>
@@ -26,7 +29,8 @@ const SortOptionList = () => {
             <li
               className="dropdown-item"
               onClick={(e: MouseEvent) => {
-                showDropDown(option);
+                searchNews("Sector", identifier);
+                // showDropDown(option);
                 reportOptionToAPI(option);
               }}
             >
@@ -82,3 +86,6 @@ const DropDownList = styled.ul`
     cursor: pointer;
   }
 `;
+function usePrams(): {} {
+  throw new Error("Function not implemented.");
+}

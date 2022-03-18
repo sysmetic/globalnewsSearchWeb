@@ -338,7 +338,7 @@ const SearchWarp = styled.div`
   margin: 32px 0 0;
   padding: 26px 26px 24px 0;
   border-radius: 5px;
-  border: 1px solid #c4c4c4;
+  border: 1px solid #f1f1f1;
   border-radius: 5px;
   background-color: #fff;
 `;

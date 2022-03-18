@@ -49,9 +49,7 @@ const NewsTabList = () => {
         </TabAddBtn>
         <Modal isOpen={isOpen} onClose={handleClose}>
           <ModalBody>
-            <AddKeyword openKeywordList={function (arg: boolean): void {
-              throw new Error("Function not implemented.");
-            } }  />
+            <AddKeyword/>
           </ModalBody>
         </Modal>
       </TabList>

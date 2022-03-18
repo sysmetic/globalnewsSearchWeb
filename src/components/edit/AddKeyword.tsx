@@ -3,8 +3,8 @@ import CommonContainer from "../layout/CommonContainer";
 import KeywordItem from "./KeywordItem";
 import { useKeywordList } from "../../hooks/useKeywordList";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { useState } from "react";
 import { RootState } from "../../redux/store";
+
 
 
 const AddKeyword = () => {
@@ -34,6 +34,7 @@ export default AddKeyword;
 
 const Wrap = styled.div`
   margin-top: 16px;
+  
 `;
 
 const KeyWordSearch = styled.div`
@@ -73,9 +74,9 @@ export const KeyWordTitle = styled.h5`
 
 const MyKeywordInner = styled.div`
   display: flex;
-  gap: 0 10px;
-  box-sizing: border-box;
-  margin-right: 10px;
+  flex-wrap: wrap;
+  width: 500px;
+  gap: 20px;
   padding-top: 16px;
 `;
 function addKeyword(item: string): any {

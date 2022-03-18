@@ -10,8 +10,9 @@ const MykeyWordArea = () => {
   );
 
   const [edited, setEdited] = useState(false)
-  
 
+  const btnText = edited ? '저장' : '편집'
+  
   const onClickEditButton = () => {
     edited ? setEdited(false) : setEdited(true)
   }
@@ -22,7 +23,7 @@ const MykeyWordArea = () => {
           <KeywordItem key={`mykeyword-${item.data}`} item={item.data}/>
         ))}
       </MyKeywordInner>
-     <EditButton onClick={onClickEditButton}>{edited ? '저장' : '편집'}</EditButton>
+     <EditButton onClick={onClickEditButton}>{btnText}</EditButton>
     </Wrap>
   );
 };
@@ -44,6 +45,7 @@ const EditButton = styled.button`
 
 const MyKeywordInner = styled.div`
   display: flex;
+  flex-wrap: wrap; 
   gap: 0 10px;
   width: calc(100% - 95px);
   height: 120px;

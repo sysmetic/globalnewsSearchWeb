@@ -235,6 +235,7 @@ const Search = ({
           {instanseKeyword.map(item => (
             <div key={item.name} onClick={() => search(item)}>
               {item.name}
+              {item.sub_name}
             </div>
           ))}
         </InstanseSearchDropDown>

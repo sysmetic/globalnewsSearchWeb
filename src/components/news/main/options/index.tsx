@@ -10,7 +10,7 @@ const Options = () => {
   return (
     <CommonContainer>
       <Features>
-        <span className="result">Results of ‘Silver’</span>
+        {/* <span className="result">Results of ‘Silver’</span> */}
         <SortOptionList />
         <TextSizeControl onClick={handleTextSize} />
         <ImageFormatViewBtn onClick={changeToImgFormat} focused={focused} />

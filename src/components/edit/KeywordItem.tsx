@@ -14,7 +14,7 @@ const KeywordItem = ({ item }: Props) => {
   const dispatch = useAppDispatch();
   const handleAdd = () => dispatch(addKeyword(item))
   const handleDelete = () => dispatch(deleteKeyword(item))
-  return (
+  return (   
     <KeyWordItemWrap>
       <KeywordText onClick={handleAdd}>{item}</KeywordText>
       <DeleteBtn onClick={handleDelete}>
@@ -39,9 +39,6 @@ const KeyWordItemWrap = styled.div`
   font-weight: 500;
   font-size: 16px;
   line-height: 30px;
-  & + & {
-    margin-left: 10px;
-  }
 `;
 
 const KeywordText = styled.div`

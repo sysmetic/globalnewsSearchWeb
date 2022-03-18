@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { NewsFeatures } from "../../common/NewsCommon";
 import { useNewsFormats } from "./../../hooks/useNewsFormat";
 import moment from "moment";
-import{ MouseEvent } from "react";
+import { MouseEvent } from "react";
 interface Props {
   newsTitle: string;
   newsContent: string;
@@ -29,9 +29,9 @@ const ImageArticle = ({
 }: Props) => {
   const { textSize } = useNewsFormats();
 
-  const imageFail = (event:any) => {
-    const url=  event.currentTarget
-    url.src=`images/img-error.png`
+  const imageFail = (event: any) => {
+    const url = event.currentTarget;
+    url.src = `/images/img-error.png`;
   };
   return (
     <Wrap>

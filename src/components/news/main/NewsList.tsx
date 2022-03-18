@@ -57,7 +57,7 @@ const NoneCompnent = styled.div`
       font-size: 0px;
       width: 60px;
       height: 60px;
-      background-image: url("images/icon-none.svg");
+      background-image: url("/images/icon-none.svg");
       background-size: contain;
       background-repeat: no-repeat;
       margin: auto;

@@ -31,8 +31,8 @@ export default Modal;
 const Overlay = styled.div`
   position: absolute;
   z-index: 10;
-  top: 66px;
-  right: -160px;
+  top: 60px;
+  right: -400px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -40,7 +40,6 @@ const Overlay = styled.div`
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0px 4px 7px rgba(196, 195, 195, 0.25);
-  padding-right: 16px;
 `
 
 const Container = styled.div`
@@ -52,6 +51,7 @@ const Container = styled.div`
 
 const ButtonArea = styled.div`
   float: right;
+  margin-right: 16px;
 `
 
 const CancleBTn = styled.button`

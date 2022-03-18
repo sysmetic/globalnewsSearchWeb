@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Props {
+interface State {
   newsSortState: "top" | "latest" | "populer";
 }
 
-const initialState: Props = {
-  newsSortState: "top" 
+const initialState: State = {
+  newsSortState: "top"
 };
 
 const newsSortSlice = createSlice({

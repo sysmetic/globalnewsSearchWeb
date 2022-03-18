@@ -4,7 +4,11 @@ import category from "../../assets/category.json";
 import { SearchTitleType } from "../../api/newsListApi";
 
 type Props = {
-  searchNews: (searchTitle?: SearchTitleType, str?: string) => void;
+  searchNews: (
+    searchTitle?: SearchTitleType,
+    str?: string,
+    order_by?: "top" | "latest" | "populer"
+  ) => void;
 };
 
 const KeywordSelectContainer = ({ searchNews }: Props) => {
@@ -18,4 +22,3 @@ const KeywordSelectContainer = ({ searchNews }: Props) => {
 };
 
 export default KeywordSelectContainer;
-

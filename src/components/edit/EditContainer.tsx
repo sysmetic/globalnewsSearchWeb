@@ -7,6 +7,7 @@ import { useAppDispatch } from "../../redux/hooks";
 
 const EditContainer = () => {
   const keywordList = useKeywordList();
+  
   return (
     <Wrap>
       <CommonContainer>
@@ -16,8 +17,8 @@ const EditContainer = () => {
           {keywordList.map(item => (
             <KeywordList>
               <SubTitle>{item.title}</SubTitle>
-              {item.data.map(item => (
-                <KeywordItem item={item} />
+              {item.data.map((item) => (
+                <KeywordItem item={item}/>
               ))}
             </KeywordList>
           ))}

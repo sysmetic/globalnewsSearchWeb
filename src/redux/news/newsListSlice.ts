@@ -15,16 +15,16 @@ export const fetchNewList = createAsyncThunk(
 
 type NewsListState = {
   newListData: NewsType[];
+  nextPageToken: string | undefined;
   loading: boolean;
   error: any;
-  nextPageToken?:string | undefined
 };
 
 const initialState: NewsListState = {
   newListData: [],
+  nextPageToken: "",
   loading: false,
-  error: null,
-  nextPageToken:""
+  error: null
 };
 
 const NewsListSlice = createSlice({
@@ -36,19 +36,21 @@ const NewsListSlice = createSlice({
       state.loading = true;
       state.newListData = [];
       state.error = null;
+      state.nextPageToken = "";
     });
 
     builder.addCase(fetchNewList.fulfilled, (state, action) => {
       console.log(action);
       state.loading = false;
-      state.nextPageToken=action.payload.nextPageToken || "" 
       state.newListData.push(...state.newListData, ...action.payload.stories);
+      state.nextPageToken = action.payload.nextPageToken;
     });
 
     builder.addCase(fetchNewList.rejected, (state, action: any) => {
       console.log(action);
       state.loading = false;
       state.error = action.error.message;
+      state.nextPageToken = "";
     });
   }
 });

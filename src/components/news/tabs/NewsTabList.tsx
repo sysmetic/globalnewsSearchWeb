@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 import { useNewsTabList } from "../hooks/useNewsTabList";
+import Modal from "../../edit/Modal";
+import { useState } from "react";
+import AddKeyword from "../../edit/AddKeyword";
 
 const NewsTabList = () => {
   const {
@@ -11,10 +14,18 @@ const NewsTabList = () => {
     dragEnd,
     drop
   } = useNewsTabList();
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
+  interface Map {
+    list:object;
+  }
   return (
     <Wrap>
       <TabList>
-        {keywordList.map((list: string, index: number) => (
+        {keywordList.map((list: any, index: number) => (
           <li
             key={index}
             data-position={index}
@@ -28,13 +39,18 @@ const NewsTabList = () => {
             }
             onClick={() => selectMenuHandler(index)}
           >
-            {list}
+            {list.data}
           </li>
         ))}
-        <TabAddBtn role="button">
+        <TabAddBtn role="button" onClick={handleOpen}>
           <i>+</i>
           <span>키워드 추가</span>
         </TabAddBtn>
+        <Modal isOpen={isOpen} onClose={handleClose}>
+          <ModalBody>
+            <AddKeyword />
+          </ModalBody>
+        </Modal>
       </TabList>
     </Wrap>
   );
@@ -47,6 +63,7 @@ const Wrap = styled.div``;
 const TabList = styled.ul`
   display: flex;
   text-decoration: none;
+  position: relative;
   .keywordTab {
     display: flex;
     align-items: center;
@@ -108,4 +125,14 @@ const TabAddBtn = styled.li`
     font-size: 0;
     box-sizing: border-box;
   }
+`;
+
+const ModalBody = styled.div`
+  border-radius: 5px;
+  background-color: #fff;
+  max-height: calc(100vh - 16px);
+  overflow: hidden auto;
+  position: relative;
+  padding-block: 12px;
+  padding-inline: 24px;
 `;

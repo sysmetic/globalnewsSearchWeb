@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { SearchFilterItem } from "./SearchFilterItem";
 import { SetStateAction, useState } from "react";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
@@ -45,7 +46,6 @@ const Search = ({
   const [instanseKeyword, setInstanseKeyword] = useState<Array<keyWordEntity>>(
     []
   );
-
   const { isOpendKeywordList } = useSearch();
   const languageCode = useFetchLanguageCode();
   const languageName = languageCode.languages.map(obj => obj.name);
@@ -164,8 +164,9 @@ const Search = ({
     <SearchArea>
       <div>
         <KeywordSearchButton>
-          키워드 전체보기
-          <i className="icon-keyword"></i>
+          <Link to={"/edit"}>
+            키워드 전체보기 <i className="icon-keyword"></i>
+          </Link>
         </KeywordSearchButton>
       </div>
       <SearchWarp>
@@ -263,19 +264,21 @@ export const SearchArea = styled.div`
 const KeywordSearchButton = styled.button`
   border: none;
   background: none;
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  color: #48c0b7;
   cursor: pointer;
-
+  a {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #48c0b7;
+    text-decoration: none;
+  }
   .icon-keyword {
     display: inline-block;
     width: 10px;
     height: 10px;
-    margin-left: 7px;
+    margin-left: 3px;
     background-repeat: no-repeat;
     background-image: url("images/keyword-arrow.svg");
     background-size: contain;

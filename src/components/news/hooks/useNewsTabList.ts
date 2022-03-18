@@ -5,16 +5,16 @@ import { useAppSelector } from "../../../redux/hooks";
 import { useSearch } from "../../../hooks/useSearch";
 import { useNewsTabSearch } from "./useNewsTabSearch";
 export const useNewsTabList = () => {
-  const dataList = useAppSelector(state => state.keywords.myKeywords)
+  const dataList = useAppSelector(state => state.keywords)
   const [keywordList, setKeywordlist] = React.useState(dataList);
   const [start, setStart] = useState<any>(null); //시작 위치
   const [currentTab, setCurrentTab] = useState(0);
    const {searchTabKeywordNews}=useNewsTabSearch()
   function selectMenuHandler(index: number) {
     setCurrentTab(index);
-    searchTabKeywordNews(keywordList[currentTab])  
+    searchTabKeywordNews(keywordList[currentTab].data)  
   }
-  console.log(keywordList[currentTab])
+  console.log(keywordList[currentTab].data)
 
 
   function dragOver(e: any) {

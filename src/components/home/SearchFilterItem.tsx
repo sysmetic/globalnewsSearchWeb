@@ -30,7 +30,7 @@ export const SearchFilterItem = ({
   setTimeFilter,
   setCategories
 }: Props) => {
-  const [defaultLanguage, setDefaultLanguage] = useState("영어");
+  const [defaultLanguage, setDefaultLanguage] = useState("English");
   const [defaultTimeFilter, setDefaultTimeFilter] = useState("한달");
   const [defaultCategory, setDefaultCategory] = useState("ALL");
 

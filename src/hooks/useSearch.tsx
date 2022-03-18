@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchTitleType } from "../api/newsListApi";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";

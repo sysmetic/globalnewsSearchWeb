@@ -23,6 +23,7 @@ const HomeWrap = styled.div`
     rgba(223, 248, 244, 0.7) 49.34%,
     rgba(253, 221, 210, 0.7) 94.11%
   );
+  min-height: 100vh;
   padding-bottom: 267px;
 `;
 

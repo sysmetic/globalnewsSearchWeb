@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchTitleType } from "../api/newsListApi";
@@ -56,6 +55,10 @@ export const useSearch = () => {
     setLanguageCode,
     setTimeFilterCode,
     setCategoriesCode,
-    searchNews
+    searchNews,
+
+    language,
+    timeFilter,
+    categories
   };
 };

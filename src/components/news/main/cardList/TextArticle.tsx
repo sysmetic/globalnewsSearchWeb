@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { ArticleBody } from "./ImageArticle";
 import { NewsFeatures } from "./../../common/NewsCommon";
 import { changeMoment } from "./ImageArticle";
 
@@ -45,7 +44,7 @@ const TextArticle = ({
         </i>
       </ArticleFooter>
       {isActive === true ? (
-        <ArticleContent>{newsContent}</ArticleContent>
+        <ArticleBody>{newsContent}</ArticleBody>
       ) : null}
     </Wrap>
   );
@@ -125,6 +124,14 @@ const ArticleFooter = styled.footer`
     cursor: pointer;
   }
 `;
-const ArticleContent = styled(ArticleBody)`
-  transition: 0.5s;
+const ArticleBody = styled.p`
+  color: #7a7a7a;
+  font-family: NotoSans-Display;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 1.5rem;
+  letter-spacing: -0.16px;
+  padding-bottom: 19.5px;
+  border-bottom: 1px solid #dfdfdf; ;
 `;

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { SearchFilterItem } from "./SearchFilterItem";
 import { SetStateAction, useState } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
@@ -9,7 +9,6 @@ import { useCategories } from "../../hooks/useCategories";
 import { SearchTitleType } from "../../api/newsListApi";
 import { useSearch } from "./../../hooks/useSearch";
 import searchKeyword from "../../assets/csvjson.json";
-
 
 type Props = {
   openKeywordList: (arg: boolean) => void;
@@ -164,8 +163,11 @@ const Search = ({
   return (
     <SearchArea>
       <div>
-        <KeywordSearchButton><Link to={"/edit"}>키워드 전체보기</Link></KeywordSearchButton>
-
+        <KeywordSearchButton>
+          <Link to={"/edit"}>
+            키워드 전체보기 <i className="icon-keyword"></i>
+          </Link>
+        </KeywordSearchButton>
       </div>
       <SearchWarp>
         <form>
@@ -263,17 +265,20 @@ const KeywordSearchButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  color: #48c0b7;
+  a {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #48c0b7;
+    text-decoration: none;
+  }
   .icon-keyword {
     display: inline-block;
     width: 10px;
     height: 10px;
-    margin-left: 7px;
+    margin-left: 3px;
     background-repeat: no-repeat;
     background-image: url("images/keyword-arrow.svg");
     background-size: contain;
@@ -296,7 +301,8 @@ const SearchWarp = styled.div`
   margin: 32px 0 0;
   padding: 26px 76.1px 24px 0;
   border-radius: 5px;
-  border: solid 1px #f1f1f1;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
   background-color: #fff;
 `;
 

@@ -4,9 +4,11 @@ import CommonContainer from "../../../layout/CommonContainer";
 import TextArticleList from "./TextArticleList";
 import ImageArticleList from "./ImageArticleList";
 import { useNewsFormats } from "./../../hooks/useNewsFormat";
+import { useAppSelector } from "./../../../../redux/hooks";
 // 이미지 형식 텍스트 형식으로 기사를 전환시킵니다
 const FormatView = () => {
   const { NewsFormats } = useNewsFormats();
+  const newListData = useAppSelector(state => state.newsList.newListData);
   useEffect(() => {}, []);
   console.log(NewsFormats, "포맷");
   return (
@@ -16,13 +18,13 @@ const FormatView = () => {
           case NewsFormats === "Image":
             return (
               <ImageContent>
-                <ImageArticleList />
+                <ImageArticleList newListData={newListData} />
               </ImageContent>
             );
           case NewsFormats === "Text":
             return (
               <TextContent>
-                <TextArticleList />;
+                <TextArticleList newListData={newListData} />;
               </TextContent>
             );
           default:
@@ -39,6 +41,7 @@ const ImageContent = styled.div`
   column-count: 3;
   column-gap: 20px;
   padding-bottom: 280px;
+  padding-top: 50px;
 `;
 const TextContent = styled.div`
   width: 100%;

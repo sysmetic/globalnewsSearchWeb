@@ -9,9 +9,9 @@ const ScrollNavTabs = () => {
   const [none, setNone] = useState<boolean>(false);
 
   const changeBackground = (e: Event) => {
-    if (window.scrollY <= 399) {
+    if (window.scrollY < 399) {
       setNavbar(true);
-    } else if (window.scrollY >= 499) {
+    } else if (window.scrollY >= 399) {
       setNavbar(false);
     }
   };
@@ -23,7 +23,7 @@ const ScrollNavTabs = () => {
     }
   };
   const changeNone = (e: Event) => {
-    if (window.scrollY >= 700) {
+    if (window.scrollY > 601) {
       setNone(true);
     } else {
       setNone(false);

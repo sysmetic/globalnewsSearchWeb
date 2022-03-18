@@ -8,13 +8,12 @@ import { Layout } from "./components/layout/Layout";
 import EditContainer from "./components/edit/EditContainer";
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/news" element={<News />} />
+          <Route path="/news/:identifier" element={<News />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypage/bookmark" element={<Bookmark />} />
           <Route path="/edit" element={<EditContainer />} />

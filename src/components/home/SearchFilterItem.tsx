@@ -68,7 +68,7 @@ export const SearchFilterItem = ({
       <Label>{filterItem.label}</Label>
       <DefaultValue onClick={e => openFilterList(index, e)}>
         <strong>{setDefaultName(filterItem)}</strong>
-        <img src="images/filterArrow.svg" alt="필터리스트 열기 아이콘" />
+        <img src="/images/filterArrow.svg" alt="필터리스트 열기 아이콘" />
       </DefaultValue>
       <SelectList isOpen={isOpen}>
         {filterList.map(item => {

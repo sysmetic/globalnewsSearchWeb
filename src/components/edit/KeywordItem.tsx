@@ -12,13 +12,13 @@ type Props = {
 const KeywordItem = ({ item }: Props) => {
   const keywordList = useKeywordList();
   const dispatch = useAppDispatch();
-  const handleAdd = () => dispatch(addKeyword(item))
-  const handleDelete = () => dispatch(deleteKeyword(item))
-  return (   
+  const handleAdd = () => dispatch(addKeyword(item));
+  const handleDelete = () => dispatch(deleteKeyword(item));
+  return (
     <KeyWordItemWrap>
       <KeywordText onClick={handleAdd}>{item}</KeywordText>
       <DeleteBtn onClick={handleDelete}>
-        <img src="images/keyword-delete.svg" alt="삭제하기 버튼" />
+        <img src="/images/keyword-delete.svg" alt="삭제하기 버튼" />
       </DeleteBtn>
     </KeyWordItemWrap>
   );

@@ -9,9 +9,9 @@ const ScrollNavTabs = () => {
   const [none, setNone] = useState<boolean>(false);
 
   const changeBackground = (e: Event) => {
-    if (window.scrollY <= 399) {
+    if (window.scrollY < 399) {
       setNavbar(true);
-    } else if (window.scrollY >= 499) {
+    } else if (window.scrollY >= 399) {
       setNavbar(false);
     }
   };
@@ -23,7 +23,7 @@ const ScrollNavTabs = () => {
     }
   };
   const changeNone = (e: Event) => {
-    if (window.scrollY >= 700) {
+    if (window.scrollY > 601) {
       setNone(true);
     } else {
       setNone(false);
@@ -36,7 +36,7 @@ const ScrollNavTabs = () => {
   }, []);
 
   return (
-    <ScrollView navbar={navbar} height={height} none={none}>
+    <ScrollView navbar={navbar} viewHeight={height} none={none}>
       {none ? null : (
         <div className="pt-30">
           <PersonalizeNav />
@@ -48,7 +48,7 @@ const ScrollNavTabs = () => {
 };
 interface Props {
   navbar: boolean;
-  height: boolean;
+  viewHeight: boolean;
   none: boolean;
 }
 
@@ -71,8 +71,8 @@ const ScrollView = styled.div<Props>`
       : null};
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
   background-color: #fff;
-  height: ${({ height, none }) =>
-    height ? `345px` : "274px" || none === true ? "101px" : `345px`};
+  height: ${({ viewHeight, none }) =>
+    viewHeight === true ? `345px` : "274px" || none === true ? "101px" : `345px`};
   .pt-30 {
     margin-top: 30px;
   }

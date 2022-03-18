@@ -42,7 +42,7 @@ const Feautres = styled.div`
     .share {
       width: 40px;
       height: 100%;
-      background-image: url("images/icon-Share-outline.svg");
+      background-image: url("/images/icon-Share-outline.svg");
       background-size: cover;
       background-repeat: no-repeat;
       cursor: pointer;
@@ -60,8 +60,8 @@ const Bookmark = styled.i<BookmarkProps>`
   cursor: pointer;
   background: ${({ isBookmark }) =>
       isBookmark === true
-        ? "url(images/icon-Bookmark-outline.svg)"
-        : "url(images/icon-Bookmark-filled.svg)"}
+        ? "url(/images/icon-Bookmark-outline.svg)"
+        : "url(/images/icon-Bookmark-filled.svg)"}
     no-repeat 4.5%;
 `;
 

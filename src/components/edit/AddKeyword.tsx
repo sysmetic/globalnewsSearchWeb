@@ -4,21 +4,84 @@ import KeywordItem from "./KeywordItem";
 import { useKeywordList } from "../../hooks/useKeywordList";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { RootState } from "../../redux/store";
+import { SetStateAction, useState } from "react";
+import { SearchTitleType } from "../../api/newsListApi";
+import searchKeyword from "../../assets/csvjson.json";
+import { useSearch } from "../../hooks/useSearch";
+type Props = {
+  openKeywordList: (arg: boolean) => void;
+};
+type keyWordEntity = {
+  name: string;
+  sub_name: string;
+  data_type: SearchTitleType;
+  exchange: string;
+};
 
 
-const AddKeyword = () => {
+const AddKeyword = ({
+  openKeywordList,
+}: Props) => {
   const keywordList = useKeywordList();
    const myKeywords = useAppSelector(
     (state: RootState) => state.keywords
   );
-
   
+  const [inputText, setInputText] = useState(" ");
+  const [isOpenInstanseSearch, setIsOpenInstanseSearch] = useState(false);
+  const [instanseKeyword, setInstanseKeyword] = useState<Array<keyWordEntity>>(
+    []
+  );
+
+  const { isOpendKeywordList } = useSearch();
+  
+  const changeInputText = (value: SetStateAction<string>) => {
+    setInputText(value);
+  };
+
+  const instanseSearch = () => {
+    if (inputText === " " || !inputText) {
+      setInstanseKeyword([]);
+      setIsOpenInstanseSearch(false);
+      return;
+    }
+    //TODO: any 타입정의 다시해야함
+    const keyword: any = searchKeyword.filter(item =>
+      item.name.includes(inputText)
+    );
+    if (!keyword || keyword.length === 0) {
+      setIsOpenInstanseSearch(false);
+      return;
+    }
+    setIsOpenInstanseSearch(true);
+    setInstanseKeyword(keyword);
+  };
+
   return (
     <Wrap>
       <CommonContainer>
         <KeyWordSearch>
-          <input type="text"  placeholder="키워드 검색 "/>
+          <input 
+            type="text" 
+            onFocus={() => {
+              openKeywordList(!isOpendKeywordList);
+            }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              changeInputText(e.target.value)
+            }onKeyUp={instanseSearch} 
+            placeholder="키워드 검색 "/>
+          {isOpenInstanseSearch && (
+        <InstanseSearchDropDown>
+          <h3>Tickers</h3>
+          {instanseKeyword.map(item => (
+            <div key={item.name} onClick={() => addKeyword(item.name)}>
+              {item.name}
+            </div>
+          ))}
+        </InstanseSearchDropDown>
+      )}
         </KeyWordSearch>
+        <KeywordLine/>
         <KeyWordTitle>My Keyword</KeyWordTitle>
         <MyKeywordInner>
           {myKeywords.map(item => (
@@ -47,7 +110,6 @@ const KeyWordSearch = styled.div`
   textarea::-webkit-input-placeholder {color:#48C0B7;}
   textarea:-ms-input-placeholder {color:#48C0B7;}
   padding-bottom: 16px;
-  border-bottom: 1px solid #C4C4C4;
   input {
     border: 1px solid #48C0B7;
     width: 500px;
@@ -95,13 +157,18 @@ const InstanseSearchDropDown = styled.div`
   }
 `;
 
+const KeywordLine = styled.div`
+  width: 516px;
+  border-bottom: 1px solid #c4c4c4;
+`
+
 export const KeyWordTitle = styled.h5`
   font-weight: 500;
   font-size: 16px;
   line-height: 30px;
   color: #48C0B7; 
   margin-top: 3px;
-`;
+`
 
 const MyKeywordInner = styled.div`
   display: flex;

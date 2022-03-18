@@ -35,6 +35,8 @@ export type QuarystringType = {
   languages: string;
   order_by: "top" | "latest" | "populer";
   access_token: string;
+  nextPageToken?: string;
+  limit: number;
 };
 
 export type SearchPayload = {
@@ -43,6 +45,7 @@ export type SearchPayload = {
   language: string;
   timeFilter: string;
   categories: string;
+  nextPageToken?: string;
 };
 
 
@@ -77,7 +80,9 @@ export async function getNewList(searchPayload: SearchPayload) {
     min_cityfalcon_score: 0,
     languages: searchPayload.language,
     order_by: "top",
-    access_token
+    access_token,
+    nextPageToken: searchPayload.nextPageToken,
+    limit: 10
   };
 
   //조건에 따른 다른 파라미터 넣어주는 객체들
@@ -87,7 +92,9 @@ export async function getNewList(searchPayload: SearchPayload) {
     categories: payload.categories,
     languages: payload.languages,
     order_by: "top",
-    access_token
+    access_token,
+    nextPageToken: payload.nextPageToken,
+    limit: payload.limit
   };
 
   const eventsParams = {
@@ -96,7 +103,9 @@ export async function getNewList(searchPayload: SearchPayload) {
     categories: payload.categories,
     languages: payload.languages,
     order_by: "top",
-    access_token
+    limit: payload.limit,
+    access_token,
+    nextPageToken: payload.nextPageToken
   };
 
   const params = {
@@ -107,7 +116,9 @@ export async function getNewList(searchPayload: SearchPayload) {
     languages: payload.languages,
     min_cityfalcon_score: 0,
     order_by: "top",
-    access_token
+    limit: payload.limit,
+    access_token,
+    nextPageToken: payload.nextPageToken
   };
 
   const NEWS_API_URL = "https://api.cityfalcon.com/v0.2/stories?";

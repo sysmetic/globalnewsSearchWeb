@@ -14,12 +14,14 @@ const NewsTabList = () => {
     dragEnd,
     drop
   } = useNewsTabList();
-  
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  
-  const handleOpen = () => setIsOpen(true)
-  const handleClose = () => setIsOpen(false)
-  
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
+  interface Map {
+    list:object;
+  }
   return (
     <Wrap>
       <TabList>
@@ -37,7 +39,7 @@ const NewsTabList = () => {
             }
             onClick={() => selectMenuHandler(index)}
           >
-            {list.title}
+            {list.data}
           </li>
         ))}
         <TabAddBtn role="button" onClick={handleOpen}>
@@ -46,7 +48,7 @@ const NewsTabList = () => {
         </TabAddBtn>
         <Modal isOpen={isOpen} onClose={handleClose}>
           <ModalBody>
-            <AddKeyword/>
+            <AddKeyword />
           </ModalBody>
         </Modal>
       </TabList>

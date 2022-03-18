@@ -29,11 +29,12 @@ const Feautres = styled.div`
   .translate {
     width: 70px;
     height: 100%;
-    background-color: #4d4d4d;
+    background: #4d4d4d;
     color: white;
     border: none;
     outline: none;
     border-radius: 3px;
+    cursor: pointer;
   }
   div {
     display: flex;

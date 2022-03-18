@@ -220,7 +220,8 @@ const CategoryListItem = styled.li`
     display: block;
   }
 `;
-const KeywordListWrap = styled.div`
+
+export const KeywordListWrap = styled.div`
   width: 100%;
   padding: 10px;
   display: grid;

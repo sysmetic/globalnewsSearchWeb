@@ -66,7 +66,7 @@ const DropDownBtn = styled.div`
     transform: translateY(-50%);
     width: 40px;
     height: 40px;
-    background-image: url("images/icon-navi-bottom.svg");
+    background-image: url("/images/icon-navi-bottom.svg");
     background-size: cover;
   }
 `;
@@ -86,6 +86,3 @@ const DropDownList = styled.ul`
     cursor: pointer;
   }
 `;
-function usePrams(): {} {
-  throw new Error("Function not implemented.");
-}

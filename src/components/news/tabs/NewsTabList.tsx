@@ -4,7 +4,6 @@ import Modal from "../../edit/Modal";
 import { useState } from "react";
 import AddKeyword from "../../edit/AddKeyword";
 
-
 const NewsTabList = () => {
   const {
     keywordList,
@@ -21,7 +20,7 @@ const NewsTabList = () => {
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
   interface Map {
-    list:object;
+    list: object;
   }
   return (
     <Wrap>
@@ -120,7 +119,7 @@ const TabAddBtn = styled.li`
   i {
     width: 40px;
     height: 40px;
-    background-image: url("images/icon-add-white.svg");
+    background-image: url("/images/icon-add-white.svg");
     background-size: contain;
     background-repeat: no-repeat;
     font-size: 0;

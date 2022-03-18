@@ -5,7 +5,7 @@ interface Props {
 }
 
 const initialState: Props = {
-  newsSortState: "top" 
+  newsSortState: "top"
 };
 
 const newsSortSlice = createSlice({

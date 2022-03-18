@@ -7,7 +7,6 @@ interface State {
 const initialState: State = {
   newsSortState: "top"
 };
-
 const newsSortSlice = createSlice({
   name: "NewsSort",
   initialState,

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAppSelector } from "../../../redux/hooks";
 import { useSearch } from "../../../hooks/useSearch";
 import { useNewsTabSearch } from "./useNewsTabSearch";
+
 export const useNewsTabList = () => {
   const dataList = useAppSelector(state => state.keywords)
   const [keywordList, setKeywordlist] = React.useState(dataList);
@@ -14,7 +15,7 @@ export const useNewsTabList = () => {
     setCurrentTab(index);
     searchTabKeywordNews(keywordList[currentTab].data)  
   }
-  console.log(keywordList[currentTab].data)
+  // console.log(keywordList[currentTab].data)
 
 
   function dragOver(e: any) {

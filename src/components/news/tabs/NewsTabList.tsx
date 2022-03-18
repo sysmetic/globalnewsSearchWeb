@@ -3,6 +3,7 @@ import { useNewsTabList } from "../hooks/useNewsTabList";
 import Modal from "../../edit/Modal";
 import { useState } from "react";
 import AddKeyword from "../../edit/AddKeyword";
+import { SearchTitleType } from "../../../api/newsListApi";
 
 const NewsTabList = () => {
   const {
@@ -48,7 +49,9 @@ const NewsTabList = () => {
         </TabAddBtn>
         <Modal isOpen={isOpen} onClose={handleClose}>
           <ModalBody>
-            <AddKeyword />
+            <AddKeyword openKeywordList={function (arg: boolean): void {
+              throw new Error("Function not implemented.");
+            } }  />
           </ModalBody>
         </Modal>
       </TabList>

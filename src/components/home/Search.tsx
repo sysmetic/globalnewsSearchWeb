@@ -223,7 +223,7 @@ const Search = ({
             </SearchBox>
             <KeywordListClose>
               <button onClick={closeKeywordList}>
-                <img src="/images/main-keyword-list-arrow.svg" alt="" />
+                <i>키워드 리스트 버튼</i>
               </button>
             </KeywordListClose>
           </SearchFilterSelectWrap>
@@ -249,11 +249,23 @@ const KeywordListClose = styled.div`
   justify-content: center;
   align-items: center;
   border-left: 1px solid #c4c4c4;
-  padding-left: 20px;
-
+  align-items: center;
   button {
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
     border: none;
+    font-size: 0;
     background: none;
+  }
+  i {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url("/images/main-keyword-list-arrow.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
   }
 `;
 
@@ -319,6 +331,7 @@ const KeywordSearchButton = styled.button`
     background-repeat: no-repeat;
     background-image: url("images/keyword-arrow.svg");
     background-size: contain;
+    cursor: pointer;
   }
   a {
     text-decoration: none;

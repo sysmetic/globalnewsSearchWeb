@@ -14,12 +14,14 @@ const EditContainer = () => {
         <KeyWordTitle>My Keyword</KeyWordTitle>
         <MykeyWordArea />
         <KeywordListWrap>
-          {keywordList.map(item => (
-            <KeywordList>
+          {keywordList.map((item, index) => (
+            <KeywordList key={index}>
               <SubTitle>{item.title}</SubTitle>
-              {item.data.map((item) => (
-                <KeywordItem item={item}/>
-              ))}
+              <KeywordArea>  
+                {item.data.map((item,index) => (
+                  <KeywordItem item={item} key={`mykeyword-${item}-${index}`}/>
+                ))}
+              </KeywordArea>
             </KeywordList>
           ))}
         </KeywordListWrap>
@@ -35,8 +37,11 @@ const Wrap = styled.main`
 `;
 const KeywordList = styled.div`
   margin-bottom: 50px;
+`
+
+const KeywordListWrap = styled.div`
+ 
 `;
-const KeywordListWrap = styled.div``;
 
 export const KeyWordTitle = styled.h5`
   font-weight: 600;
@@ -50,6 +55,13 @@ const SubTitle = styled.h4`
   font-size: 16px;
   line-height: 22px;
 `;
+
+const KeywordArea = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+`
+
 function addKeyword(item: string): any {
   throw new Error("Function not implemented.");
 }

@@ -1,9 +1,8 @@
-import React, { ImgHTMLAttributes } from "react";
 import styled from "@emotion/styled";
 import { NewsFeatures } from "../../common/NewsCommon";
 import { useNewsFormats } from "./../../hooks/useNewsFormat";
 import moment from "moment";
-import { MouseEvent } from "react";
+
 interface Props {
   newsTitle: string;
   newsContent: string;

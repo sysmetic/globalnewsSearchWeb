@@ -1,5 +1,3 @@
-import React, { useEffect, useState, useRef } from "react";
-import styled from "@emotion/styled";
 import ImageArticle from "./ImageArticle";
 
 const ImageArticleList = ({ newListData }: any) => {
@@ -20,5 +18,3 @@ const ImageArticleList = ({ newListData }: any) => {
   );
 };
 export default ImageArticleList;
-
-const ObserverView = styled.div``;

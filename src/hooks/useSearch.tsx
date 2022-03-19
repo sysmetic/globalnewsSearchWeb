@@ -36,7 +36,7 @@ export const useSearch = () => {
   const searchNews = async (
     searchTitle?: SearchTitleType,
     str?: string,
-    order_by?: "top" | "latest" | "populer"
+    order_by?: "top" | "latest" | "popular"
   ) => {
     const identifier = str ? str : identifiers;
     if (str) {

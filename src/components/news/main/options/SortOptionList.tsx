@@ -5,18 +5,24 @@ import { useNewsSorts } from "./../../hooks/useNewsSorts";
 import { useSearch } from "../../../../hooks/useSearch";
 import { useParams } from "react-router-dom";
 
-const options: string[] = ["정렬순", "최신순", "인기순"];
-
-interface Props {
-  newsCurOption: String;
-  setNewsCurOption: React.Dispatch<React.SetStateAction<String>>;
-}
+const options: any = [
+  {
+    name: "정렬순",
+    status: "top"
+  },
+  { name: "최신순", status: "latest" },
+  { name: "인기순", status: "popular" }
+];
 
 const SortOptionList = () => {
   const { reportOptionToAPI } = useNewsFilter();
   const { showDropDown, newsCurOption, isActive, setIsActive } = useNewsSorts();
   const { searchNews } = useSearch();
   const { identifier } = useParams();
+  interface Props {
+    name: string;
+    status: string;
+  }
   return (
     <ListWrap>
       <DropDownBtn onClick={(e: MouseEvent) => setIsActive(!isActive)}>
@@ -25,16 +31,16 @@ const SortOptionList = () => {
       </DropDownBtn>
       <DropDownList>
         {isActive &&
-          options.map(option => (
+          options.map((option: Props) => (
             <li
               className="dropdown-item"
               onClick={(e: MouseEvent) => {
                 searchNews("Sector", identifier);
-                // showDropDown(option);
-                reportOptionToAPI(option);
+                showDropDown(option.name);
+                reportOptionToAPI(option.status);
               }}
             >
-              {option}
+              {option.name}
             </li>
           ))}
       </DropDownList>
@@ -86,6 +92,3 @@ const DropDownList = styled.ul`
     cursor: pointer;
   }
 `;
-function usePrams(): {} {
-  throw new Error("Function not implemented.");
-}

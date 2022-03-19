@@ -3,6 +3,7 @@ import { useNewsTabList } from "../hooks/useNewsTabList";
 import Modal from "../../edit/Modal";
 import { useState } from "react";
 import AddKeyword from "../../edit/AddKeyword";
+import { SearchTitleType } from "../../../api/newsListApi";
 
 const NewsTabList = () => {
   const {

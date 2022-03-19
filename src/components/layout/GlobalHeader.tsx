@@ -133,7 +133,6 @@ const Profile = styled.div`
 // 비회원
 
 const NonMember = styled.div`
-  /* display:flex; */
   display: none;
   align-items: center;
   height: 100%;

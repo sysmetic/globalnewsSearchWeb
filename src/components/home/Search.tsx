@@ -329,7 +329,7 @@ const KeywordSearchButton = styled.button`
     height: 10px;
     margin-left: 3px;
     background-repeat: no-repeat;
-    background-image: url("images/keyword-arrow.svg");
+    background-image: url("/images/keyword-arrow.svg");
     background-size: contain;
     cursor: pointer;
   }

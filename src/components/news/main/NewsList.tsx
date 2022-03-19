@@ -27,7 +27,7 @@ const NewsList = () => {
           return <FormatView />;
         } else if (newsSortState === "latest" && newsCurOption === "최신순") {
           return <FormatView />;
-        } else if (newsSortState === "populer" && newsCurOption === "인기순") {
+        } else if (newsSortState === "popular" && newsCurOption === "인기순") {
           return <FormatView />;
         } else {
           return null;

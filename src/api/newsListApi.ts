@@ -33,7 +33,7 @@ export type QuarystringType = {
   categories: string;
   min_cityfalcon_score?: Number;
   languages: string;
-  order_by?: "top" | "latest" | "populer";
+  order_by?: "top" | "latest" | "popular";
   access_token: string;
   nextPageToken?: string;
   limit: number;
@@ -46,7 +46,7 @@ export type SearchPayload = {
   timeFilter: string;
   categories: string;
   nextPageToken?: string;
-  order_by?: "top" | "latest" | "populer";
+  order_by?: "top" | "latest" | "popular";
 };
 
 export type SearchTitleType =

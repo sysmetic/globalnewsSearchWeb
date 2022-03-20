@@ -89,7 +89,7 @@ const Search = ({
   };
 
   const closeAll = () => {
-    console.log("closeAll");
+    // console.log("closeAll");
     setOpen(null);
   };
 

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
-import CommonContainer from "./../../../layout/CommonContainer";
-import { useNewsFormats } from "./../../hooks/useNewsFormat";
+import CommonContainer from "../../layout/CommonContainer";
+import { useNewsFormats } from "../hooks/useNewsFormat";
 import SortOptionList from "./SortOptionList";
 
 const Options = () => {

@@ -1,28 +1,37 @@
 import styled from "@emotion/styled";
 import { MouseEvent } from "react";
-import { useNewsFilter } from "./../../hooks/useNewsFilter";
-import { useNewsSorts } from "./../../hooks/useNewsSorts";
-import { useSearch } from "../../../../hooks/useSearch";
+import { useNewsSorts } from "../hooks/useNewsSorts";
+import { useSearch } from "../../../hooks/useSearch";
 import { useParams } from "react-router-dom";
-
-const options: any = [
-  {
-    name: "정렬순",
-    status: "top"
-  },
-  { name: "최신순", status: "latest" },
-  { name: "인기순", status: "popular" }
-];
+import { useEffect } from "react";
 
 const SortOptionList = () => {
-  const { reportOptionToAPI } = useNewsFilter();
-  const { showDropDown, newsCurOption, isActive, setIsActive } = useNewsSorts();
+  const {
+    showDropDown,
+    newsCurOption,
+    isActive,
+    setIsActive,
+    reportOptionToAPI
+  } = useNewsSorts();
   const { searchNews } = useSearch();
   const { identifier } = useParams();
-  interface Props {
+
+  const options = [
+    {
+      name: "정렬순",
+      status: "top"
+    },
+    { name: "최신순", status: "latest" },
+    { name: "인기순", status: "popular" }
+  ];
+
+  interface DropDown {
     name: string;
     status: string;
   }
+
+
+
   return (
     <ListWrap>
       <DropDownBtn onClick={(e: MouseEvent) => setIsActive(!isActive)}>
@@ -31,7 +40,7 @@ const SortOptionList = () => {
       </DropDownBtn>
       <DropDownList>
         {isActive &&
-          options.map((option: Props) => (
+          options.map((option: DropDown) => (
             <li
               className="dropdown-item"
               onClick={(e: MouseEvent) => {
@@ -87,6 +96,7 @@ const DropDownList = styled.ul`
     padding-left: 20px;
     border: 1px solid #dadada;
     box-sizing: border-box;
+    cursor: pointer;
   }
   .sort-item {
     cursor: pointer;

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { NewsFeatures } from "./../../common/NewsCommon";
 import { changeMoment } from "./ImageArticle";
+import { NewsFeatures } from "./../common/NewsCommon";
 
 interface Props {
   newsTitle: string;
@@ -43,9 +43,7 @@ const TextArticle = ({
           미리 보기
         </i>
       </ArticleFooter>
-      {isActive === true ? (
-        <ArticleBody>{newsContent}</ArticleBody>
-      ) : null}
+      {isActive === true ? <ArticleBody>{newsContent}</ArticleBody> : null}
     </Wrap>
   );
 };

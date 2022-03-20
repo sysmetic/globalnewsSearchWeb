@@ -1,8 +1,7 @@
 import React from "react";
-import NewsList from "./NewsList";
-import Options from "./options";
+import Options from "../options";
 import styled from "@emotion/styled";
-
+import PostFilterView from "./PostFilterView";
 const MainContainer = () => {
   // const tabList = arr.filter(keyword => keyword === "일치");
 
@@ -14,7 +13,7 @@ const MainContainer = () => {
         return (
           <>
             <Options />
-            <NewsList />
+            <PostFilterView />
           </>
         );
       })()}

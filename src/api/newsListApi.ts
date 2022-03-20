@@ -82,7 +82,7 @@ export async function getNewList(searchPayload: SearchPayload) {
     order_by: searchPayload.order_by || "top",
     access_token,
     nextPageToken: searchPayload.nextPageToken,
-    limit: 10
+    limit: 30
   };
 
   //조건에 따른 다른 파라미터 넣어주는 객체들

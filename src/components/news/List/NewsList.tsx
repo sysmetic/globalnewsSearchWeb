@@ -1,13 +1,14 @@
 import React from "react";
-import FormatView from "./cardList/FormatView";
 import styled from "@emotion/styled";
 import { useNewsSorts } from "../hooks/useNewsSorts";
 import { useAppSelector } from "../../../redux/hooks";
+import PostFilterView from "./PostFilterView";
+
 const NewsList = () => {
   const { newsSortState, newsCurOption } = useNewsSorts();
   console.log(newsSortState);
   const newListData = useAppSelector(state => state.newsList.newListData);
-  console.log(newListData.length);
+  console.log(newListData.length, newListData, "뉴스데이터 유무");
   return (
     <ViewFilter>
       {(function viewList() {
@@ -24,11 +25,11 @@ const NewsList = () => {
           );
         }
         if (newsSortState === "top" && newsCurOption === "정렬순") {
-          return <FormatView />;
+          return <PostFilterView />;
         } else if (newsSortState === "latest" && newsCurOption === "최신순") {
-          return <FormatView />;
+          return <PostFilterView />;
         } else if (newsSortState === "popular" && newsCurOption === "인기순") {
-          return <FormatView />;
+          return <PostFilterView />;
         } else {
           return null;
         }

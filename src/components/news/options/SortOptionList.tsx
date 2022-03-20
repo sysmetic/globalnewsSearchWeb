@@ -31,7 +31,6 @@ const SortOptionList = () => {
   }
 
 
-
   return (
     <ListWrap>
       <DropDownBtn onClick={(e: MouseEvent) => setIsActive(!isActive)}>

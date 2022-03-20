@@ -53,6 +53,7 @@ export const useSearch = () => {
     try {
       const search = await dispatch(fetchNewList(searchPayload));
       navigate(`/news/${cameltoCababString(identifier)}`);
+      return search
     } catch (error) {
       console.log("searchError", error);
     }

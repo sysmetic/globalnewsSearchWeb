@@ -8,7 +8,7 @@ const Options = () => {
   const { changeToTextFormat, changeToImgFormat, focused, handleTextSize } =
     useNewsFormats();
   return (
-    <CommonContainer>
+    <CommonContainer style={{ marginTop: "80px" }}>
       <Features>
         {/* <span className="result">Results of ‘Silver’</span> */}
         <SortOptionList />

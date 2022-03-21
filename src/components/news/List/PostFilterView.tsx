@@ -1,37 +1,38 @@
 import styled from "@emotion/styled";
-import React, { useEffect } from "react";
 import TextArticleList from "./TextArticleList";
 import ImageArticleList from "./ImageArticleList";
-import CommonContainer from './../../layout/CommonContainer';
+import CommonContainer from "./../../layout/CommonContainer";
 import { useAppSelector } from "../../../redux/hooks";
-import { useNewsFormats } from './../hooks/useNewsFormat';
+import { useNewsFormats } from "./../hooks/useNewsFormat";
+
 // 이미지 형식 텍스트 형식으로 기사를 전환시킵니다
 const PostFilterView = () => {
   const { NewsFormats } = useNewsFormats();
-  const newListData = useAppSelector(state => state.newsList.newListData);
-  useEffect(() => {}, []);
-  console.log(NewsFormats, "포맷");
+  const { newListData, loading } = useAppSelector(state => state.newsList);
 
   return (
     <CommonContainer>
-      {(function test() {
-        switch (true) {
-          case NewsFormats === "Image":
-            return (
-              <ImageContent>
-                <ImageArticleList newListData={newListData} />
-              </ImageContent>
-            );
-          case NewsFormats === "Text":
-            return (
-              <TextContent>
-                <TextArticleList newListData={newListData} />;
-              </TextContent>
-            );
-          default:
-            return null;
-        }
-      })()}
+      {loading ? (
+        <div>....isLoading</div>
+      ) : (
+        <>
+          {(function test() {
+            if (NewsFormats === "Image") {
+              return (
+                <ImageContent>
+                  <ImageArticleList newListData={newListData} />
+                </ImageContent>
+              );
+            } else if (NewsFormats === "Text") {
+              return (
+                <TextContent>
+                  <TextArticleList newListData={newListData} />;
+                </TextContent>
+              );
+            }
+          })()}
+        </>
+      )}
     </CommonContainer>
   );
 };

@@ -16,8 +16,6 @@ export const useNewsTabList = () => {
     setCurrentTab(index);
     searchTabKeywordNews(keywordList[currentTab].data)  
   }
-  // console.log(keywordList[currentTab].data)
-
 
   function dragOver(e: any) {
     e.preventDefault();

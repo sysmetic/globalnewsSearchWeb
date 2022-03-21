@@ -53,7 +53,6 @@ interface Props {
 }
 
 export default ScrollNavTabs;
-// 101px 274px 345px
 const ScrollView = styled.div<Props>`
   position: fixed;
   top: 68px;

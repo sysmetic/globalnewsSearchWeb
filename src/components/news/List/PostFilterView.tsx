@@ -5,7 +5,6 @@ import CommonContainer from "./../../layout/CommonContainer";
 import { useAppSelector } from "../../../redux/hooks";
 import { useNewsFormats } from "./../hooks/useNewsFormat";
 
-// 이미지 형식 텍스트 형식으로 기사를 전환시킵니다
 const PostFilterView = () => {
   const { NewsFormats } = useNewsFormats();
   const { newListData, loading } = useAppSelector(state => state.newsList);
@@ -49,4 +48,4 @@ const TextContent = styled.div`
   width: 100%;
   padding-bottom: 280px;
 `;
-//데이터를 [0]번째 인덱스만 출력하게해라
+

@@ -5,6 +5,7 @@ import MykeyWordArea from "./MykeyWordArea";
 import { useKeywordList } from "../../hooks/useKeywordList";
 import { useAppDispatch } from "../../redux/hooks";
 import ScrollNavTabs from "../news/nav/ScrollNavTabs";
+
 const EditContainer = () => {
   const keywordList = useKeywordList();
 

@@ -7,6 +7,7 @@ import { SetStateAction, useState } from "react";
 import { SearchTitleType } from "../../api/newsListApi";
 import searchKeyword from "../../assets/csvjson.json";
 import { useSearch } from "../../hooks/useSearch";
+import { useKeywordList } from "../../hooks/useKeywordList";
 
 const AddKeyword = () => {
   const keywordList = useKeywordList();

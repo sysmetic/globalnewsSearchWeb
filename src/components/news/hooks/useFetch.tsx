@@ -50,8 +50,8 @@ export const useFetch = () => {
     navigate
   ]);
 
-  function updateSortState(option:SetStateAction<State>) {
-    setSortFilter(option)
+  function updateSortState(option: SetStateAction<State>) {
+    setSortFilter(option);
   }
 
   return;

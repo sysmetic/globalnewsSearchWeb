@@ -66,9 +66,9 @@
 2. 번역,북마크 클릭 UI 구현    
 
 ![모야-03](https://user-images.githubusercontent.com/71584114/159287277-7a4dff3f-d3d4-4c93-b5bc-fff41462ed42.gif)  
-
-1. 키워드 추가 UI 구현  
-
 ![모야-05](https://user-images.githubusercontent.com/71584114/159287293-d6bc38b2-dd9b-403f-ab16-1e002d2551bb.gif)  
+1. 키워드 추가 UI 구현  
+2. 마이페이지 UI 구현
 
-1.마이페이지, 마이페이지 북마크 페이지 UI   
+
+

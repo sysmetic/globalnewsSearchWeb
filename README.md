@@ -56,12 +56,19 @@
 ### 구현 목록
 
 ![모야-01](https://user-images.githubusercontent.com/71584114/159287249-5c2f749b-f8b5-4f26-981d-c91ddacb6b89.gif)  
-- Sector 키워드 서칭 구현  
-- 검색 헤더 스크롤 시 반응형  
+
+1. Sector 키워드 서칭 구현  
+2. 검색 헤더 스크롤 시 반응형  
+
 ![모야-02](https://user-images.githubusercontent.com/71584114/159287265-5c1953a8-22d3-46c8-ad58-f723194e4dc6.gif)  
-- 이미지, 텍스트 형식 변환  
-- 번역,북마크 클릭 UI 구현    
+
+1. 이미지, 텍스트 형식 변환  
+2. 번역,북마크 클릭 UI 구현    
+
 ![모야-03](https://user-images.githubusercontent.com/71584114/159287277-7a4dff3f-d3d4-4c93-b5bc-fff41462ed42.gif)  
-_ 키워드 추가 UI 구현  
+
+1. 키워드 추가 UI 구현  
+
 ![모야-05](https://user-images.githubusercontent.com/71584114/159287293-d6bc38b2-dd9b-403f-ab16-1e002d2551bb.gif)  
-_ 마이페이지, 마이페이지 북마크 페이지 UI   
+
+1.마이페이지, 마이페이지 북마크 페이지 UI   

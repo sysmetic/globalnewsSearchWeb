@@ -3,7 +3,7 @@ import { SearchFilterItem } from "./SearchFilterItem";
 import { SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useFetchLanguageCode } from "../../hooks/useFetchLanguageCode";
+import { useLanguageCode } from "../../hooks/useLanguageCode";
 import { useTimeFilter } from "../../hooks/useTimeFilter";
 import { useCategories } from "../../hooks/useCategories";
 import { SearchTitleType } from "../../api/newsListApi";
@@ -48,7 +48,7 @@ const Search = ({
     []
   );
   const { isOpendKeywordList } = useSearch();
-  const languageCode = useFetchLanguageCode();
+  const languageCode = useLanguageCode();
   const languageName = languageCode.languages.map(obj => obj.name);
 
   const timeFilterArr = useTimeFilter();

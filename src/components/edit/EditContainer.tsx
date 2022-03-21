@@ -4,12 +4,13 @@ import KeywordItem from "./KeywordItem";
 import MykeyWordArea from "./MykeyWordArea";
 import { useKeywordList } from "../../hooks/useKeywordList";
 import { useAppDispatch } from "../../redux/hooks";
-
+import ScrollNavTabs from "../news/nav/ScrollNavTabs";
 const EditContainer = () => {
   const keywordList = useKeywordList();
-  
+
   return (
     <Wrap>
+      <ScrollNavTabs />
       <CommonContainer>
         <KeyWordTitle>My Keyword</KeyWordTitle>
         <MykeyWordArea />
@@ -17,9 +18,9 @@ const EditContainer = () => {
           {keywordList.map((item, index) => (
             <KeywordList key={index}>
               <SubTitle>{item.title}</SubTitle>
-              <KeywordArea>  
-                {item.data.map((item,index) => (
-                  <KeywordItem item={item} key={`mykeyword-${item}-${index}`}/>
+              <KeywordArea>
+                {item.data.map((item, index) => (
+                  <KeywordItem item={item} key={`mykeyword-${item}-${index}`} />
                 ))}
               </KeywordArea>
             </KeywordList>
@@ -33,15 +34,14 @@ const EditContainer = () => {
 export default EditContainer;
 
 const Wrap = styled.main`
-  margin-top: 60px;
+  padding-top: 500px;
+  min-height: 100vh;
 `;
 const KeywordList = styled.div`
   margin-bottom: 50px;
-`
-
-const KeywordListWrap = styled.div`
- 
 `;
+
+const KeywordListWrap = styled.div``;
 
 export const KeyWordTitle = styled.h5`
   font-weight: 600;
@@ -60,7 +60,7 @@ const KeywordArea = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-`
+`;
 
 function addKeyword(item: string): any {
   throw new Error("Function not implemented.");

@@ -12,7 +12,6 @@ import { useSearch } from "../../hooks/useSearch";
 const AddKeyword = () => {
   const keywordList = useKeywordList();
   const myKeywords = useAppSelector((state: RootState) => state.keywords);
-
   return (
     <Wrap>
       <CommonContainer>

@@ -49,7 +49,7 @@ const NewsTabList = () => {
         </TabAddBtn>
         <Modal isOpen={isOpen} onClose={handleClose}>
           <ModalBody>
-            <AddKeyword />
+            <AddKeyword/>
           </ModalBody>
         </Modal>
       </TabList>

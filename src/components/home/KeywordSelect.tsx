@@ -16,7 +16,7 @@ type sectorKeywordType = {
 type Title = "Category" | "Sector" | "Startup";
 
 const KeywordSelect = ({ startupData, categoryData, searchNews }: Props) => {
-  const [keywordTitle, setKeywordTitle] = useState<Title>("Sector");
+  const [keywordTitle, setKeywordTitle] = useState<Title>("Category");
   const [sectorKeyword] = useState<sectorKeywordType>(sector);
 
   const keywordTitleList: Title[] = ["Category", "Sector", "Startup"];

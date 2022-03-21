@@ -89,7 +89,7 @@ const Search = ({
   };
 
   const closeAll = () => {
-    console.log("closeAll");
+    // console.log("closeAll");
     setOpen(null);
   };
 
@@ -235,6 +235,7 @@ const Search = ({
           {instanseKeyword.map(item => (
             <div key={item.name} onClick={() => search(item)}>
               {item.name}
+              {item.sub_name}
             </div>
           ))}
         </InstanseSearchDropDown>
@@ -369,7 +370,7 @@ const SearchBox = styled.div<SearchBoxProps>`
   align-items: center;
   width: 41%;
   background: ${({ focused }) =>
-      focused ? "url(/images/search-focused.svg)" : "url(images/search.svg)"}
+      focused ? "url(/images/search-focused.svg)" : "url(/images/search.svg)"}
     no-repeat 4.5%;
   transition: background 0.3s ease;
   input {

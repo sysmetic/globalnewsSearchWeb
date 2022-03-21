@@ -36,7 +36,7 @@ export const useSearch = () => {
   const searchNews = async (
     searchTitle?: SearchTitleType,
     str?: string,
-    order_by?: "top" | "latest" | "populer"
+    order_by?: "top" | "latest" | "popular"
   ) => {
     const identifier = str ? str : identifiers;
     if (str) {
@@ -53,6 +53,7 @@ export const useSearch = () => {
     try {
       const search = await dispatch(fetchNewList(searchPayload));
       navigate(`/news/${cameltoCababString(identifier)}`);
+      return search
     } catch (error) {
       console.log("searchError", error);
     }

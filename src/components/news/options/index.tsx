@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
-import CommonContainer from "./../../../layout/CommonContainer";
-import { useNewsFormats } from "./../../hooks/useNewsFormat";
+import CommonContainer from "../../layout/CommonContainer";
+import { useNewsFormats } from "../hooks/useNewsFormat";
 import SortOptionList from "./SortOptionList";
 
 const Options = () => {
@@ -10,7 +10,7 @@ const Options = () => {
   return (
     <CommonContainer>
       <Features>
-        <span className="result">Results of ‘Silver’</span>
+        {/* <span className="result">Results of ‘Silver’</span> */}
         <SortOptionList />
         <TextSizeControl onClick={handleTextSize} />
         <ImageFormatViewBtn onClick={changeToImgFormat} focused={focused} />

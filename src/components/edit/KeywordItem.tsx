@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { ReactChild, ReactChildren } from "react";
 import { useKeywordList } from "../../hooks/useKeywordList";
 import { useAppDispatch } from "../../redux/hooks";
 import { addKeyword, deleteKeyword } from "../../redux/keyword/keywordsSlice";

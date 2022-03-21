@@ -6,6 +6,7 @@ import { useSearch } from "../../../hooks/useSearch";
 import { useNewsTabSearch } from "./useNewsTabSearch";
 
 export const useNewsTabList = () => {
+  
   const dataList = useAppSelector(state => state.keywords)
   const [keywordList, setKeywordlist] = React.useState(dataList);
   const [start, setStart] = useState<any>(null); //시작 위치

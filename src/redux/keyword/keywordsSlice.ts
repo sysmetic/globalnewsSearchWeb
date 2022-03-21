@@ -7,8 +7,6 @@ export type Keywords = {
 type KeywordsState = Keywords[]
 
 const initialState: KeywordsState = [
-  {data: "Twitter Inc"},
-  {data: "WTI Crude Oil"}
 ]
 
 const keywordList = createSlice({

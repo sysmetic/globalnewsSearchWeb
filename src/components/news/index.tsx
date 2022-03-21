@@ -1,8 +1,6 @@
-import PersonalizeNav from "./nav";
-import TabListContainer from "./tabs/TabListContainer";
-import MainContainer from "./main/MainContainer";
 import styled from "@emotion/styled";
 import ScrollNavTabs from "./nav/ScrollNavTabs";
+import MainContainer from './List/MainContainer';
 const NewsContainer = () => {
   return (
     <ResponseView>

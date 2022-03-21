@@ -2,8 +2,8 @@
 
 ## 사용한 기술 스택
 
-- React
-- Redux / redux-saga
+- React cra 
+- Redux / redux-toolkit 
 - emotion (css-in-js)
 - typescript
 
@@ -11,22 +11,25 @@
 
 ```
 ├── public
-│   └── images
-├── assets
+│   └── images 
+├── assets -- 키워드 리스트 json 목록
 ├── components
 ├── containers
 ├── pages
-├── hooks
-├── redux
+├── hooks --커스텀 훅
+├── redux 
 │   ├── modules
 │   └── store.ts
 ├── api
-│   └── newsList.ts
+│   └── newsList.ts 
 ├── util.js
 ├── App.js
 └── index.js
 ```
-
+## Environment
+```
+npm start
+```
 ### 해당 폴더 구조에 대한 설명
 
 - public

@@ -67,7 +67,7 @@ npm start
 
 1. 이미지, 텍스트 형식 변환  
 2. 번역,북마크 클릭 UI 구현    
-
+3. 정렬 시 네트워크상에서는 식별자들이 잘 전송된것으로 보이나 api 호출 시 빈배열값이 나오는 현상 발생 
 ![모야-03](https://user-images.githubusercontent.com/71584114/159287277-7a4dff3f-d3d4-4c93-b5bc-fff41462ed42.gif)  
 ![모야-05](https://user-images.githubusercontent.com/71584114/159287293-d6bc38b2-dd9b-403f-ab16-1e002d2551bb.gif)  
 1. 키워드 추가 UI 구현  

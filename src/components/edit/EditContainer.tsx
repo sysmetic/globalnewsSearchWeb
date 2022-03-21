@@ -3,7 +3,6 @@ import CommonContainer from "../layout/CommonContainer";
 import KeywordItem from "./KeywordItem";
 import MykeyWordArea from "./MykeyWordArea";
 import { useKeywordList } from "../../hooks/useKeywordList";
-import { useAppDispatch } from "../../redux/hooks";
 
 const EditContainer = () => {
   const keywordList = useKeywordList();

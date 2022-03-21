@@ -1,18 +1,11 @@
 import styled from "@emotion/styled";
 import CommonContainer from "../layout/CommonContainer";
 import KeywordItem from "./KeywordItem";
-import { useKeywordList } from "../../hooks/useKeywordList";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppSelector } from "../../redux/hooks";
 import { RootState } from "../../redux/store";
-import { SetStateAction, useState } from "react";
-import { SearchTitleType } from "../../api/newsListApi";
-import searchKeyword from "../../assets/csvjson.json";
-import { useSearch } from "../../hooks/useSearch";
-
 
 
 const AddKeyword = () => {
-  const keywordList = useKeywordList();
    const myKeywords = useAppSelector(
     (state: RootState) => state.keywords
   );

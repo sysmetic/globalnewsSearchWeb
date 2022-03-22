@@ -7,6 +7,7 @@
 - emotion (css-in-js)
 - typescript
 
+
 ## 프로젝트 폴더 구조
 
 ```

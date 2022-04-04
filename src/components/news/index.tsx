@@ -1,24 +1,16 @@
 import styled from "@emotion/styled";
-import ListContainer from "./List/ListContainer";
-import NavContainer from "./nav/NavContainer";
-import OptionContainer from "./options/OptionContainer";
+import List from "./List";
+import SearchNavigation from "./SearchNavigation";
+import ListFiterOption from "./ListFilterOption";
 
-const NewsContainer = () => {
+const News = () => {
   return (
-    <Wrap>
-      <NavContainer />
-      <Body>
-        <OptionContainer />
-        <ListContainer />
-      </Body>
-    </Wrap>
+    <>
+      <SearchNavigation />
+      <ListFiterOption />
+      <List />
+    </>
   );
 };
 
-export default NewsContainer;
-
-const Wrap = styled.section``;
-
-const Body = styled.div`
-  padding-top: 400px;
-`;
+export default News;

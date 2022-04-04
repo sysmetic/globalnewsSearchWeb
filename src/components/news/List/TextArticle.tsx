@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { changeMoment } from "./ImageArticle";
-import { NewsFeatures } from "./../common/NewsCommon";
+import { NewsFeatures } from "../common/NewsCommon";
 
 interface Props {
   newsTitle: string;

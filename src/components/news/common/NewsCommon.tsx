@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { useNewsCommon } from "./../hooks/useNewCommon";
+import { useNewsCommon } from "../hooks/useNewCommon";
 export const NewsFeatures = () => {
   const { isBookmark, onbookmark } = useNewsCommon();
 

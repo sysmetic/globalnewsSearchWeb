@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { NewsFeatures } from './../common/NewsCommon';
-import { useNewsFormats } from './../hooks/useNewsFormat';
+import { NewsFeatures } from '../common/NewsCommon';
+import { useNewsFormats } from '../hooks/useNewsFormat';
 import moment from "moment";
 
 

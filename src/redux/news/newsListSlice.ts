@@ -1,12 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
-import { fetchSectorKeyword } from "../../api/sectorApi";
 import { push } from "connected-react-router";
+import { getNewList, SearchType } from "../../api/newsListApi";
+import { Action } from "redux-actions";
+import { fetchNews } from "../../api/newsApi";
 
 export const NEWSLIST_START = "NEWSLIST_START";
-
 export const NEWSLIST_SUCCESS = "NEWSLIST_SUCCESS";
-
 export const NEWSLIST_FAIL = "NEWSLIST_FAIL";
 
 // 액션 생성 함수
@@ -54,8 +53,6 @@ export default function reducer(state = initialState, action: any) {
       };
 
     case NEWSLIST_FAIL:
-      console.log("NEWSLIST_FAIL error", action);
-
       return {
         ...state,
         loading: false,
@@ -76,35 +73,58 @@ type data = {
   hasMore: String;
 };
 
-function* getNewslistSaga(action: any) {
-  console.log("getNewslistSaga", action);
+function isExchange(action: Action<SearchType>) {
+  const {
+    orderBy,
+    keyType,
+    paramValue,
+    language,
+    timeFilter,
+    mediaType,
+    exchange
+  } = action.payload;
+  if (action.payload.exchange) {
+    const query = `/news?orderBy=${orderBy}&keyType=${keyType}&paramValue=${paramValue}&language=${language}&timeFilter=${timeFilter}&mediaType=${mediaType}&exchange=${exchange}`;
+    return query;
+  } else {
+    const query = `/news?orderBy=${orderBy}&keyType=${keyType}&paramValue=${paramValue}&language=${language}&timeFilter=${timeFilter}&mediaType=${mediaType}`;
+    return query;
+  }
+}
+
+function* getNewslistSaga(action: Action<SearchType>) {
+  const {
+    orderBy,
+    keyType,
+    paramValue,
+    language,
+    timeFilter,
+    mediaType,
+    exchange
+  } = action.payload;
   try {
     yield put(getNewslistStart());
     if (
-      action.payload.keyType === "sectors" ||
-      action.payload.keyType === "startup" ||
-      action.payload.keyType === "category"
+      keyType === "sectors" ||
+      keyType === "startup" ||
+      keyType === "category"
     ) {
-      const res: data = yield call(
-        fetchSectorKeyword,
-        action.payload.keyType,
-        action.payload.identifier
-      );
-      yield put(getNewslistSuccess(res.data));
+      console.log("getNewslistSaga", action);
+      const data: data = yield call(fetchNews, keyType, paramValue);
+      yield put(getNewslistSuccess(data));
+      yield put(push(isExchange(action)));
     } else {
-      const res: data = yield call(
-        axios.get,
-        "http://54.180.136.0:3000/search?mediaType=mp,op&timeFilter=w1&language=en&orderBy=latest&keyType=tickers&keyParam=aapl&exchange=nasdaq"
-      );
-      yield put(getNewslistSuccess(res.data));
+      const data: data = yield call(getNewList, action.payload);
+      yield put(getNewslistSuccess(data));
+      yield put(push(`/news/${paramValue}`));
     }
-    yield put(push(`/news/${action.payload.identifier}`));
   } catch (error) {
     yield put(getNewslistFail(error));
   }
 }
 
 export function fetchNewList(payload: any) {
+  console.log("payload", payload);
   return {
     type: NEWSLIST_SAGA_START,
     payload
